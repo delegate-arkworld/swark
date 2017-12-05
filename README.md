@@ -6,6 +6,7 @@
 
 ## Credits
 * [Nico Allers](https://github.com/reconnico)
+* [Oleg Shcherbyna](https://twitter.com/oleg_madys) - Banner Design
     
 ## License
 
