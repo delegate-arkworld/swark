@@ -25,7 +25,7 @@ and will be placed in the offical [Shopware store](http://store.shopware.com/) a
 
 ## Credits
 * [Nico Allers](https://github.com/reconnico)
-* [Oleg Shcherbyna](https://twitter.com/oleg_madys) - Banner Design
+* [Oleg Shcherbyna](https://twitter.com/olejegcord) - Banner Design
     
 ## License
 
