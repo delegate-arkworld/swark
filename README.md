@@ -8,6 +8,8 @@ Swark is a payment gateway that provides the ability to pay with ARK in Shopware
 
 ### Milestone to v1.0.0
 
+**Waiting for V2 of ARK Core to search for vendorField values without the need of a customized node**
+
 When all milestones to version 1.0.0 are finished the plugin will be published in this repository
 and will be placed in the offical [Shopware store](http://store.shopware.com/) as free to use plugin.
 
