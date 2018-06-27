@@ -13,7 +13,7 @@ Swark is a payment gateway that provides the ability to pay with ARK in Shopware
 When all milestones to version 1.0.0 are finished the plugin will be published in this repository
 and will be placed in the offical [Shopware store](http://store.shopware.com/) as free to use plugin.
 
-* [x] integrate [ARK-PHP-Client](https://github.com/faustbrian/ARK-PHP-Client) in plugin infrastructure and setup
+* [ ] integrate [ARK PHP Client](https://github.com/ArkEcosystem/php-client) in plugin infrastructure and setup
 * [ ] write PHPUnit tests for plugin components
 * [ ] first successful automated order process with ARK
 * [ ] Exchange rate automated in checkout process
