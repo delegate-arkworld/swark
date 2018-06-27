@@ -16,7 +16,7 @@ and will be placed in the offical [Shopware store](http://store.shopware.com/) a
 * [ ] integrate [ARK PHP Client](https://github.com/ArkEcosystem/php-client) in plugin infrastructure and setup
 * [ ] write PHPUnit tests for plugin components
 * [ ] first successful automated order process with ARK
-* [ ] Exchange rate automated in checkout process
+* [ ] provide cronjob for exchange rate automatisation
 * [x] integrate QR-Code for easier payment
 * [ ] create backend module to overview ARK related orders with transactions
 * [ ] provide translations for at least German (most popular country in Shopware)
