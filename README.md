@@ -22,6 +22,8 @@ and will be published in the offical [Shopware store](http://store.shopware.com/
 * [ ] Provide translations for at least German (most popular country in Shopware)
 * [ ] Finalize documentation including installation process
 
+![ACF](https://github.com/reConNico/swark/blob/master/banner_acf.png)
+
 ## Credits
 * [Nico Allers](https://github.com/reconnico)
 * [Oleg Shcherbyna](https://twitter.com/olejegcord) - Banner Design
