@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Cron Subscriber -->
+        <service id="swark.subscribers.transactions_cron_subscriber"
+                 class="Swark\Subscribers\TransactionsCronSubscriber">
+            <tag name="shopware.event_listener"
+                 method="onRunCronjob"
+                 event="Shopware_CronJob_SwarkCheckTransactions"/>
+            <argument type="service" id="swark.components.services.order_service" />
+        </service>
+
+        <!-- Exchange Cron Subscriber -->
+        <service id="swark.subscribers.exchange_cron_subscriber"
+                 class="Swark\Subscribers\ExchangeCronSubscriber">
+            <tag name="shopware.event_listener"
+                 method="onRunCronjob"
+                 event="Shopware_CronJob_SwarkUpdateExchangeRate"/>
+            <argument type="service" id="swark.components.services.exchange_service" />
+        </service>
+
+        <!-- Checkout Finish Subscriber -->
+        <service id="swark.subscribers.checkout_finish_subscriber"
+                 class="Swark\Subscribers\CheckoutFinishSubscriber">
+            <tag name="shopware.event_listener"
+                 method="onPostDispatchSecureCheckout"
+                 event="Enlight_Controller_Action_PostDispatchSecure_Frontend_Checkout"/>
+            <argument type="string">%swark.views_dir%</argument>
+            <argument type="service" id="swark.components.services.order_service" />
+            <argument type="service" id="swark.components.helper.order_helper" />
+            <argument type="service" id="swark.config"/>
+        </service>
+
+        <!-- Save Order Subscriber -->
+        <service id="swark.subscribers.save_order_subscriber"
+                 class="Swark\Subscribers\SaveOrderSubscriber">
+            <tag name="shopware.event_listener"
+                 method="onOrderSaveOrderProcessDetails"
+                 event="Shopware_Modules_Order_SaveOrder_ProcessDetails"/>
+            <argument type="service" id="swark.components.services.order_service" />
+        </service>
+    </services>
+</container>

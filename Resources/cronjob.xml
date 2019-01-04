@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cronjobs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/cronjob.xsd">
+
+    <!-- Check Transactions Cron -->
+    <cronjob>
+        <name>Check ARK transactions</name>
+        <action>Shopware_CronJob_SwarkCheckTransactions</action>
+        <active>true</active>
+        <interval>900</interval>
+        <disableOnError>false</disableOnError>
+    </cronjob>
+
+    <!-- Update Exchange Rate Cron -->
+    <cronjob>
+        <name>Update ARK Exchange Rate</name>
+        <action>Shopware_CronJob_SwarkUpdateExchangeRate</action>
+        <active>false</active>
+        <interval>900</interval>
+        <disableOnError>false</disableOnError>
+    </cronjob>
+</cronjobs>

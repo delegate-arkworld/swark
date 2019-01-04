@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+    <label>Configuration Swark</label>
+    <description>Swark</description>
+    <elements>
+        <element type="textarea" required="true" scope="shop">
+            <name>wallets</name>
+            <label>ARK wallet address</label>
+            <description>You can insert multiple ARK wallets separated by semicolons.</description>
+        </element>
+
+        <element type="text" required="true" scope="shop">
+            <name>mainNodeApi</name>
+            <label>Main node api url</label>
+            <value>https://explorer.ark.io:8443/api</value>
+            <description>The main node url for the HTTP request which will be used mainly. Format: http://my.ark.node:port/api</description>
+        </element>
+
+        <element type="text" required="true" scope="shop">
+            <name>backupNodeApi</name>
+            <label>Backup node api url</label>
+            <value>https://explorer.ark.io:8443/api</value>
+            <description>The backup node url for the HTTP request which will be used when the main node is not available. Format: http://my.ark.node:port/api</description>
+        </element>
+
+        <element type="number" scope="shop">
+            <name>confirmations</name>
+            <label>Confirmations</label>
+            <value>51</value>
+            <description>How many network confirmations do the transaction need to be accepted?</description>
+        </element>
+
+        <element type="select" scope="shop">
+            <name>paymentStatus</name>
+            <label>Payment Status</label>
+            <value>12</value>
+            <description>The Payment Status that will be set after the transaction reaches the minimum confirmations.</description>
+            <store>Shopware.apps.Base.store.PaymentStatus</store>
+        </element>
+
+        <element type="text" scope="shop">
+            <name>vendorField</name>
+            <label>VendorField Layout</label>
+            <value>Order: {$ordernumber}</value>
+            <description>The vendorField Layout for the transaction. You can implement {$ordernumber} in the layout. Keep in mind that the vendorField can only contain maximum 64 chars including the ordernumber which is dynamic and unique for each order.</description>
+        </element>
+    </elements>
+</config>
