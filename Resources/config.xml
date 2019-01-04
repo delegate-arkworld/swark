@@ -20,7 +20,7 @@
         <element type="text" required="true" scope="shop">
             <name>backupNodeApi</name>
             <label>Backup node api url</label>
-            <value>https://explorer.ark.io:8443/api</value>
+            <value></value>
             <description>The backup node url for the HTTP request which will be used when the main node is not available. Format: http://my.ark.node:port/api</description>
         </element>
 
@@ -42,7 +42,7 @@
         <element type="text" scope="shop">
             <name>vendorField</name>
             <label>VendorField Layout</label>
-            <value>Order: {$ordernumber}</value>
+            <value>Swark: {$ordernumber}</value>
             <description>The vendorField Layout for the transaction. You can implement {$ordernumber} in the layout. Keep in mind that the vendorField can only contain maximum 64 chars including the ordernumber which is dynamic and unique for each order.</description>
         </element>
     </elements>

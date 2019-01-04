@@ -64,10 +64,9 @@ class ExchangeService
         }
 
         try {
-            // TODO: get Currency by plugin and change to find($id)
             /** @var Currency $object */
             $object = $this->models->getRepository(Currency::class)->findBy([
-                'name' => 'Ark'
+                'currency' => 'ARK'
             ]);
 
             $object->setFactor($rate);
