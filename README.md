@@ -5,7 +5,7 @@
 <a href="https://github.com/reconnico/swark"><img src="https://badgen.net/github/release/reconnico/swark"></a>
 <a href="https://github.com/reconnico/swark"><img src="https://badgen.net/github/license/reconnico/swark"></a>
 
-![Swark Banner](https://raw.githubusercontent.com/reConNico/swark/master/banner.png)
+![Swark Banner](../assets/banner.png?raw=true)
 
 ## Description
 
@@ -25,7 +25,7 @@ $ phpunit
 * [Nico Allers](https://github.com/reconnico)
 * [Contributors](../../contributors)
 
-![Swark Banner](https://raw.githubusercontent.com/reConNico/swark/master/banner_acf.png)
+![ACF Banner](../assets/banner_acf.png?raw=true)
 
    
 ## License
