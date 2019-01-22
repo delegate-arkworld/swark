@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Components\Services;
+namespace Swark\Services;
 
 use Shopware\Components\HttpClient\GuzzleHttpClient;
 use Shopware\Components\HttpClient\RequestException;

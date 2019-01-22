@@ -4,15 +4,15 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <!-- Check Transactions Command -->
-        <service id="swark.components.commands.check_transactions_command"
-                 class="Swark\Components\Commands\CheckTransactionsCommand">
+        <service id="swark.commands.check_transactions_command"
+                 class="Swark\Commands\CheckTransactionsCommand">
             <tag name="console.command"/>
-            <argument type="service" id="swark.components.services.order_service" />
+            <argument type="service" id="swark.services.order_service" />
         </service>
 
         <!-- Test Configuration Command -->
-        <service id="swark.components.commands.test_configuration_command"
-                 class="Swark\Components\Commands\TestConfigurationCommand">
+        <service id="swark.commands.test_configuration_command"
+                 class="Swark\Commands\TestConfigurationCommand">
             <tag name="console.command"/>
         </service>
     </services>

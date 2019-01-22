@@ -1,8 +1,8 @@
 <?php
 
-namespace Swark\Subscribers;
+namespace Swark\Subscriber;
 
-use Swark\Components\Services\ExchangeService;
+use Swark\Services\ExchangeService;
 
 /**
  * Class ExchangeCronSubscriber

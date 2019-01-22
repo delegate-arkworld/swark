@@ -1,9 +1,9 @@
 <?php
 
-namespace Swark\Components\Commands;
+namespace Swark\Commands;
 
 use Shopware\Commands\ShopwareCommand;
-use Swark\Components\Services\OrderService;
+use Swark\Services\OrderService;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;

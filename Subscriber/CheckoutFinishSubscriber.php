@@ -1,9 +1,9 @@
 <?php
 
-namespace Swark\Subscribers;
+namespace Swark\Subscriber;
 
-use Swark\Components\Helper\OrderHelper;
-use Swark\Components\Services\OrderService;
+use Swark\Helper\OrderHelper;
+use Swark\Services\OrderService;
 
 /**
  * Class CheckoutFinishSubscriber

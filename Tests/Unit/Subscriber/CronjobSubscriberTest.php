@@ -1,9 +1,9 @@
 <?php
 
-namespace Swark\Tests\Unit\Subscribers;
+namespace Swark\Tests\Unit\Subscriber;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Subscribers\CronjobSubscriber;
+use Swark\Subscriber\CronjobSubscriber;
 use Swark\Components\OrderProcessor;
 
 /**

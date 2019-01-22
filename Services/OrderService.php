@@ -1,11 +1,11 @@
 <?php
 
-namespace Swark\Components\Services;
+namespace Swark\Services;
 
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Order\Order;
-use Swark\Components\Helper\OrderHelper;
-use Swark\Components\Helper\PluginHelper;
+use Swark\Helper\OrderHelper;
+use Swark\Helper\PluginHelper;
 
 /**
  * Class OrderService

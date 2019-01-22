@@ -1,12 +1,12 @@
 <?php
 
-namespace Swark\Tests\Unit\Subscribers;
+namespace Swark\Tests\Unit\Subscriber;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Subscribers\CheckoutFinishSubscriber;
+use Swark\Subscriber\CheckoutFinishSubscriber;
 use Enlight\Event\SubscriberInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Swark\Components\OrderProcessor;
+use Swark\OrderProcessor;
 
 /**
  * Class CheckoutSubscriberTest

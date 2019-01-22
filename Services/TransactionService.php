@@ -1,10 +1,10 @@
 <?php
 
-namespace Swark\Components\Services;
+namespace Swark\Services;
 
 use ArkEcosystem\Client\ConnectionManager;
-use Swark\Components\Structs\Transaction;
-use Swark\Components\Structs\Timestamp;
+use Swark\Structs\Transaction;
+use Swark\Structs\Timestamp;
 
 /**
  * Class TransactionService

@@ -4,7 +4,7 @@ namespace Swark;
 
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\InstallContext;
-use Swark\Components\Services\LoggerService;
+use Swark\Services\LoggerService;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Currency;
 
@@ -177,7 +177,7 @@ class Swark extends Plugin
         /** @var ModelManager $models */
         $models = $this->container->get('models');
 
-        $exchangeService = new \Swark\Components\Services\ExchangeService(
+        $exchangeService = new \Swark\Services\ExchangeService(
             $this->container->get('http_client'),
             new LoggerService(
                 new \Shopware\Components\Logger('plugin')

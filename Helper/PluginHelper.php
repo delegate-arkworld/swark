@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Components\Helper;
+namespace Swark\Helper;
 
 use Shopware\Models\Plugin\Plugin;
 use Shopware\Components\Model\ModelManager;

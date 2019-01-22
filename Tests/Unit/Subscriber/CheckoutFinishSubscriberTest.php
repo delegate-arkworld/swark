@@ -1,11 +1,11 @@
 <?php
 
-namespace Swark\Tests\Unit\Subscribers;
+namespace Swark\Tests\Unit\Subscriber;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Subscribers\CheckoutFinishSubscriber;
-use Swark\Components\Services\OrderService;
-use Swark\Components\Helper\OrderHelper;
+use Swark\Subscriber\CheckoutFinishSubscriber;
+use Swark\Services\OrderService;
+use Swark\Helper\OrderHelper;
 
 /**
  * Class CheckoutFinishSubscriberTest

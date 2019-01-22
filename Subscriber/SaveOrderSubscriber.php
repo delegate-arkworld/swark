@@ -1,8 +1,8 @@
 <?php
 
-namespace Swark\Subscribers;
+namespace Swark\Subscriber;
 
-use Swark\Components\Services\OrderService;
+use Swark\Services\OrderService;
 
 /**
  * Class SaveOrderSubscriber

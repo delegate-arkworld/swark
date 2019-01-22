@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Components\Structs;
+namespace Swark\Structs;
 
 /**
  * Class Timestamp

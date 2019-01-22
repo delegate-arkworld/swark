@@ -12,8 +12,8 @@
         <!-- Helper -->
         <import resource="services/helper.xml"/>
 
-        <!-- Subscribers -->
-        <import resource="services/subscribers.xml"/>
+        <!-- Subscriber -->
+        <import resource="services/subscriber.xml"/>
 
         <!-- Commands -->
         <import resource="services/commands.xml"/>

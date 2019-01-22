@@ -4,18 +4,18 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <!-- Plugin helper -->
-        <service id="swark.components.helper.plugin_helper"
-                 class="Swark\Components\Helper\PluginHelper">
+        <service id="swark.helper.plugin_helper"
+                 class="Swark\Helper\PluginHelper">
             <argument type="string">%swark.plugin_name%</argument>
             <argument type="service" id="models" />
             <argument type="service" id="swark.config"/>
         </service>
 
         <!-- Order helper -->
-        <service id="swark.components.helper.order_helper"
-                 class="Swark\Components\Helper\OrderHelper">
+        <service id="swark.helper.order_helper"
+                 class="Swark\Helper\OrderHelper">
             <argument type="service" id="models" />
-            <argument type="service" id="swark.components.helper.plugin_helper" />
+            <argument type="service" id="swark.helper.plugin_helper" />
             <argument type="service" id="swark.config"/>
         </service>
     </services>

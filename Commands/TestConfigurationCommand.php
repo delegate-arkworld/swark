@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Components\Commands;
+namespace Swark\Commands;
 
 use Shopware\Commands\ShopwareCommand;
 use Symfony\Component\Console\Input\InputInterface;

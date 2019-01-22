@@ -28,7 +28,7 @@ and will be placed in the offical [Shopware store](http://store.shopware.com/) a
 
 ## Documentation
 
-You can find installation instructions and detailed instructions on how to use this plugin at the [dedicated documentation site](https://docs.swark.io).
+You can find installation instructions and detailed instructions on how to use this plugin at the [dedicated documentation site](https://docs.swark.app).
 
 ## Testing
 
