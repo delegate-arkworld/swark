@@ -1,11 +1,13 @@
 # Swark
 
+![Swark Banner](../assets/banner.png?raw=true)
+
+> Ark Payment Gateway for Shopware
+
 <a href="https://codecov.io/github/reconnico/swark"><img src="https://badgen.net/codecov/c/github/reconnico/swark"></a>
 <a href="https://github.com/reconnico/swark"><img src="https://badgen.net/github/last-commit/reconnico/swark"></a>
 <a href="https://github.com/reconnico/swark"><img src="https://badgen.net/github/release/reconnico/swark"></a>
 <a href="https://github.com/reconnico/swark"><img src="https://badgen.net/github/license/reconnico/swark"></a>
-
-![Swark Banner](../assets/banner.png?raw=true)
 
 ## Description
 
