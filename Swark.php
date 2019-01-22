@@ -145,6 +145,8 @@ class Swark extends Plugin
         /** @var ModelManager $models */
         $models = $this->container->get('models');
 
+        // TODO: change to findOneBy!
+
         /** @var Currency $currency */
         $currency = $models->getRepository(Currency::class)->findBy([
             'currency' => 'ARK'
@@ -184,6 +186,8 @@ class Swark extends Plugin
             ),
             $models
         );
+
+        // TODO: check if findOneBy just outputs one row to not use index 0 after
 
         /** @var Currency[] $currency */
         $currency = $models->getRepository(Currency::class)->findBy([
