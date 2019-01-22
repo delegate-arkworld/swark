@@ -12,7 +12,6 @@
     {$smarty.block.parent}
 
     {* TODO: modify styling *}
-    {* TODO: add snippets after styling *}
     {block name="frontend_checkout_finish_swark_container"}
         <div class="swark-container">
             {block name="frontend_checkout_finish_swark_headline"}

@@ -33,8 +33,6 @@ class OrderHelper
     private $repository;
 
     /**
-     * PluginHelper constructor.
-     *
      * @param ModelManager $models
      * @param PluginHelper $pluginHelper
      * @param array $config

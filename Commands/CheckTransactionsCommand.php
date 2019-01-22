@@ -19,9 +19,8 @@ class CheckTransactionsCommand extends ShopwareCommand
     private $orderService;
 
     /**
-     * CheckTransactionsCommand constructor.
-     *
      * @param OrderService $orderService
+     *
      * @throws \Symfony\Component\Console\Exception\LogicException
      */
     public function __construct(OrderService $orderService)

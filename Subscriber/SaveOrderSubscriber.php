@@ -15,8 +15,6 @@ class SaveOrderSubscriber
     private $orderService;
 
     /**
-     * SaveOrderSubscriber constructor.
-     *
      * @param OrderService $orderService
      */
     public function __construct(OrderService $orderService)

@@ -31,8 +31,6 @@ class CheckoutFinishSubscriber
     private $pluginConfig;
 
     /**
-     * CheckoutFinishSubscriber constructor.
-     *
      * @param string $viewDir
      * @param OrderService $orderService
      * @param OrderHelper $orderHelper

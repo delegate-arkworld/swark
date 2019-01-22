@@ -22,8 +22,6 @@ class TransactionService
     private $loggerService;
 
     /**
-     * TransactionService constructor.
-     *
      * @param ConnectionService $connectionService
      * @param LoggerService     $loggerService
      */

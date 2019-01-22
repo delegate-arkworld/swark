@@ -23,8 +23,6 @@ class Timestamp
     private $human;
 
     /**
-     * Timestamp constructor.
-     *
      * @param int    $epoch
      * @param int    $unix
      * @param string $human

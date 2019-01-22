@@ -26,8 +26,6 @@ class PluginHelper
     private $pluginConfig;
 
     /**
-     * PluginHelper constructor.
-     *
      * @param string $pluginName
      * @param ModelManager $models
      * @param array $pluginConfig

@@ -15,8 +15,6 @@ class TransactionsCronSubscriber
     private $orderService;
 
     /**
-     * TransactionsCronSubscriber constructor.
-     *
      * @param OrderService $orderService
      */
     public function __construct(

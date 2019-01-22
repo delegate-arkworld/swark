@@ -15,8 +15,6 @@ class ExchangeCronSubscriber
     private $exchangeService;
 
     /**
-     * ExchangeCronSubscriber constructor.
-     *
      * @param ExchangeService $exchangeService
      */
     public function __construct(

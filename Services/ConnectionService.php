@@ -20,8 +20,6 @@ class ConnectionService
     private $pluginConfig;
 
     /**
-     * ConnectionService constructor.
-     *
      * @param array $pluginConfig
      */
     public function __construct(array $pluginConfig)

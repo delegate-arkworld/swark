@@ -31,8 +31,6 @@ class ExchangeService
     private $models;
 
     /**
-     * ExchangeService constructor.
-     *
      * @param GuzzleHttpClient $client
      * @param LoggerService    $loggerService
      * @param ModelManager     $modelManager

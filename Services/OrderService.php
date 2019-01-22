@@ -43,8 +43,6 @@ class OrderService
     private $loggerService;
 
     /**
-     * OrderService constructor.
-     *
      * @param ModelManager       $models
      * @param OrderHelper        $orderHelper
      * @param PluginHelper       $pluginHelper

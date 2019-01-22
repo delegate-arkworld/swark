@@ -38,8 +38,6 @@ class Transaction
     private $timestamp;
 
     /**
-     * Transaction constructor.
-     *
      * @param string    $id
      * @param int       $amount
      * @param string    $recipient

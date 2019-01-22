@@ -13,7 +13,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class TestConfigurationCommand extends ShopwareCommand
 {
     /**
-     * TestConfigurationCommand constructor
+     * {@inheritdoc}
      */
     public function __construct()
     {
