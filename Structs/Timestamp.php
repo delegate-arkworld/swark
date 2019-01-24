@@ -48,10 +48,14 @@ class Timestamp
 
     /**
      * @param int $epoch
+     *
+     * @return Timestamp
      */
-    public function setEpoch(int $epoch): void
+    public function setEpoch(int $epoch): Timestamp
     {
         $this->epoch = $epoch;
+
+        return $this;
     }
 
     /**
@@ -64,10 +68,14 @@ class Timestamp
 
     /**
      * @param int $unix
+     *
+     * @return Timestamp
      */
-    public function setUnix(int $unix): void
+    public function setUnix(int $unix): Timestamp
     {
         $this->unix = $unix;
+
+        return $this;
     }
 
     /**
@@ -80,10 +88,14 @@ class Timestamp
 
     /**
      * @param string $human
+     *
+     * @return Timestamp
      */
-    public function setHuman(string $human): void
+    public function setHuman(string $human): Timestamp
     {
         $this->human = $human;
+
+        return $this;
     }
 
     /**

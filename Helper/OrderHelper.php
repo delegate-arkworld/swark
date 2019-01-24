@@ -6,6 +6,7 @@ use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Payment\Payment;
+use Swark\Structs\Attributes;
 
 /**
  * Class OrderHelper
@@ -120,14 +121,14 @@ class OrderHelper
      */
     public function getOrderAttributes(\Shopware\Models\Attribute\Order $attributes): array
     {
-        // TODO: Generate Struct for attributes?
-        // TODO: get attributes dynamically from plugin (xml?)
-        return [
-            'swarkTransactionId' => $attributes->getSwarkTransactionId(),
-            'swarkArkAmount' => $attributes->getSwarkArkAmount(),
-            'swarkRecipient' => $attributes->getSwarkRecipientAddress(),
-            'swarkVendorField' => $attributes->getSwarkVendorField()
-        ];
+        $struct = new Attributes(
+            $attributes->getSwarkTransactionId(),
+            $attributes->getSwarkArkAmount(),
+            $attributes->getSwarkRecipientAddress(),
+            $attributes->getSwarkVendorField()
+        );
+
+        return $struct->toArray();
     }
 
     /**
@@ -172,6 +173,7 @@ class OrderHelper
     public function getPaymentStatus(): Status
     {
         // TODO: check subshop for config!
+
         /** @var Status $object */
         $object = $this->models->getRepository(Status::class)->find($this->pluginConfig['paymentStatus']);
 

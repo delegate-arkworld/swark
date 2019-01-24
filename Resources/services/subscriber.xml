@@ -42,6 +42,13 @@
             <argument type="service" id="swark.services.order_service" />
         </service>
 
-        <!-- TODO: implement account order subscriber -->
+        <!-- Account Order Subscriber -->
+        <service id="swark.subscriber.account_order_subscriber"
+                 class="Swark\Subscriber\AccountOrderSubscriber">
+            <tag name="shopware.event_listener"
+                 method="onPostDispatchSecureAccount"
+                 event="Enlight_Controller_Action_PostDispatchSecure_Frontend_Account"/>
+            <argument type="string">%swark.views_dir%</argument>
+        </service>
     </services>
 </container>

@@ -72,10 +72,14 @@ class Transaction
 
     /**
      * @param string $id
+     *
+     * @return Transaction
      */
-    public function setId(string $id): void
+    public function setId(string $id): Transaction
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -88,10 +92,14 @@ class Transaction
 
     /**
      * @param int $amount
+     *
+     * @return Transaction
      */
-    public function setAmount(int $amount): void
+    public function setAmount(int $amount): Transaction
     {
         $this->amount = $amount;
+
+        return $this;
     }
 
     /**
@@ -104,10 +112,14 @@ class Transaction
 
     /**
      * @param string $recipient
+     *
+     * @return Transaction
      */
-    public function setRecipient(string $recipient): void
+    public function setRecipient(string $recipient): Transaction
     {
         $this->recipient = $recipient;
+
+        return $this;
     }
 
     /**
@@ -120,10 +132,14 @@ class Transaction
 
     /**
      * @param string $vendorField
+     *
+     * @return Transaction
      */
-    public function setVendorField(string $vendorField): void
+    public function setVendorField(string $vendorField): Transaction
     {
         $this->vendorField = $vendorField;
+
+        return $this;
     }
 
     /**
@@ -136,10 +152,14 @@ class Transaction
 
     /**
      * @param int $confirmations
+     *
+     * @return Transaction
      */
-    public function setConfirmations(int $confirmations): void
+    public function setConfirmations(int $confirmations): Transaction
     {
         $this->confirmations = $confirmations;
+
+        return $this;
     }
 
     /**
@@ -152,10 +172,14 @@ class Transaction
 
     /**
      * @param Timestamp $timestamp
+     *
+     * @return Transaction
      */
-    public function setTimestamp(Timestamp $timestamp): void
+    public function setTimestamp(Timestamp $timestamp): Transaction
     {
         $this->timestamp = $timestamp;
+
+        return $this;
     }
 
     /**
