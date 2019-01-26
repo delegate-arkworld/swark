@@ -29,11 +29,6 @@ class OrderHelper
     private $pluginConfig;
 
     /**
-     * @var \Doctrine\ORM\EntityRepository
-     */
-    private $repository;
-
-    /**
      * @param ModelManager $models
      * @param PluginHelper $pluginHelper
      * @param array $config
@@ -44,7 +39,6 @@ class OrderHelper
         array $config
     ) {
         $this->models = $models;
-        $this->repository = $this->models->getRepository(Order::class);
         $this->pluginHelper = $pluginHelper;
         $this->pluginConfig = $config;
     }
@@ -54,7 +48,7 @@ class OrderHelper
      */
     public function getOrders(): array
     {
-        return $this->repository->findBy(
+        return $this->models->getRepository(Order::class)->findBy(
             [
                 'payment' => $this->getPaymentObject()
             ]
@@ -67,7 +61,7 @@ class OrderHelper
      */
     public function getOrder(int $orderNumber): Order
     {
-        return $this->repository->findOneBy(
+        return $this->models->getRepository(Order::class)->findOneBy(
             [
                 'number' => $orderNumber
             ]
@@ -80,7 +74,7 @@ class OrderHelper
     public function getOpenOrders(): array
     {
         // TODO: Check if we just get ARK orders (filter by payment) and orders by correct state
-        $qb = $this->repository->createQueryBuilder('o');
+        $qb = $this->models->getRepository(Order::class)->createQueryBuilder('o');
 
         $qb->select('o')
             ->where($qb->expr()->notIn('o.paymentStatus', $this->getPaymentStatus()->getId()))
@@ -106,7 +100,7 @@ class OrderHelper
      */
     public function getClosedOrders(): array
     {
-        $qb = $this->repository->createQueryBuilder('o');
+        $qb = $this->models->getRepository(Order::class)->createQueryBuilder('o');
 
         $qb->select('o')
             ->where('o.paymentStatus = :paymentStatus')
@@ -133,6 +127,7 @@ class OrderHelper
 
     /**
      * @param Order $order
+     *
      * @return
      */
     public function getAmountByOrder(Order $order)
@@ -142,6 +137,7 @@ class OrderHelper
 
     /**
      * @param Order $order
+     *
      * @return
      */
     public function getRecipientAddressByOrder(Order $order)

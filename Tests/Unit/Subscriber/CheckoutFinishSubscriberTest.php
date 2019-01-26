@@ -4,8 +4,8 @@ namespace Swark\Tests\Unit\Subscriber;
 
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Subscriber\CheckoutFinishSubscriber;
-use Swark\Services\OrderService;
-use Swark\Helper\OrderHelper;
+use Swark\Tests\Mocks\OrderHelperMock;
+use Swark\Tests\Mocks\OrderServiceMock;
 
 /**
  * Class CheckoutFinishSubscriberTest
@@ -16,25 +16,15 @@ class CheckoutFinishSubscriberTest extends TestCase
         'Swark' => []
     ];
 
-    public function testConstruction()
+    public function test_construction()
     {
         $subscriber = new CheckoutFinishSubscriber(
             '',
-            $this->createMock(OrderService::class),
-            $this->createMock(OrderHelper::class),
-            ''
+            new OrderServiceMock(),
+            new OrderHelperMock(),
+            []
         );
 
         $this->assertInstanceOf(CheckoutFinishSubscriber::class, $subscriber);
     }
-
-//    public function testClientService()
-//    {
-//        /** @var ClientService $service */
-//        $service = Shopware()->Container()->get('swark.services.client_service');
-//        /** @var Client $client */
-//        $client = $service->getClient();
-//
-//        $this->assertInstanceOf(Client::class, $client);
-//    }
 }

@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false" backupStaticAttributes="false" bootstrap="./Tests/Bootstrap.php">
+<phpunit bootstrap="./Tests/Bootstrap.php"
+         colors="true">
     <testsuite name="Swark Test Suite">
         <directory>./Tests</directory>
     </testsuite>
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+        <whitelist>
+            <directory suffix=".php">./</directory>
             <exclude>
                 <directory suffix=".php">./Tests</directory>
+                <directory suffix=".php">./vendor</directory>
+
+                <!-- Bootstrap -->
+                <file>Swark.php</file>
             </exclude>
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-clover" target="coverage.xml"/>
+        <log type="coverage-clover" target="Tests/coverage.xml"/>
     </logging>
 </phpunit>
