@@ -16,7 +16,7 @@
         "friendsofphp/php-cs-fixer": "~v2.14.0"
     },
     "scripts": {
-        "test": "phpunit",
+        "test": "phpunit -c Tests",
         "cs-check": "php-cs-fixer fix --dry-run -v",
         "cs-fix": "php-cs-fixer fix -v"
     }
