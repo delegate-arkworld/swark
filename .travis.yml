@@ -36,7 +36,7 @@ before_script:
   - cd ${PLUGIN_DIRECTORY}/${PLUGIN_NAME}
 
 script:
-  - vendor/bin/phpunit
+  - composer test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 154072dd-333e-48ba-bfa0-b0b0afbf5306
