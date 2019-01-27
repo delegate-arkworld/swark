@@ -11,6 +11,5 @@ class GuzzleHttpClientMock extends GuzzleHttpClient
 {
     public function __construct()
     {
-
     }
 }

@@ -35,8 +35,7 @@ class ExchangeService
      * @param LoggerService    $loggerService
      * @param ModelManager     $modelManager
      */
-    public function __construct
-    (
+    public function __construct(
         GuzzleHttpClient $client,
         LoggerService $loggerService,
         ModelManager $modelManager
@@ -49,10 +48,10 @@ class ExchangeService
     /**
      * @param string $currency
      *
-     * @return bool
-     *
      * @throws RequestException
      * @throws \Exception
+     *
+     * @return bool
      */
     public function updateExchangeRate(string $currency = 'EUR'): bool
     {
@@ -65,7 +64,7 @@ class ExchangeService
         try {
             /** @var Currency $object */
             $object = $this->models->getRepository(Currency::class)->findBy([
-                'currency' => 'ARK'
+                'currency' => 'ARK',
             ]);
 
             $object->setFactor($rate);
@@ -85,8 +84,9 @@ class ExchangeService
     /**
      * @param string $currency
      *
-     * @return float
      * @throws RequestException
+     *
+     * @return float
      */
     public function getExchangeRate(string $currency): float
     {

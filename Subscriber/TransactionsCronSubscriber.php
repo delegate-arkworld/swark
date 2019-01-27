@@ -23,9 +23,6 @@ class TransactionsCronSubscriber
         $this->orderService = $orderService;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function onRunCronjob()
     {
         try {
@@ -36,7 +33,6 @@ class TransactionsCronSubscriber
 
         if (!$success) {
             return 'No open orders!';
-
         }
 
         return true;

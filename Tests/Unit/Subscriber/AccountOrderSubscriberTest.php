@@ -11,7 +11,7 @@ use Swark\Subscriber\AccountOrderSubscriber;
 class AccountOrderSubscriberTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

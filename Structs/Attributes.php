@@ -28,13 +28,12 @@ class Attributes
     private $vendorField;
 
     /**
-     * @param string    $transactionId
+     * @param string $transactionId
      * @param float  $amount
      * @param string $recipient
      * @param string $vendorField
      */
-    public function __construct
-    (
+    public function __construct(
         string $transactionId,
         float $amount,
         string $recipient,
@@ -135,7 +134,7 @@ class Attributes
             'swarkTransactionId' => $this->getTransactionId(),
             'swarkArkAmount' => $this->getAmount(),
             'swarkRecipientAddress' => $this->getRecipient(),
-            'swarkVendorField' => $this->getVendorField()
+            'swarkVendorField' => $this->getVendorField(),
         ];
     }
 }

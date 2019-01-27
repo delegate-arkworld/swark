@@ -33,6 +33,7 @@ class AccountOrderSubscriber
 
     /**
      * @param \Enlight_Event_EventArgs $args
+     *
      * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
      * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
      */

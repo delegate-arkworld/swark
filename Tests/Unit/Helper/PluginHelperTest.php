@@ -12,7 +12,7 @@ use Swark\Tests\Mocks\ModelManagerMock;
 class PluginHelperTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

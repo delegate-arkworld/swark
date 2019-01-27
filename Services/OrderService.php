@@ -81,11 +81,12 @@ class OrderService
             $this->loggerService->notify(
                 'No open orders found.'
             );
+
             return false;
         }
 
         /**
-         * @var Order $order
+         * @var Order
          */
         foreach ($orders as $order) {
             $this->loggerService->notify(
@@ -125,8 +126,9 @@ class OrderService
     /**
      * @param int $orderNumber
      *
-     * @return bool
      * @throws \Exception
+     *
+     * @return bool
      */
     public function processOrder(int $orderNumber): bool
     {
@@ -191,13 +193,12 @@ class OrderService
         }
 
         $this->loggerService->notify(
-            'Updated amount to [' . $amount . '] for order [' . $order->getNumber().  ']'
+            'Updated amount to [' . $amount . '] for order [' . $order->getNumber() . ']'
         );
     }
 
     /**
      * @param \Shopware\Models\Attribute\Order $attributes
-     *
      * @param int                              $orderNumber
      *
      * @throws \Exception
@@ -249,8 +250,9 @@ class OrderService
     /**
      * @param Order $order
      *
-     * @return bool
      * @throws \Exception
+     *
+     * @return bool
      */
     public function updateOrderPaymentStatus(Order $order): bool
     {

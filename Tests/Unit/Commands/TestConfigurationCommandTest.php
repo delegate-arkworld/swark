@@ -11,13 +11,12 @@ use Swark\Commands\TestConfigurationCommand;
 class TestConfigurationCommandTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()
     {
         $command = new TestConfigurationCommand(
-
         );
 
         $this->assertInstanceOf(TestConfigurationCommand::class, $command);

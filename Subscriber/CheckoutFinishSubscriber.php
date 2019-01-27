@@ -31,10 +31,10 @@ class CheckoutFinishSubscriber
     private $pluginConfig;
 
     /**
-     * @param string $viewDir
+     * @param string       $viewDir
      * @param OrderService $orderService
-     * @param OrderHelper $orderHelper
-     * @param array $pluginConfig
+     * @param OrderHelper  $orderHelper
+     * @param array        $pluginConfig
      */
     public function __construct(
         string $viewDir,
@@ -50,6 +50,7 @@ class CheckoutFinishSubscriber
 
     /**
      * @param \Enlight_Event_EventArgs $args
+     *
      * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
      * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
      */
@@ -65,13 +66,13 @@ class CheckoutFinishSubscriber
 
         $payment = $view->getAssign('sPayment');
 
-        if (!$this->orderService->checkPayment((int)$payment['id'])) {
+        if (!$this->orderService->checkPayment((int) $payment['id'])) {
             return;
         }
 
         $view->addTemplateDir($this->viewDir);
 
-        $orderNumber = (int)$view->getAssign('sOrderNumber');
+        $orderNumber = (int) $view->getAssign('sOrderNumber');
         $attributes = $this->orderHelper->getOrder($orderNumber)->getAttribute();
         $data = $this->orderHelper->getOrderAttributes($attributes);
 

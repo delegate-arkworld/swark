@@ -11,6 +11,5 @@ class ModelManagerMock extends ModelManager
 {
     public function __construct()
     {
-
     }
 }

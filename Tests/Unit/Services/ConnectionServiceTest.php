@@ -11,7 +11,7 @@ use Swark\Services\ConnectionService;
 class ConnectionServiceTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

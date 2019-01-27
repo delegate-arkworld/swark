@@ -48,7 +48,7 @@ class SwarkTestKernel extends \Shopware\Kernel
         $sql = "SELECT active FROM s_core_plugins WHERE name = 'Swark'";
         $active = $db->fetchColumn($sql);
 
-        return (bool)$active;
+        return (bool) $active;
     }
 }
 

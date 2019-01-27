@@ -3,10 +3,8 @@
 namespace Swark\Tests\Unit\Subscriber;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Shopware\Models\Order\Order;
 use Swark\Helper\OrderHelper;
 use Swark\Tests\Mocks\ModelManagerMock;
-use Swark\Tests\Mocks\OrderHelperMock;
 use Swark\Tests\Mocks\PluginHelperMock;
 
 /**
@@ -15,7 +13,7 @@ use Swark\Tests\Mocks\PluginHelperMock;
 class OrderHelperTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

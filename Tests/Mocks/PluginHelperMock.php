@@ -11,6 +11,5 @@ class PluginHelperMock extends PluginHelper
 {
     public function __construct()
     {
-
     }
 }

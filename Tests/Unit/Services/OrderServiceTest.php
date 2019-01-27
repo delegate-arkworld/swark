@@ -5,8 +5,8 @@ namespace Swark\Tests\Unit\Subscriber;
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Services\OrderService;
 use Swark\Tests\Mocks\LoggerServiceMock;
-use Swark\Tests\Mocks\OrderHelperMock;
 use Swark\Tests\Mocks\ModelManagerMock;
+use Swark\Tests\Mocks\OrderHelperMock;
 use Swark\Tests\Mocks\PluginHelperMock;
 use Swark\Tests\Mocks\TransactionServiceMock;
 
@@ -16,7 +16,7 @@ use Swark\Tests\Mocks\TransactionServiceMock;
 class OrderServiceTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

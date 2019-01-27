@@ -2,9 +2,9 @@
 
 namespace Swark\Helper;
 
+use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
-use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Payment\Payment;
 use Swark\Structs\Attributes;
 
@@ -31,7 +31,7 @@ class OrderHelper
     /**
      * @param ModelManager $models
      * @param PluginHelper $pluginHelper
-     * @param array $config
+     * @param array        $config
      */
     public function __construct(
         ModelManager $models,
@@ -50,20 +50,21 @@ class OrderHelper
     {
         return $this->models->getRepository(Order::class)->findBy(
             [
-                'payment' => $this->getPaymentObject()
+                'payment' => $this->getPaymentObject(),
             ]
         );
     }
 
     /**
      * @param int $orderNumber
+     *
      * @return object|Order
      */
     public function getOrder(int $orderNumber): Order
     {
         return $this->models->getRepository(Order::class)->findOneBy(
             [
-                'number' => $orderNumber
+                'number' => $orderNumber,
             ]
         );
     }
@@ -90,7 +91,7 @@ class OrderHelper
     {
         return $this->models->getRepository(Payment::class)->findOneBy(
             [
-                'plugin' => $this->pluginHelper->getPluginObject()
+                'plugin' => $this->pluginHelper->getPluginObject(),
             ]
         );
     }
@@ -111,6 +112,7 @@ class OrderHelper
 
     /**
      * @param \Shopware\Models\Attribute\Order $attributes
+     *
      * @return array
      */
     public function getOrderAttributes(\Shopware\Models\Attribute\Order $attributes): array
@@ -147,6 +149,7 @@ class OrderHelper
 
     /**
      * @param Order $order
+     *
      * @return
      */
     public function getVendorFieldByOrder(Order $order)
@@ -156,6 +159,7 @@ class OrderHelper
 
     /**
      * @param Order $order
+     *
      * @return
      */
     public function getTransactionIdByOrder(Order $order)
@@ -178,6 +182,7 @@ class OrderHelper
 
     /**
      * @param int $orderNumber
+     *
      * @return string
      */
     public function getVendorFieldLayout(int $orderNumber): string

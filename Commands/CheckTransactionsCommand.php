@@ -40,8 +40,9 @@ class CheckTransactionsCommand extends ShopwareCommand
     }
 
     /**
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
+     *
      * @return bool
      */
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -52,6 +53,7 @@ class CheckTransactionsCommand extends ShopwareCommand
             $success = $this->orderService->checkTransactions();
         } catch (\Exception $e) {
             $io->error($e->getMessage());
+
             return false;
         }
 

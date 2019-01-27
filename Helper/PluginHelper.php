@@ -2,8 +2,8 @@
 
 namespace Swark\Helper;
 
-use Shopware\Models\Plugin\Plugin;
 use Shopware\Components\Model\ModelManager;
+use Shopware\Models\Plugin\Plugin;
 
 /**
  * Class PluginHelper
@@ -26,9 +26,9 @@ class PluginHelper
     private $pluginConfig;
 
     /**
-     * @param string $pluginName
+     * @param string       $pluginName
      * @param ModelManager $models
-     * @param array $pluginConfig
+     * @param array        $pluginConfig
      */
     public function __construct(
         string $pluginName,
@@ -49,19 +49,20 @@ class PluginHelper
     }
 
     /**
-     * @return Object|Plugin
+     * @return object|Plugin
      */
     public function getPluginObject(): Plugin
     {
         return $this->models->getRepository(Plugin::class)->findOneBy(
             [
-                'name' => $this->pluginName
+                'name' => $this->pluginName,
             ]
         );
     }
 
     /**
      * @param int $pluginId
+     *
      * @return bool
      */
     public function checkPlugin(int $pluginId): bool

@@ -30,8 +30,9 @@ class TestConfigurationCommand extends ShopwareCommand
     }
 
     /**
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
+     *
      * @return bool
      */
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -45,10 +46,12 @@ class TestConfigurationCommand extends ShopwareCommand
             // check if wallet address can be randomly selected
         } catch (\Exception $e) {
             $io->error($e->getMessage());
+
             return false;
         }
 
         $io->success('Transactions checked and updated. Check plugin logs!');
+
         return true;
     }
 }

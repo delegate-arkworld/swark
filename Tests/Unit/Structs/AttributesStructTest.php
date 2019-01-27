@@ -11,7 +11,7 @@ use Swark\Structs\Attributes;
 class AttributesStructTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

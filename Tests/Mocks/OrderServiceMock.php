@@ -11,6 +11,5 @@ class OrderServiceMock extends OrderService
 {
     public function __construct()
     {
-
     }
 }

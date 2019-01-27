@@ -27,8 +27,7 @@ class Timestamp
      * @param int    $unix
      * @param string $human
      */
-    public function __construct
-    (
+    public function __construct(
         int $epoch,
         int $unix,
         string $human
@@ -106,7 +105,7 @@ class Timestamp
         return [
             'epoch' => $this->getEpoch(),
             'unix' => $this->getUnix(),
-            'human' => $this->getHuman()
+            'human' => $this->getHuman(),
         ];
     }
 }

@@ -11,6 +11,5 @@ class TransactionServiceMock extends TransactionService
 {
     public function __construct()
     {
-
     }
 }

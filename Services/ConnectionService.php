@@ -35,12 +35,12 @@ class ConnectionService
 
         $manager->connect([
             'host' => $this->pluginConfig['mainNodeApi'],
-            'version' => 2
+            'version' => 2,
         ], 'main');
 
         $manager->connect([
             'host' => $this->pluginConfig['backupNodeApi'],
-            'version' => 2
+            'version' => 2,
         ], 'backup');
 
         return $manager;

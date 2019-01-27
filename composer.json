@@ -12,9 +12,12 @@
         "arkecosystem/client": "^1.0.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.5.1"
+        "phpunit/phpunit": "^7.5.1",
+        "friendsofphp/php-cs-fixer": "~v2.14.0"
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "cs-check": "php-cs-fixer fix --dry-run -v",
+        "cs-fix": "php-cs-fixer fix -v"
     }
 }

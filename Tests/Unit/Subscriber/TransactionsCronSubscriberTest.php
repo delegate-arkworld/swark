@@ -12,7 +12,7 @@ use Swark\Tests\Mocks\OrderServiceMock;
 class TransactionsCronSubscriberTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

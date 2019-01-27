@@ -11,6 +11,5 @@ class LoggerMock extends Logger
 {
     public function __construct()
     {
-
     }
 }

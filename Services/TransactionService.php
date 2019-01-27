@@ -3,8 +3,8 @@
 namespace Swark\Services;
 
 use ArkEcosystem\Client\ConnectionManager;
-use Swark\Structs\Transaction;
 use Swark\Structs\Timestamp;
+use Swark\Structs\Transaction;
 
 /**
  * Class TransactionService
@@ -73,7 +73,7 @@ class TransactionService
             $response = $this->connectionManager
                 ->connection('main')->transactions()->search([
                     'recipientId' => $wallet,
-                    'vendorFieldHex' => \implode(\unpack('H*', $vendorField))
+                    'vendorFieldHex' => \implode(\unpack('H*', $vendorField)),
                 ]);
         } catch (\Exception $e) {
             $this->loggerService->warning('main node api was not executable', $e->getTrace());
@@ -81,7 +81,7 @@ class TransactionService
                 $response = $this->connectionManager
                     ->connection('backup')->transactions()->search([
                         'recipientId' => $wallet,
-                        'vendorFieldHex' => \implode(\unpack('H*', $vendorField))
+                        'vendorFieldHex' => \implode(\unpack('H*', $vendorField)),
                     ]);
             } catch (\Exception $e) {
                 $this->loggerService->error('backup node api was not executable', $e->getTrace());

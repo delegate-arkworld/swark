@@ -45,8 +45,7 @@ class Transaction
      * @param int       $confirmations
      * @param Timestamp $timestamp
      */
-    public function __construct
-    (
+    public function __construct(
         string $id,
         int $amount,
         string $recipient,
@@ -193,7 +192,7 @@ class Transaction
             'recipient' => $this->getRecipient(),
             'vendorField' => $this->getVendorField(),
             'confirmations' => $this->getConfirmations(),
-            'timestamp' => $this->getTimestamp()->getUnix()
+            'timestamp' => $this->getTimestamp()->getUnix(),
         ];
     }
 }

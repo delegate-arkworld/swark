@@ -13,7 +13,7 @@ use Swark\Tests\Mocks\OrderServiceMock;
 class CheckoutFinishSubscriberTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

@@ -11,6 +11,5 @@ class TimestampStructMock extends Timestamp
 {
     public function __construct()
     {
-
     }
 }

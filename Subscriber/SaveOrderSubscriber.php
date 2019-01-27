@@ -24,6 +24,7 @@ class SaveOrderSubscriber
 
     /**
      * @param \Enlight_Event_EventArgs $args
+     *
      * @throws \Exception
      */
     public function onOrderSaveOrderProcessDetails(\Enlight_Event_EventArgs $args): void

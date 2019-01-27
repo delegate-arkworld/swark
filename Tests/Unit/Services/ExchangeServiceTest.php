@@ -14,7 +14,7 @@ use Swark\Tests\Mocks\ModelManagerMock;
 class ExchangeServiceTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

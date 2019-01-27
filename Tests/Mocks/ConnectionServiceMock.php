@@ -11,6 +11,5 @@ class ConnectionServiceMock extends ConnectionService
 {
     public function __construct()
     {
-
     }
 }

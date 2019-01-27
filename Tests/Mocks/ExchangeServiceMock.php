@@ -11,6 +11,5 @@ class ExchangeServiceMock extends ExchangeService
 {
     public function __construct()
     {
-
     }
 }

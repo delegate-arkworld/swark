@@ -3,8 +3,8 @@
 namespace Swark\Tests\Unit\Subscriber;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Tests\Mocks\TimestampStructMock;
 use Swark\Structs\Transaction;
+use Swark\Tests\Mocks\TimestampStructMock;
 
 /**
  * Class TransactionStructTest
@@ -12,7 +12,7 @@ use Swark\Structs\Transaction;
 class TransactionStructTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
-        'Swark' => []
+        'Swark' => [],
     ];
 
     public function test_construction()

@@ -23,9 +23,6 @@ class ExchangeCronSubscriber
         $this->exchangeService = $exchangeService;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function onRunCronjob()
     {
         try {

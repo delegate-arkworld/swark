@@ -11,6 +11,5 @@ class OrderHelperMock extends OrderHelper
 {
     public function __construct()
     {
-
     }
 }
