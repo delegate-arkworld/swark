@@ -24,7 +24,7 @@
                     {/block}
                     {block name="frontend_checkout_finish_swark_description_qrcode_code"}
                         <ark-qrcode
-                                address="{$swarkAttributes.swarkRecipient}"
+                                address="{$swarkAttributes.swarkRecipientAddress}"
                                 amount="{$swarkAttributes.swarkArkAmount}"
                                 vendor-field="{$swarkAttributes.swarkVendorField}"
                                 size="200"
@@ -36,7 +36,7 @@
                     {/block}
                     {block name="frontend_checkout_finish_swark_description_manual_content"}
                         <p>
-                            {s name="manually_label_address"}Address{/s} {$swarkAttributes.swarkRecipient}<br />
+                            {s name="manually_label_address"}Address{/s} {$swarkAttributes.swarkRecipientAddress}<br />
                             {s name="manually_label_amount"}Amount{/s} {$swarkAttributes.swarkArkAmount} ARK<br />
                             {s name="manually_label_vendorField"}Vendorfield{/s} {$swarkAttributes.swarkVendorField}
                         </p>

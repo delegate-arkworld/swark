@@ -49,13 +49,16 @@ class CheckTransactionsCommand extends ShopwareCommand
         $io = new SymfonyStyle($input, $output);
 
         try {
-            $this->orderService->checkTransactions();
+            $success = $this->orderService->checkTransactions();
         } catch (\Exception $e) {
             $io->error($e->getMessage());
             return false;
         }
 
-        $io->success('Transactions checked and updated. Check plugin logs!');
-        return true;
+        if ($success) {
+            $io->success('Transactions checked and Orders updated. Check plugin logs!');
+        } else {
+            $io->note('No open orders!');
+        }
     }
 }

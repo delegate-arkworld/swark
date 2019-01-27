@@ -76,7 +76,7 @@ class TransactionService
                     'vendorFieldHex' => \implode(\unpack('H*', $vendorField))
                 ]);
         } catch (\Exception $e) {
-            $this->loggerService->warning('main node api was not executable', $e);
+            $this->loggerService->warning('main node api was not executable', $e->getTrace());
             try {
                 $response = $this->connectionManager
                     ->connection('backup')->transactions()->search([
@@ -84,7 +84,7 @@ class TransactionService
                         'vendorFieldHex' => \implode(\unpack('H*', $vendorField))
                     ]);
             } catch (\Exception $e) {
-                $this->loggerService->error('backup node api was not executable', $e);
+                $this->loggerService->error('backup node api was not executable', $e->getTrace());
             }
         }
 

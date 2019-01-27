@@ -73,37 +73,53 @@ class OrderService
      * @throws \Doctrine\ORM\OptimisticLockException
      * @throws \Exception
      */
-    public function checkTransactions(): void
+    public function checkTransactions(): bool
     {
-        // TODO: add logging here!
-
         $orders = $this->orderHelper->getOpenOrders();
 
         if (!$orders) {
-            // TODO: Doesn't have to be an exception - just info!
-            throw new \RuntimeException('No open orders!');
+            $this->loggerService->notify(
+                'No open orders found.'
+            );
+            return false;
         }
 
         /**
          * @var Order $order
          */
         foreach ($orders as $order) {
+            $this->loggerService->notify(
+                'Processing Order [' . $order->getNumber() . ']'
+            );
             $attributes = $this->orderHelper->getOrderAttributes($order->getAttribute());
 
             $transaction = $this->transactionService->getTransaction(
-                $attributes['swarkRecipient'],
+                $attributes['swarkRecipientAddress'],
                 $attributes['swarkVendorField']
             );
 
-            $this->updateOrderTransactionId($order->getAttribute(), $transaction->getId(), $order->getNumber());
+            if ($transaction) {
+                $this->updateOrderTransactionId($order->getAttribute(), $transaction->getId(), $order->getNumber());
 
-            if (!$this->checkConfirmations($transaction->getConfirmations())) {
-                return;
+                if (!$this->checkConfirmations($transaction->getConfirmations())) {
+                    $this->loggerService->notify(
+                        'Order [' . $order->getNumber() . '] need more confirmations. Currently: ' . $transaction->getConfirmations()
+                    );
+                    continue;
+                }
+
+                // TODO: check amount before set to paymentStatus
+                $this->updateOrderPaymentStatus($order);
+
+                continue;
             }
 
-            // TODO: check amount before set to paymentStatus
-            $this->updateOrderPaymentStatus($order);
+            $this->loggerService->warning(
+                'No transaction for Order [' . $order->getNumber() . '] found!'
+            );
         }
+
+        return true;
     }
 
     /**
@@ -121,6 +137,7 @@ class OrderService
         $this->updateOrderAmount($order, $attributes);
         $this->updateOrderRecipientAddress($attributes, $orderNumber);
         $this->updateOrderVendorField($attributes, $orderNumber);
+        $this->updateOrderTransactionId($attributes, '', $orderNumber);
 
         return true;
     }
@@ -140,7 +157,7 @@ class OrderService
             $this->models->persist($attributes);
             $this->models->flush($attributes);
         } catch (\Exception $e) {
-            $this->loggerService->error('Order transaction id could not be updated!', $e);
+            $this->loggerService->error('Order transaction id could not be updated!', $e->getTrace());
             throw $e;
         }
 
@@ -169,12 +186,12 @@ class OrderService
             $this->models->persist($attributes);
             $this->models->flush($attributes);
         } catch (\Exception $e) {
-            $this->loggerService->error('Order amount could not be updated!', $e);
+            $this->loggerService->error('Order amount could not be updated!', $e->getTrace());
             throw $e;
         }
 
         $this->loggerService->notify(
-            'Updated amount to [' . $amount . '] from order [' . $order->getNumber().  ']'
+            'Updated amount to [' . $amount . '] for order [' . $order->getNumber().  ']'
         );
     }
 
@@ -195,7 +212,7 @@ class OrderService
             $this->models->persist($attributes);
             $this->models->flush($attributes);
         } catch (\Exception $e) {
-            $this->loggerService->error('Order recipient address could not be updated!', $e);
+            $this->loggerService->error('Order recipient address could not be updated!', $e->getTrace());
             throw $e;
         }
 
@@ -220,7 +237,7 @@ class OrderService
             $this->models->persist($attributes);
             $this->models->flush($attributes);
         } catch (\Exception $e) {
-            $this->loggerService->error('Order vendorField could not be updated!', $e);
+            $this->loggerService->error('Order vendorField could not be updated!', $e->getTrace());
             throw $e;
         }
 
@@ -245,12 +262,12 @@ class OrderService
             $this->models->persist($order);
             $this->models->flush($order);
         } catch (\Exception $e) {
-            $this->loggerService->error('Order payment status could not be updated!', $e);
+            $this->loggerService->error('Order payment status could not be updated!', $e->getTrace());
             throw $e;
         }
 
         $this->loggerService->notify(
-            'Updated order [' . $order->getNumber() . '] and set payment status [' . $paymentStatus->getName() . ']'
+            'Updated order [' . $order->getNumber() . '] and set payment status to [' . $paymentStatus->getName() . ']'
         );
 
         return true;

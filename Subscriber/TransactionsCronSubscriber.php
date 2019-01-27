@@ -29,9 +29,14 @@ class TransactionsCronSubscriber
     public function onRunCronjob()
     {
         try {
-            $this->orderService->checkTransactions();
+            $success = $this->orderService->checkTransactions();
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+
+        if (!$success) {
+            return 'No open orders!';
+
         }
 
         return true;

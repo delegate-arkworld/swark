@@ -49,6 +49,7 @@
                  method="onPostDispatchSecureAccount"
                  event="Enlight_Controller_Action_PostDispatchSecure_Frontend_Account"/>
             <argument type="string">%swark.views_dir%</argument>
+            <argument type="service" id="swark.helper.order_helper" />
         </service>
     </services>
 </container>

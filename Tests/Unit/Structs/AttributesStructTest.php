@@ -17,7 +17,7 @@ class AttributesStructTest extends TestCase
     public function test_construction()
     {
         $struct = new Attributes(
-            0,
+            'transactionId',
             0.00,
             'recipient',
             'vendorField'

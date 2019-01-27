@@ -2,6 +2,8 @@
 
 namespace Swark\Subscriber;
 
+use Swark\Helper\OrderHelper;
+
 /**
  * Class AccountOrderSubscriber
  */
@@ -13,12 +15,20 @@ class AccountOrderSubscriber
     private $viewDir;
 
     /**
-     * @param string $viewDir
+     * @var OrderHelper
+     */
+    private $orderHelper;
+
+    /**
+     * @param string      $viewDir
+     * @param OrderHelper $orderHelper
      */
     public function __construct(
-        string $viewDir
+        string $viewDir,
+        OrderHelper $orderHelper
     ) {
         $this->viewDir = $viewDir;
+        $this->orderHelper = $orderHelper;
     }
 
     /**
@@ -39,14 +49,14 @@ class AccountOrderSubscriber
 
         $view->addTemplateDir($this->viewDir);
 
-        // TODO: implement logic and template (use order_item.tpl)
+        $orders = $view->getAssign('sOpenOrders');
 
-        /*$orderNumber = (int)$view->getAssign('sOrderNumber');
-        $attributes = $this->orderHelper->getOrder($orderNumber)->getAttribute();
-        $data = $this->orderHelper->getOrderAttributes($attributes);
+        foreach ($orders as $key => $order) {
+            $order = $this->orderHelper->getOrder($order['ordernumber']);
+            $orders[$key]['swarkTransactionId'] = $this->orderHelper->getTransactionIdByOrder($order);
+        }
 
-        $view->assign('swarkConfirmations', $this->pluginConfig['confirmations']);
-        $view->assign('swarkAttributes', $data);*/
-        $view->extendsTemplate('frontend/plugins/swark/orders.tpl');
+        $view->assign('sOpenOrders', $orders);
+        $view->extendsTemplate('frontend/plugins/swark/order_item_details.tpl');
     }
 }

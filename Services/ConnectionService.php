@@ -4,9 +4,8 @@ namespace Swark\Services;
 
 use ArkEcosystem\Client\ConnectionManager;
 
-// TODO: Check if autoload is needed here or there is any better implementation
-if (file_exists(__DIR__ . '/../../vendor/autoload.php')) {
-    require_once __DIR__ . '/../../vendor/autoload.php';
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    require_once __DIR__ . '/../vendor/autoload.php';
 }
 
 /**

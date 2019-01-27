@@ -14,7 +14,6 @@ class SwarkTestKernel extends \Shopware\Kernel
      */
     public static function start(): void
     {
-        // TODO: check why FroshProfiler does problems here and fix it!
         $kernel = new self(\getenv('SHOPWARE_ENV') ?: 'testing', true);
         $kernel->boot();
 

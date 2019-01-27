@@ -50,6 +50,7 @@ class ExchangeService
      * @param string $currency
      *
      * @return bool
+     *
      * @throws RequestException
      * @throws \Exception
      */
@@ -72,7 +73,7 @@ class ExchangeService
             $this->models->persist($object);
             $this->models->flush($object);
         } catch (\Exception $e) {
-            $this->loggerService->error('Could not update Ark currency factor', $e);
+            $this->loggerService->error('Could not update Ark currency factor', $e->getTrace());
             throw $e;
         }
 
@@ -93,7 +94,7 @@ class ExchangeService
             /** @var Response $result */
             $result = $this->client->get(self::URL . $currency);
         } catch (RequestException $e) {
-            $this->loggerService->error('Could not get the exchange rate from the external api!', $e);
+            $this->loggerService->error('Could not get the exchange rate from the external api!', $e->getTrace());
             throw $e;
         }
 

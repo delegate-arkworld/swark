@@ -4,7 +4,7 @@
 
     <!-- Check Transactions Cron -->
     <cronjob>
-        <name>Check ARK transactions</name>
+        <name>Check Ark transactions</name>
         <action>Shopware_CronJob_SwarkCheckTransactions</action>
         <active>true</active>
         <interval>900</interval>
@@ -13,7 +13,7 @@
 
     <!-- Update Exchange Rate Cron -->
     <cronjob>
-        <name>Update ARK Exchange Rate</name>
+        <name>Update Ark Exchange Rate</name>
         <action>Shopware_CronJob_SwarkUpdateExchangeRate</action>
         <active>false</active>
         <interval>900</interval>

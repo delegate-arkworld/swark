@@ -1,1 +1,0 @@
-{extends file="parent:frontend/account/orders.tpl"}

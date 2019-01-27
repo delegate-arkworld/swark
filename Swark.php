@@ -14,9 +14,7 @@ use Shopware\Models\Shop\Currency;
 class Swark extends Plugin
 {
     // TODO V1:
-    // remove manual set of $version = 'Two' in ARK Client and check it again
     // add payment data to order page for open orders (include transaction data as well for orders that have transaction data)
-    // write tests with SwagPaymentPayPalUnified as template
 
     // TODO V2:
     // implement Setup with Installer, Uninstaller and Update Classes
@@ -24,6 +22,7 @@ class Swark extends Plugin
     // add custom Exceptions!
     // ask on installation if currency factor should be updated
     // add reactive component on finish page for transaction data
+    // improve test suite
 
     /**
      * @param InstallContext $context
@@ -108,6 +107,11 @@ class Swark extends Plugin
                 'displayInBackend' => true,
             ]
         );
+
+        $models = $this->container->get('models');
+        $metaDataCache = $models->getConfiguration()->getMetadataCacheImpl();
+        $metaDataCache->deleteAll();
+        $models->generateAttributeModels(['s_order_attributes']);
     }
 
     /**
@@ -145,10 +149,8 @@ class Swark extends Plugin
         /** @var ModelManager $models */
         $models = $this->container->get('models');
 
-        // TODO: change to findOneBy!
-
         /** @var Currency $currency */
-        $currency = $models->getRepository(Currency::class)->findBy([
+        $currency = $models->getRepository(Currency::class)->findOneBy([
             'currency' => 'ARK'
         ]);
 
@@ -187,15 +189,13 @@ class Swark extends Plugin
             $models
         );
 
-        // TODO: check if findOneBy just outputs one row to not use index 0 after
-
-        /** @var Currency[] $currency */
-        $currency = $models->getRepository(Currency::class)->findBy([
+        /** @var Currency $currency */
+        $currency = $models->getRepository(Currency::class)->findOneBy([
             'default' => true
         ]);
 
         // TODO: Check if default is used for calculations!
-        return $exchangeService->getExchangeRate($currency[0]->getCurrency());
+        return $exchangeService->getExchangeRate($currency->getCurrency());
     }
 
     /**

@@ -28,18 +28,4 @@ class OrderHelperTest extends TestCase
 
         $this->assertInstanceOf(OrderHelper::class, $helper);
     }
-
-    /*public function test_get_orders()
-    {
-        $helper = new OrderHelperMock();
-
-        $this->assertIsArray($helper->getOrders(), 'returned type must be an array');
-    }
-
-    public function test_get_order()
-    {
-        $helper = new OrderHelperMock();
-
-        $this->assertInstanceOf(Order::class, $helper->getOrder(1));
-    }*/
 }

@@ -8,7 +8,7 @@ namespace Swark\Structs;
 class Attributes
 {
     /**
-     * @var int
+     * @var string
      */
     private $transactionId;
 
@@ -28,14 +28,14 @@ class Attributes
     private $vendorField;
 
     /**
-     * @param int    $transactionId
+     * @param string    $transactionId
      * @param float  $amount
      * @param string $recipient
      * @param string $vendorField
      */
     public function __construct
     (
-        int $transactionId,
+        string $transactionId,
         float $amount,
         string $recipient,
         string $vendorField
@@ -47,19 +47,19 @@ class Attributes
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getTransactionId(): int
+    public function getTransactionId(): string
     {
         return $this->transactionId;
     }
 
     /**
-     * @param int $transactionId
+     * @param string $transactionId
      *
      * @return Attributes
      */
-    public function setTransactionId(int $transactionId): Attributes
+    public function setTransactionId(string $transactionId): Attributes
     {
         $this->transactionId = $transactionId;
 
