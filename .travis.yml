@@ -3,12 +3,75 @@ language: php
 php:
   - 7.2
 
+sudo: false
+
+services:
+  - mysql
+
+env:
+  matrix:
+    - SHOPWARE_VERSION="5.3"
+    - SHOPWARE_VERSION="5.4"
+    - SHOPWARE_VERSION="5.5"
+  global:
+    - PLUGIN_NAME=Swark
+    - SHOPWARE_DIRECTORY=${HOME}/shopware
+    - PLUGIN_DIRECTORY=${SHOPWARE_DIRECTORY}/custom/plugins
+
+cache:
+  directories:
+    - ${HOME}/.composer/cache/files
+
+install:
+  - composer install
+
 before_script:
-  - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --prefer-source --dev
+  - if [[ "$(php --version | grep -cim1 xdebug)" -ge 1 ]]; then phpenv config-rm xdebug.ini; fi
+  - git clone https://github.com/shopware/shopware.git ${SHOPWARE_DIRECTORY} --branch ${SHOPWARE_VERSION}
+  - ant -f ${SHOPWARE_DIRECTORY}/build/build.xml -Dapp.host=localhost -Ddb.user=travis -Ddb.host=127.0.0.1 -Ddb.name=shopware build-unit
+  - mv ${TRAVIS_BUILD_DIR} ${PLUGIN_DIRECTORY}/${PLUGIN_NAME}
+  - php ${HOME}/shopware/bin/console sw:plugin:refresh
+  - php ${HOME}/shopware/bin/console sw:plugin:install ${PLUGIN_NAME}
+  - php ${HOME}/shopware/bin/console sw:plugin:activate ${PLUGIN_NAME}
+  - cd ${PLUGIN_DIRECTORY}/${PLUGIN_NAME}
 
 script:
   - vendor/bin/phpunit
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 154072dd-333e-48ba-bfa0-b0b0afbf5306
+  - ./build.sh
+
+#stages:
+#  - test
+#  - Store-Check
+#  - name: Store-Sync
+#    if: branch = master
+#  - name: Store-Deploy
+#    if: tag IS present
+
+#jobs:
+#  include:
+#    - stage: Store-Check
+#      php: 7.2
+#      before_script: skip
+#      install:
+#        - ./build.sh master
+#        - wget 'https://github.com/reconnico/Swark/blob/master/swark-plugin-upload.phar?raw=true' -O swark-plugin-upload.phar
+#      script:
+#        - php swark-plugin-upload.phar plugin:validate ${TRAVIS_BUILD_DIR}/${PLUGIN_NAME}*.zip
+#    - stage: Store-Sync
+#      before_script: skip
+#      php: 7.2
+#      install:
+#        - wget 'https://github.com/reconnico/Swark/blob/master/swark-plugin-upload.phar?raw=true' -O swark-plugin-upload.phar
+#      script:
+#        - php swark-plugin-upload.phar plugin:update ${TRAVIS_BUILD_DIR}/Resources/store
+#    - stage: Store-Deploy
+#      before_script: skip
+#      php: 7.2
+#      install:
+#        - wget 'https://github.com/reconnico/Swark/blob/master/swark-plugin-upload.phar?raw=true' -O swark-plugin-upload.phar
+#      script:
+#        - ./build.sh
+#        - php swark-plugin-upload.phar plugin:upload ${TRAVIS_BUILD_DIR}/${PLUGIN_NAME}*.zip
