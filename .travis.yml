@@ -1,0 +1,14 @@
+language: php
+
+php:
+  - 7.2
+
+before_script:
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source --dev
+
+script:
+  - vendor/bin/phpunit
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t 154072dd-333e-48ba-bfa0-b0b0afbf5306

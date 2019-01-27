@@ -13,17 +13,6 @@ use Shopware\Models\Shop\Currency;
  */
 class Swark extends Plugin
 {
-    // TODO V1:
-    // add payment data to order page for open orders (include transaction data as well for orders that have transaction data)
-
-    // TODO V2:
-    // implement Setup with Installer, Uninstaller and Update Classes
-    // check ARK pay for directly open in wallet
-    // add custom Exceptions!
-    // ask on installation if currency factor should be updated
-    // add reactive component on finish page for transaction data
-    // improve test suite
-
     /**
      * @param InstallContext $context
      *

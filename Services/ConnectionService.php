@@ -33,9 +33,6 @@ class ConnectionService
     {
         $manager = new ConnectionManager();
 
-        // TODO: remove line before release!
-        // for testing: http://167.114.43.40:4003/api/v2
-
         $manager->connect([
             'host' => $this->pluginConfig['mainNodeApi'],
             'version' => 2
