@@ -45,7 +45,7 @@
             {/block}
             {block name="frontend_checkout_finish_swark_information"}
                 <div class="swark-container-payment-information">
-                    <p>{s name="confirmations_info"}Your transaction need at least <b>{$swarkConfirmations} confirmations</b> to be accepted!{/s}</p>
+                    <p>{s name="confirmations_info"}Your transaction need at least <strong>{$swarkConfirmations} Confirmations</strong> to be accepted!{/s}</p>
                 </div>
             {/block}
         </div>
