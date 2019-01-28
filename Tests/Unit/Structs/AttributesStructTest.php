@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Tests\Unit\Subscriber;
+namespace Swark\Tests\Unit\Structs;
 
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Structs\Attributes;

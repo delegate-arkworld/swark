@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Tests\Unit\Subscriber;
+namespace Swark\Tests\Unit\Commands;
 
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Commands\TestConfigurationCommand;

@@ -4,8 +4,10 @@ namespace Swark\Services;
 
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Order\Order;
+use Shopware\Models\Order\Status;
 use Swark\Helper\OrderHelper;
 use Swark\Helper\PluginHelper;
+use Swark\Structs\Attributes;
 
 /**
  * Class OrderService
@@ -86,12 +88,14 @@ class OrderService
         }
 
         /**
-         * @var Order
+         * @var Order $order
          */
         foreach ($orders as $order) {
             $this->loggerService->notify(
                 'Processing Order [' . $order->getNumber() . ']'
             );
+
+            /** @var Attributes $attributes */
             $attributes = $this->orderHelper->getOrderAttributes($order->getAttribute());
 
             $transaction = $this->transactionService->getTransaction(
@@ -100,7 +104,23 @@ class OrderService
             );
 
             if ($transaction) {
-                $this->updateOrderTransactionId($order->getAttribute(), $transaction->getId(), $order->getNumber());
+                if (!$transaction->getId()) {
+                    $this->updateOrderTransactionId($order->getAttribute(), $transaction->getId(), $order->getNumber());
+                }
+
+                $transactionAmount = $transaction->getAmount()/100000000;
+
+                if (!$this->checkOrderAmount($transactionAmount, $attributes['swarkArkAmount'])) {
+                    $this->loggerService->notify(
+                        'Order [' . $order->getNumber() . '] received amount is too low: ' . $transactionAmount . '. Needed: ' . $attributes['swarkArkAmount']
+                    );
+
+                    /** @var Status $paymentStatus */
+                    $paymentStatus = $this->models->getRepository(Status::class)->find(Status::PAYMENT_STATE_PARTIALLY_PAID);
+
+                    $this->updateOrderPaymentStatus($order, $paymentStatus);
+                    continue;
+                }
 
                 if (!$this->checkConfirmations($transaction->getConfirmations())) {
                     $this->loggerService->notify(
@@ -109,8 +129,7 @@ class OrderService
                     continue;
                 }
 
-                // TODO: check amount before set to paymentStatus
-                $this->updateOrderPaymentStatus($order);
+                $this->updateOrderPaymentStatus($order, $this->orderHelper->getPaymentStatus());
 
                 continue;
             }
@@ -180,8 +199,12 @@ class OrderService
             // TODO: Generate Calculate Bundle for different calculation types?
             // TODO: maybe use ARK default calculator and use currency exchange rate? Edegecase: Shop which is using USD
 
-            // TODO: check if currency is ARK and then update the amount from the order
-            $amount = $order->getInvoiceAmount();
+            if ($order->getCurrency() !== 'ARK') {
+                $amount = 0;
+                // TODO: calculate with ARK amount
+            } else {
+                $amount = $order->getInvoiceAmount();
+            }
 
             $attributes->setSwarkArkAmount($amount);
 
@@ -250,15 +273,13 @@ class OrderService
     /**
      * @param Order $order
      *
-     * @throws \Exception
-     *
+     * @param int|null $statusId
      * @return bool
+     * @throws \Exception
      */
-    public function updateOrderPaymentStatus(Order $order): bool
+    public function updateOrderPaymentStatus(Order $order, Status $paymentStatus): bool
     {
         try {
-            $paymentStatus = $this->orderHelper->getPaymentStatus();
-
             $order->setPaymentStatus($paymentStatus);
             // TODO: check if e-mail will be sent out correctly!
             $this->models->persist($order);
@@ -293,5 +314,16 @@ class OrderService
     public function checkConfirmations(int $confirmations): bool
     {
         return $confirmations >= $this->pluginConfig['confirmations'];
+    }
+
+    /**
+     * @param float $transactionAmount
+     * @param float $orderAmount
+     *
+     * @return bool
+     */
+    public function checkOrderAmount(float $transactionAmount, float $orderAmount): bool
+    {
+        return ($transactionAmount >= $orderAmount) ? true : false;
     }
 }

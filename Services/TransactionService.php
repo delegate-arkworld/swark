@@ -88,7 +88,6 @@ class TransactionService
             }
         }
 
-        // TODO: Also check multiple transactions
         return $response['data'][0] ?: [];
     }
 }

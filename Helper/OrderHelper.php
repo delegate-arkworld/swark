@@ -74,14 +74,10 @@ class OrderHelper
      */
     public function getOpenOrders(): array
     {
-        // TODO: Check if we just get ARK orders (filter by payment) and orders by correct state
-        $qb = $this->models->getRepository(Order::class)->createQueryBuilder('o');
-
-        $qb->select('o')
-            ->where($qb->expr()->notIn('o.paymentStatus', $this->getPaymentStatus()->getId()))
-            ->andWhere($qb->expr()->not('o.number = 0'));
-
-        return $qb->getQuery()->getResult();
+        return $this->models->getRepository(Order::class)->findBy([
+            'payment' => $this->getPaymentObject()->getId(),
+            'cleared' => Status::PAYMENT_STATE_OPEN
+        ]);
     }
 
     /**
@@ -172,8 +168,6 @@ class OrderHelper
      */
     public function getPaymentStatus(): Status
     {
-        // TODO: check subshop for config!
-
         /** @var Status $object */
         $object = $this->models->getRepository(Status::class)->find($this->pluginConfig['paymentStatus']);
 

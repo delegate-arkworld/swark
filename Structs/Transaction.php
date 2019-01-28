@@ -47,7 +47,7 @@ class Transaction
      */
     public function __construct(
         string $id,
-        int $amount,
+        float $amount,
         string $recipient,
         string $vendorField,
         int $confirmations,
@@ -82,19 +82,19 @@ class Transaction
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getAmount(): int
+    public function getAmount(): float
     {
         return $this->amount;
     }
 
     /**
-     * @param int $amount
+     * @param float $amount
      *
      * @return Transaction
      */
-    public function setAmount(int $amount): Transaction
+    public function setAmount(float $amount): Transaction
     {
         $this->amount = $amount;
 

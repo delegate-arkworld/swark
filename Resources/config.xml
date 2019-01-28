@@ -4,34 +4,34 @@
     <label>Configuration Swark</label>
     <description>Swark</description>
     <elements>
-        <element type="textarea" required="true" scope="shop">
+        <element type="textarea" required="true">
             <name>wallets</name>
             <label>ARK wallet address</label>
             <description>You can insert multiple ARK wallets separated by semicolons.</description>
         </element>
 
-        <element type="text" required="true" scope="shop">
+        <element type="text" required="true">
             <name>mainNodeApi</name>
             <label>Main node api url</label>
             <value>https://explorer.ark.io:8443/api</value>
             <description>The main node url for the HTTP request which will be used mainly. Format: http://my.ark.node:port/api</description>
         </element>
 
-        <element type="text" required="true" scope="shop">
+        <element type="text" required="true">
             <name>backupNodeApi</name>
             <label>Backup node api url</label>
             <value></value>
             <description>The backup node url for the HTTP request which will be used when the main node is not available. Format: http://my.ark.node:port/api</description>
         </element>
 
-        <element type="number" scope="shop">
+        <element type="number">
             <name>confirmations</name>
             <label>Confirmations</label>
             <value>51</value>
             <description>How many network confirmations do the transaction need to be accepted?</description>
         </element>
 
-        <element type="select" scope="shop">
+        <element type="select">
             <name>paymentStatus</name>
             <label>Payment Status</label>
             <value>12</value>
@@ -39,7 +39,7 @@
             <store>Shopware.apps.Base.store.PaymentStatus</store>
         </element>
 
-        <element type="text" scope="shop">
+        <element type="text">
             <name>vendorField</name>
             <label>VendorField Layout</label>
             <value>Swark: {$ordernumber}</value>

@@ -182,7 +182,6 @@ class Swark extends Plugin
             'default' => true,
         ]);
 
-        // TODO: Check if default is used for calculations!
         return $exchangeService->getExchangeRate($currency->getCurrency());
     }
 

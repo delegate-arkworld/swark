@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Tests\Unit\Subscriber;
+namespace Swark\Tests\Unit\Services;
 
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Services\TransactionService;
