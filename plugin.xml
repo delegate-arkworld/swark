@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
-    <label>Swark - ARK Payment Gateway</label>
+    <label>Swark - Ark Payment Gateway</label>
 
     <version>1.0.0</version>
     <link>https://github.com/reConNico</link>

@@ -4,23 +4,22 @@
     <label>Configuration Swark</label>
     <description>Swark</description>
     <elements>
-        <element type="textarea" required="true">
+        <element type="textarea">
             <name>wallets</name>
             <label>ARK wallet address</label>
             <description>You can insert multiple ARK wallets separated by semicolons.</description>
         </element>
 
-        <element type="text" required="true">
+        <element>
             <name>mainNodeApi</name>
             <label>Main node api url</label>
-            <value>https://explorer.ark.io:8443/api</value>
+            <value>https://explorer.ark.io:8443/api/v2</value>
             <description>The main node url for the HTTP request which will be used mainly. Format: http://my.ark.node:port/api</description>
         </element>
 
-        <element type="text" required="true">
+        <element>
             <name>backupNodeApi</name>
             <label>Backup node api url</label>
-            <value></value>
             <description>The backup node url for the HTTP request which will be used when the main node is not available. Format: http://my.ark.node:port/api</description>
         </element>
 
@@ -39,11 +38,18 @@
             <store>Shopware.apps.Base.store.PaymentStatus</store>
         </element>
 
-        <element type="text">
+        <element>
             <name>vendorField</name>
             <label>VendorField Layout</label>
             <value>Swark: {$ordernumber}</value>
             <description>The vendorField Layout for the transaction. You can implement {$ordernumber} in the layout. Keep in mind that the vendorField can only contain maximum 64 chars including the ordernumber which is dynamic and unique for each order.</description>
+        </element>
+
+        <element type="boolean">
+            <name>sendMail</name>
+            <label>Send order status mail</label>
+            <value>true</value>
+            <description>If this option is checked the order status mail will be sent out when the order reached the configured payment status.</description>
         </element>
     </elements>
 </config>

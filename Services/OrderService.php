@@ -282,9 +282,23 @@ class OrderService
     {
         try {
             $order->setPaymentStatus($paymentStatus);
-            // TODO: implement send status email
             $this->models->persist($order);
             $this->models->flush($order);
+
+            if ($this->pluginConfig['sendMail']) {
+                $orderModule = Shopware()->Modules()->Order();
+
+                $mail = $orderModule->createStatusMail($order->getId(), $paymentStatus->getId());
+
+                if ($mail) {
+                    try {
+                        $orderModule->sendStatusMail($mail);
+                    } catch (\Exception $e) {
+                        $this->loggerService->error('Order [' . $order->getNumber() . '] could not send out order status mail', $e->getTrace());
+                        return false;
+                    }
+                }
+            }
         } catch (\Exception $e) {
             $this->loggerService->error('Order payment status could not be updated!', $e->getTrace());
             throw $e;

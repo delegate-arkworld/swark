@@ -19,6 +19,7 @@ class LoggerService
      */
     public function __construct(Logger $baseLogger)
     {
+        // TODO: write in own log file
         $this->logger = $baseLogger;
     }
 
