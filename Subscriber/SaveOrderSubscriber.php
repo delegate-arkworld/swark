@@ -29,15 +29,19 @@ class SaveOrderSubscriber
      */
     public function onOrderSaveOrderProcessDetails(\Enlight_Event_EventArgs $args): void
     {
-        // TODO: get Payment Object
-
-        //if (!$this->orderService->checkPayment()) {
-        //    return;
-        //}
-
+        /** @var \sOrder $order */
         $order = $args->getSubject();
-        $orderNumber = $order->sOrderNumber;
 
-        $this->orderService->processOrder($orderNumber);
+        if (!empty($order->sUserData['additional']['payment']['id'])) {
+            $paymentId = $order->sUserData['additional']['payment']['id'];
+        } else {
+            $paymentId = $order->sUserData['additional']['user']['paymentID'];
+        }
+
+        if (!$this->orderService->checkPayment((int) $paymentId['id'])) {
+            return;
+        }
+
+        $this->orderService->processOrder($order->sOrderNumber);
     }
 }

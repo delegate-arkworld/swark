@@ -272,16 +272,17 @@ class OrderService
 
     /**
      * @param Order $order
+     * @param Status $paymentStatus
      *
-     * @param int|null $statusId
      * @return bool
+     *
      * @throws \Exception
      */
     public function updateOrderPaymentStatus(Order $order, Status $paymentStatus): bool
     {
         try {
             $order->setPaymentStatus($paymentStatus);
-            // TODO: check if e-mail will be sent out correctly!
+            // TODO: implement send status email
             $this->models->persist($order);
             $this->models->flush($order);
         } catch (\Exception $e) {
