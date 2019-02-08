@@ -3,11 +3,12 @@
 namespace Swark\Subscriber;
 
 use Swark\Services\OrderService;
+use Enlight\Event\SubscriberInterface;
 
 /**
  * Class SaveOrderSubscriber
  */
-class SaveOrderSubscriber
+class SaveOrderSubscriber implements SubscriberInterface
 {
     /**
      * @var OrderService
@@ -20,6 +21,16 @@ class SaveOrderSubscriber
     public function __construct(OrderService $orderService)
     {
         $this->orderService = $orderService;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            'Shopware_Modules_Order_SaveOrder_ProcessDetails' => 'onOrderSaveOrderProcessDetails',
+        ];
     }
 
     /**

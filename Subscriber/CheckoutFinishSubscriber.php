@@ -4,11 +4,12 @@ namespace Swark\Subscriber;
 
 use Swark\Helper\OrderHelper;
 use Swark\Services\OrderService;
+use Enlight\Event\SubscriberInterface;
 
 /**
  * Class CheckoutFinishSubscriber
  */
-class CheckoutFinishSubscriber
+class CheckoutFinishSubscriber implements SubscriberInterface
 {
     /**
      * @var string
@@ -46,6 +47,16 @@ class CheckoutFinishSubscriber
         $this->orderService = $orderService;
         $this->orderHelper = $orderHelper;
         $this->pluginConfig = $pluginConfig;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            'Enlight_Controller_Action_PostDispatchSecure_Frontend_Checkout' => 'onPostDispatchSecureCheckout',
+        ];
     }
 
     /**

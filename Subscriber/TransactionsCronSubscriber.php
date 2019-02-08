@@ -3,11 +3,12 @@
 namespace Swark\Subscriber;
 
 use Swark\Services\OrderService;
+use Enlight\Event\SubscriberInterface;
 
 /**
  * Class TransactionsCronSubscriber
  */
-class TransactionsCronSubscriber
+class TransactionsCronSubscriber implements SubscriberInterface
 {
     /**
      * @var OrderService
@@ -23,6 +24,19 @@ class TransactionsCronSubscriber
         $this->orderService = $orderService;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            'Shopware_CronJob_SwarkCheckTransactions' => 'onRunCronjob',
+        ];
+    }
+
+    /**
+     * @return bool|string
+     */
     public function onRunCronjob()
     {
         try {

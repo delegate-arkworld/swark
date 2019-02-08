@@ -80,7 +80,7 @@ class OrderService
         $orders = $this->orderHelper->getOpenOrders();
 
         if (!$orders) {
-            $this->loggerService->notify(
+            $this->loggerService->info(
                 'No open orders found.'
             );
 
@@ -91,7 +91,7 @@ class OrderService
          * @var Order $order
          */
         foreach ($orders as $order) {
-            $this->loggerService->notify(
+            $this->loggerService->info(
                 'Processing Order [' . $order->getNumber() . ']'
             );
 
@@ -111,7 +111,7 @@ class OrderService
                 $transactionAmount = $transaction->getAmount()/100000000;
 
                 if (!$this->checkOrderAmount($transactionAmount, $attributes['swarkArkAmount'])) {
-                    $this->loggerService->notify(
+                    $this->loggerService->info(
                         'Order [' . $order->getNumber() . '] received amount is too low: ' . $transactionAmount . '. Needed: ' . $attributes['swarkArkAmount']
                     );
 
@@ -123,7 +123,7 @@ class OrderService
                 }
 
                 if (!$this->checkConfirmations($transaction->getConfirmations())) {
-                    $this->loggerService->notify(
+                    $this->loggerService->info(
                         'Order [' . $order->getNumber() . '] need more confirmations. Currently: ' . $transaction->getConfirmations()
                     );
                     continue;
@@ -182,7 +182,7 @@ class OrderService
             throw $e;
         }
 
-        $this->loggerService->notify(
+        $this->loggerService->info(
             'Updated transaction id to [' . $transactionId . '] from order [' . $orderNumber . ']'
         );
     }
@@ -215,7 +215,7 @@ class OrderService
             throw $e;
         }
 
-        $this->loggerService->notify(
+        $this->loggerService->info(
             'Updated amount to [' . $amount . '] for order [' . $order->getNumber() . ']'
         );
     }
@@ -240,7 +240,7 @@ class OrderService
             throw $e;
         }
 
-        $this->loggerService->notify(
+        $this->loggerService->info(
             'Updated recipient address to [' . $recipient . '] from order [' . $orderNumber . ']'
         );
     }
@@ -265,7 +265,7 @@ class OrderService
             throw $e;
         }
 
-        $this->loggerService->notify(
+        $this->loggerService->info(
             'Updated vendorField to [' . $vendorField . '] from order [' . $orderNumber . ']'
         );
     }
@@ -304,7 +304,7 @@ class OrderService
             throw $e;
         }
 
-        $this->loggerService->notify(
+        $this->loggerService->info(
             'Updated order [' . $order->getNumber() . '] and set payment status to [' . $paymentStatus->getName() . ']'
         );
 

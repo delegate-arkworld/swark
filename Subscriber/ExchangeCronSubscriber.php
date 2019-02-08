@@ -3,11 +3,12 @@
 namespace Swark\Subscriber;
 
 use Swark\Services\ExchangeService;
+use Enlight\Event\SubscriberInterface;
 
 /**
  * Class ExchangeCronSubscriber
  */
-class ExchangeCronSubscriber
+class ExchangeCronSubscriber implements SubscriberInterface
 {
     /**
      * @var ExchangeService
@@ -23,6 +24,19 @@ class ExchangeCronSubscriber
         $this->exchangeService = $exchangeService;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            'Shopware_CronJob_SwarkUpdateExchangeRate' => 'onRunCronjob',
+        ];
+    }
+
+    /**
+     * @return bool|string
+     */
     public function onRunCronjob()
     {
         try {

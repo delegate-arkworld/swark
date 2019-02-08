@@ -76,7 +76,7 @@ class ExchangeService
             throw $e;
         }
 
-        $this->loggerService->notify('Updated the Ark currency factor to ' . $rate);
+        $this->loggerService->info('Updated the Ark currency factor to ' . $rate);
 
         return true;
     }
@@ -102,7 +102,7 @@ class ExchangeService
             return \json_decode($result->getBody())->{$currency};
         }
 
-        $this->loggerService->error('Exchange rate status code is not 200!', $result->getStatusCode());
+        $this->loggerService->error('Exchange rate status code is not 200!', []);
 
         return false;
     }

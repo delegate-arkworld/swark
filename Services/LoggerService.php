@@ -2,70 +2,19 @@
 
 namespace Swark\Services;
 
-use Shopware\Components\Logger;
+use Shopware\Components\Logger as BaseLogger;
 
 /**
  * Class LoggerService
  */
-class LoggerService
+class LoggerService extends BaseLogger
 {
     /**
-     * @var Logger
+     * {@inheritdoc}
      */
-    private $logger;
-
-    /**
-     * @param Logger $baseLogger
-     */
-    public function __construct(Logger $baseLogger)
+    public function __construct()
     {
-        // TODO: write in own log file
-        $this->logger = $baseLogger;
-    }
-
-    /**
-     * @param string $message
-     * @param array  $context
-     */
-    public function warning($message, array $context = []): void
-    {
-        /*if (!$this->settings->hasSettings()) {
-            return;
-        }
-
-        if ((int) $this->settings->get('log_level') === 1) {
-            $finalMessage = '[Warning] PayPal Products: ' . $message;
-            $this->logger->addWarning($finalMessage, $context);
-        }*/
-        $finalMessage = '[Warning] Swark: ' . $message;
-        $this->logger->addWarning($finalMessage, $context);
-    }
-
-    /**
-     * @param string $message
-     * @param array  $context
-     */
-    public function notify($message, array $context = []): void
-    {
-        /*if (!$this->settings->hasSettings()) {
-            return;
-        }
-
-        if ((int) $this->settings->get('log_level') === 1) {
-            $finalMessage = '[Info] PayPal Products: ' . $message;
-            $this->logger->addInfo($finalMessage, $context);
-        }*/
-        $finalMessage = '[Info] Swark: ' . $message;
-        $this->logger->addInfo($finalMessage, $context);
-    }
-
-    /**
-     * @param string $message
-     * @param array  $context
-     */
-    public function error($message, array $context = []): void
-    {
-        $finalMessage = '[Error] Swark: ' . $message;
-        $this->logger->addError($finalMessage, $context);
+        // TODO: fix Logger with own file!!
+        parent::__construct('swark');
     }
 }

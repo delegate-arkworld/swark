@@ -40,7 +40,7 @@ class TestConfigurationCommand extends ShopwareCommand
         $io = new SymfonyStyle($input, $output);
 
         try {
-            // TODO:
+            // TODO: Implement Check Command
             // connection test and if a transaction can be searched by vendorField
             // check if exchange rate can be crawled and updated
             // check if wallet address can be randomly selected

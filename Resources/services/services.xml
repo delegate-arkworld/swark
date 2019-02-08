@@ -44,7 +44,6 @@
         <!-- Logger Service -->
         <service id="swark.services.logger_service"
                  class="Swark\Services\LoggerService">
-            <argument type="service" id="pluginlogger"/>
         </service>
     </services>
 </container>

@@ -3,53 +3,43 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <!-- Cron Subscriber -->
+        <!-- Transactions Cron Subscriber -->
         <service id="swark.subscriber.transactions_cron_subscriber"
                  class="Swark\Subscriber\TransactionsCronSubscriber">
-            <tag name="shopware.event_listener"
-                 method="onRunCronjob"
-                 event="Shopware_CronJob_SwarkCheckTransactions"/>
             <argument type="service" id="swark.services.order_service" />
+            <tag name="shopware.event_subscriber"/>
         </service>
 
         <!-- Exchange Cron Subscriber -->
         <service id="swark.subscriber.exchange_cron_subscriber"
                  class="Swark\Subscriber\ExchangeCronSubscriber">
-            <tag name="shopware.event_listener"
-                 method="onRunCronjob"
-                 event="Shopware_CronJob_SwarkUpdateExchangeRate"/>
             <argument type="service" id="swark.services.exchange_service" />
+            <tag name="shopware.event_subscriber"/>
         </service>
 
         <!-- Checkout Finish Subscriber -->
         <service id="swark.subscriber.checkout_finish_subscriber"
                  class="Swark\Subscriber\CheckoutFinishSubscriber">
-            <tag name="shopware.event_listener"
-                 method="onPostDispatchSecureCheckout"
-                 event="Enlight_Controller_Action_PostDispatchSecure_Frontend_Checkout"/>
             <argument type="string">%swark.views_dir%</argument>
             <argument type="service" id="swark.services.order_service" />
             <argument type="service" id="swark.helper.order_helper" />
             <argument type="service" id="swark.config"/>
+            <tag name="shopware.event_subscriber"/>
         </service>
 
         <!-- Save Order Subscriber -->
         <service id="swark.subscriber.save_order_subscriber"
                  class="Swark\Subscriber\SaveOrderSubscriber">
-            <tag name="shopware.event_listener"
-                 method="onOrderSaveOrderProcessDetails"
-                 event="Shopware_Modules_Order_SaveOrder_ProcessDetails"/>
             <argument type="service" id="swark.services.order_service" />
+            <tag name="shopware.event_subscriber"/>
         </service>
 
         <!-- Account Order Subscriber -->
         <service id="swark.subscriber.account_order_subscriber"
                  class="Swark\Subscriber\AccountOrderSubscriber">
-            <tag name="shopware.event_listener"
-                 method="onPostDispatchSecureAccount"
-                 event="Enlight_Controller_Action_PostDispatchSecure_Frontend_Account"/>
             <argument type="string">%swark.views_dir%</argument>
             <argument type="service" id="swark.helper.order_helper" />
+            <tag name="shopware.event_subscriber"/>
         </service>
     </services>
 </container>

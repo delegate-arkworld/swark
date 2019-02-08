@@ -13,7 +13,7 @@
         <import resource="services/helper.xml"/>
 
         <!-- Subscriber -->
-        <import resource="services/subscriber.xml"/>
+        <import resource="services/subscribers.xml"/>
 
         <!-- Commands -->
         <import resource="services/commands.xml"/>

@@ -3,11 +3,12 @@
 namespace Swark\Subscriber;
 
 use Swark\Helper\OrderHelper;
+use Enlight\Event\SubscriberInterface;
 
 /**
  * Class AccountOrderSubscriber
  */
-class AccountOrderSubscriber
+class AccountOrderSubscriber implements SubscriberInterface
 {
     /**
      * @var string
@@ -29,6 +30,16 @@ class AccountOrderSubscriber
     ) {
         $this->viewDir = $viewDir;
         $this->orderHelper = $orderHelper;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            'Enlight_Controller_Action_PostDispatchSecure_Frontend_Account' => 'onPostDispatchSecureAccount',
+        ];
     }
 
     /**
