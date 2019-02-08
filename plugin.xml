@@ -10,6 +10,5 @@
 
     <changelog version="1.0.0">
         <changes lang="en">initial release</changes>
-        <changes lang="de">initiale Veröffentlichung</changes>
     </changelog>
 </plugin>
