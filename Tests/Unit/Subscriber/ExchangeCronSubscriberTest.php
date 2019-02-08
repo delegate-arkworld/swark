@@ -23,4 +23,11 @@ class ExchangeCronSubscriberTest extends TestCase
 
         $this->assertInstanceOf(ExchangeCronSubscriber::class, $subscriber);
     }
+
+    public function test_getSubscribedEvents()
+    {
+        $events = ExchangeCronSubscriber::getSubscribedEvents();
+        $this->assertCount(1, $events);
+        $this->assertEquals('onRunCronjob', $events['Shopware_CronJob_SwarkUpdateExchangeRate']);
+    }
 }

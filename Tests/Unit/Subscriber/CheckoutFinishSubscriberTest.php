@@ -27,4 +27,11 @@ class CheckoutFinishSubscriberTest extends TestCase
 
         $this->assertInstanceOf(CheckoutFinishSubscriber::class, $subscriber);
     }
+
+    public function test_getSubscribedEvents()
+    {
+        $events = CheckoutFinishSubscriber::getSubscribedEvents();
+        $this->assertCount(1, $events);
+        $this->assertEquals('onPostDispatchSecureCheckout', $events['Enlight_Controller_Action_PostDispatchSecure_Frontend_Checkout']);
+    }
 }

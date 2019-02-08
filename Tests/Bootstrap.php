@@ -1,20 +1,23 @@
 <?php
+/**
+ * (c) shopware AG <info@shopware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 require __DIR__ . '/../../../../autoload.php';
 
 use Shopware\Models\Shop\Shop;
 
-/**
- * Class SwarkTestKernel
- */
 class SwarkTestKernel extends \Shopware\Kernel
 {
     /**
      * @throws Exception
      */
-    public static function start(): void
+    public static function start()
     {
-        $kernel = new self(\getenv('SHOPWARE_ENV') ?: 'testing', true);
+        $kernel = new self(getenv('SHOPWARE_ENV') ?: 'testing', true);
         $kernel->boot();
 
         $container = $kernel->getContainer();
@@ -28,22 +31,22 @@ class SwarkTestKernel extends \Shopware\Kernel
 
         $_SERVER['HTTP_HOST'] = $shop->getHost();
 
-        if (!self::isPluginInstalledAndActivated($container)) {
+        if (!self::isPluginInstalledAndActivated()) {
             die('Error: The plugin is not installed or activated, tests aborted!');
         }
 
-        $container->get('loader')->registerNamespace('Swark', __DIR__ . '/../');
+        Shopware()->Loader()->registerNamespace('Swark', __DIR__ . '/../');
     }
 
     /**
-     * @param $container
-     *
      * @return bool
+     *
+     * @throws Exception
      */
-    private static function isPluginInstalledAndActivated($container): bool
+    private static function isPluginInstalledAndActivated()
     {
         /** @var \Doctrine\DBAL\Connection $db */
-        $db = $container->get('dbal_connection');
+        $db = Shopware()->Container()->get('dbal_connection');
 
         $sql = "SELECT active FROM s_core_plugins WHERE name = 'Swark'";
         $active = $db->fetchColumn($sql);

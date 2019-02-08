@@ -23,4 +23,11 @@ class TransactionsCronSubscriberTest extends TestCase
 
         $this->assertInstanceOf(TransactionsCronSubscriber::class, $subscriber);
     }
+
+    public function test_getSubscribedEvents()
+    {
+        $events = TransactionsCronSubscriber::getSubscribedEvents();
+        $this->assertCount(1, $events);
+        $this->assertEquals('onRunCronjob', $events['Shopware_CronJob_SwarkCheckTransactions']);
+    }
 }

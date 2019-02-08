@@ -23,4 +23,11 @@ class SaveOrderSubscriberTest extends TestCase
 
         $this->assertInstanceOf(SaveOrderSubscriber::class, $subscriber);
     }
+
+    public function test_getSubscribedEvents()
+    {
+        $events = SaveOrderSubscriber::getSubscribedEvents();
+        $this->assertCount(1, $events);
+        $this->assertEquals('onOrderSaveOrderProcessDetails', $events['Shopware_Modules_Order_SaveOrder_ProcessDetails']);
+    }
 }
