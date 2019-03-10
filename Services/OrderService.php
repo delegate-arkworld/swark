@@ -45,12 +45,18 @@ class OrderService
     private $loggerService;
 
     /**
-     * @param ModelManager       $models
-     * @param OrderHelper        $orderHelper
-     * @param PluginHelper       $pluginHelper
+     * @var ExchangeService
+     */
+    private $exchangeService;
+
+    /**
+     * @param ModelManager $models
+     * @param OrderHelper $orderHelper
+     * @param PluginHelper $pluginHelper
      * @param TransactionService $transactionService
-     * @param array              $pluginConfig
-     * @param LoggerService      $loggerService
+     * @param array $pluginConfig
+     * @param LoggerService $loggerService
+     * @param ExchangeService $exchangeService
      */
     public function __construct(
         ModelManager $models,
@@ -58,7 +64,8 @@ class OrderService
         PluginHelper $pluginHelper,
         TransactionService $transactionService,
         array $pluginConfig,
-        LoggerService $loggerService
+        LoggerService $loggerService,
+        ExchangeService $exchangeService
     ) {
         $this->models = $models;
         $this->orderHelper = $orderHelper;
@@ -66,6 +73,8 @@ class OrderService
         $this->transactionService = $transactionService;
         $this->pluginConfig = $pluginConfig;
         $this->loggerService = $loggerService;
+        $this->exchangeService = $exchangeService;
+
     }
 
     /**
@@ -196,14 +205,18 @@ class OrderService
     public function updateOrderAmount(Order $order, \Shopware\Models\Attribute\Order $attributes): void
     {
         try {
-            // TODO: Generate Calculate Bundle for different calculation types?
-            // TODO: maybe use ARK default calculator and use currency exchange rate? Edegecase: Shop which is using USD
+            $currency = $order->getCurrency();
+            $amount = $order->getInvoiceAmount();
 
-            if ($order->getCurrency() !== 'ARK') {
-                $amount = 0;
-                // TODO: calculate with ARK amount
-            } else {
-                $amount = $order->getInvoiceAmount();
+            if ($currency !== 'ARK') {
+                $defaultCurrency = $this->orderHelper->getDefaultCurrency();
+
+                if ($defaultCurrency->getName() === $currency) {
+                    $amount = $this->calculatePrice($amount, $this->orderHelper->getArkCurrencyFactor());
+                } else {
+                    $factor = $this->exchangeService->getExchangeRate($currency);
+                    $amount = $this->calculatePrice($amount, $factor);
+                }
             }
 
             $attributes->setSwarkArkAmount($amount);
@@ -340,5 +353,16 @@ class OrderService
     public function checkOrderAmount(float $transactionAmount, float $orderAmount): bool
     {
         return ($transactionAmount >= $orderAmount) ? true : false;
+    }
+
+    /**
+     * @param float $price
+     * @param float $factor
+     *
+     * @return float
+     */
+    public function calculatePrice(float $price, float $factor)
+    {
+        return $price * $factor;
     }
 }

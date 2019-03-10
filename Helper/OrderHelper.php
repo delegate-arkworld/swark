@@ -6,6 +6,7 @@ use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
 use Shopware\Models\Payment\Payment;
+use Shopware\Models\Shop\Currency;
 use Swark\Structs\Attributes;
 
 /**
@@ -182,5 +183,31 @@ class OrderHelper
     public function getVendorFieldLayout(int $orderNumber): string
     {
         return \str_replace('{$ordernumber}', $orderNumber, $this->pluginConfig['vendorField']);
+    }
+
+    /**
+     * @return Currency
+     */
+    public function getDefaultCurrency(): Currency
+    {
+        /** @var Currency $currency */
+        $currency = $this->models->getRepository(Currency::class)->findOneBy([
+            'default' => true,
+        ]);
+
+        return $currency;
+    }
+
+    /**
+     * @return float
+     */
+    public function getArkCurrencyFactor(): float
+    {
+        /** @var Currency $currency */
+        $currency = $this->models->getRepository(Currency::class)->findOneBy([
+            'currency' => 'ARK'
+        ]);
+
+        return $currency->getFactor();
     }
 }

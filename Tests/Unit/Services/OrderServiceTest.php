@@ -4,6 +4,7 @@ namespace Swark\Tests\Unit\Services;
 
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Services\OrderService;
+use Swark\Tests\Mocks\ExchangeServiceMock;
 use Swark\Tests\Mocks\LoggerServiceMock;
 use Swark\Tests\Mocks\ModelManagerMock;
 use Swark\Tests\Mocks\OrderHelperMock;
@@ -27,7 +28,8 @@ class OrderServiceTest extends TestCase
             new PluginHelperMock(),
             new TransactionServiceMock(),
             [],
-            new LoggerServiceMock()
+            new LoggerServiceMock(),
+            new ExchangeServiceMock()
         );
 
         $this->assertInstanceOf(OrderService::class, $service);
