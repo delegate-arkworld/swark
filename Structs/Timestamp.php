@@ -78,7 +78,7 @@ class Timestamp
     }
 
     /**
-     * @return stringx
+     * @return string
      */
     public function getHuman(): string
     {

@@ -24,6 +24,7 @@
             <argument type="service" id="swark.services.transaction_service" />
             <argument type="service" id="swark.config"/>
             <argument type="service" id="swark.services.logger_service"/>
+            <argument type="service" id="swark.services.exchange_service"/>
         </service>
 
         <!-- Transaction Service -->
