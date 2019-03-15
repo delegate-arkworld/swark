@@ -17,5 +17,8 @@
 
         <!-- Commands -->
         <import resource="services/commands.xml"/>
+
+        <!-- ArkClient -->
+        <import resource="../Components/ArkClient/Resources/services.xml"/>
     </imports>
 </container>
