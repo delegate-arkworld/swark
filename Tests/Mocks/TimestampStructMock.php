@@ -2,12 +2,12 @@
 
 namespace Swark\Tests\Mocks;
 
-use Swark\Structs\Timestamp;
+use Swark\Structs\TimestampStruct;
 
 /**
  * Class TimestampStructMock
  */
-class TimestampStructMock extends Timestamp
+class TimestampStructMock extends TimestampStruct
 {
     public function __construct()
     {

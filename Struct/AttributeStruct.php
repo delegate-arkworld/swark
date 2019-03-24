@@ -1,11 +1,11 @@
 <?php
 
-namespace Swark\Structs;
+namespace Swark\Struct;
 
 /**
- * Class Attributes
+ * Class AttributeStruct
  */
-class Attributes
+class AttributeStruct
 {
     /**
      * @var string

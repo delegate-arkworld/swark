@@ -3,7 +3,7 @@
 namespace Swark\Tests\Unit\Structs;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Structs\Timestamp;
+use Swark\Structs\TimestampStruct;
 
 /**
  * Class TimestampStructTest
@@ -18,7 +18,7 @@ class TimestampStructTest extends TestCase
     {
         $struct = $this->generateStruct();
 
-        $this->assertInstanceOf(Timestamp::class, $struct);
+        $this->assertInstanceOf(TimestampStruct::class, $struct);
     }
 
     public function test_getEpoch()
@@ -85,9 +85,9 @@ class TimestampStructTest extends TestCase
     /**
      * @param array $custom
      *
-     * @return Timestamp
+     * @return TimestampStruct
      */
-    private function generateStruct(array $custom = []): Timestamp
+    private function generateStruct(array $custom = []): TimestampStruct
     {
         $data = [
             'epoch' => 1549797099,
@@ -97,7 +97,7 @@ class TimestampStructTest extends TestCase
 
         $data = array_merge($data, $custom);
 
-        return new Timestamp(
+        return new TimestampStruct(
             $data['epoch'],
             $data['unix'],
             $data['human']

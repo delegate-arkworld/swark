@@ -3,9 +3,9 @@
 namespace Swark\Tests\Unit\Structs;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Structs\Timestamp;
-use Swark\Structs\Transaction;
-use Swark\Tests\Mocks\TimestampStructMock;
+use Swark\Structs\TimestampStruct;
+use Swark\Structs\TransactionStruct;
+use Swark\Tests\Mocks\TimestampStructStructMock;
 
 /**
  * Class TransactionStructTest
@@ -20,7 +20,7 @@ class TransactionStructTest extends TestCase
     {
         $struct = $this->generateStruct();
 
-        $this->assertInstanceOf(Transaction::class, $struct);
+        $this->assertInstanceOf(TransactionStruct::class, $struct);
     }
 
     public function test_getId()
@@ -114,7 +114,7 @@ class TransactionStructTest extends TestCase
             'timestamp' => $this->generateTimestampStruct(['unix' => 1552217275])
         ]);
 
-        $this->assertInstanceOf(Timestamp::class, $struct->getTimestamp());
+        $this->assertInstanceOf(TimestampStruct::class, $struct->getTimestamp());
     }
 
     public function test_setTimestamp()
@@ -122,7 +122,7 @@ class TransactionStructTest extends TestCase
         $struct = $this->generateStruct();
         $struct->setTimestamp($this->generateTimestampStruct(['unix' => 1552217906]));
 
-        $this->assertInstanceOf(Timestamp::class, $struct->getTimestamp());
+        $this->assertInstanceOf(TimestampStruct::class, $struct->getTimestamp());
     }
 
     public function test_toArray()
@@ -141,9 +141,9 @@ class TransactionStructTest extends TestCase
     /**
      * @param array $custom
      *
-     * @return Transaction
+     * @return TransactionStruct
      */
-    private function generateStruct(array $custom = []): Transaction
+    private function generateStruct(array $custom = []): TransactionStruct
     {
         $data = [
             'id' => 'e1b7b3075355577c8163197d1ce6adac1bffe44b200202b871da6ed16d4f73fc',
@@ -156,7 +156,7 @@ class TransactionStructTest extends TestCase
 
         $data = array_merge($data, $custom);
 
-        return new Transaction(
+        return new TransactionStruct(
             $data['id'],
             $data['amount'],
             $data['recipient'],
@@ -169,9 +169,9 @@ class TransactionStructTest extends TestCase
     /**
      * @param array $custom
      *
-     * @return Timestamp
+     * @return TimestampStruct
      */
-    private function generateTimestampStruct(array $custom = []): Timestamp
+    private function generateTimestampStruct(array $custom = []): TimestampStruct
     {
         $data = [
             'epoch' => 1549798089,
@@ -181,7 +181,7 @@ class TransactionStructTest extends TestCase
 
         $data = array_merge($data, $custom);
 
-        return new Timestamp(
+        return new TimestampStruct(
             $data['epoch'],
             $data['unix'],
             $data['human']

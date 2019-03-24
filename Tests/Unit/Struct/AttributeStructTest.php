@@ -8,7 +8,7 @@ use Swark\Structs\Attributes;
 /**
  * Class AttributesStructTest
  */
-class AttributesStructTest extends TestCase
+class AttributeStructTest extends TestCase
 {
     protected static $ensureLoadedPlugins = [
         'Swark' => [],
