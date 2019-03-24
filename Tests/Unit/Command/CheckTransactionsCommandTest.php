@@ -1,9 +1,9 @@
 <?php
 
-namespace Swark\Tests\Unit\Commands;
+namespace Swark\Tests\Unit\Command;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Commands\CheckTransactionsCommand;
+use Swark\Command\CheckTransactionsCommand;
 use Swark\Tests\Mocks\OrderServiceMock;
 
 /**

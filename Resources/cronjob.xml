@@ -4,7 +4,7 @@
 
     <!-- Check Transactions Cron -->
     <cronjob>
-        <name>Check Ark transactions</name>
+        <name>Check Ark Transactions</name>
         <action>Shopware_CronJob_SwarkCheckTransactions</action>
         <active>true</active>
         <interval>900</interval>

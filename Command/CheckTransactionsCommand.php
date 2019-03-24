@@ -1,7 +1,8 @@
 <?php
 
-namespace Swark\Commands;
+namespace Swark\Command;
 
+use InvalidArgumentException;
 use Shopware\Commands\ShopwareCommand;
 use Swark\Services\OrderService;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,9 +20,7 @@ class CheckTransactionsCommand extends ShopwareCommand
     private $orderService;
 
     /**
-     * @param OrderService $orderService
-     *
-     * @throws \Symfony\Component\Console\Exception\LogicException
+     * {@inheritdoc}
      */
     public function __construct(OrderService $orderService)
     {
@@ -31,7 +30,7 @@ class CheckTransactionsCommand extends ShopwareCommand
     }
 
     /**
-     * @throws \InvalidArgumentException
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -40,10 +39,7 @@ class CheckTransactionsCommand extends ShopwareCommand
     }
 
     /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

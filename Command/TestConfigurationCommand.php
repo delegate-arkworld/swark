@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Commands;
+namespace Swark\Command;
 
 use Shopware\Commands\ShopwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -21,7 +21,7 @@ class TestConfigurationCommand extends ShopwareCommand
     }
 
     /**
-     * @throws \InvalidArgumentException
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -30,10 +30,7 @@ class TestConfigurationCommand extends ShopwareCommand
     }
 
     /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
