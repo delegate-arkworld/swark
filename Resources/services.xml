@@ -4,19 +4,19 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <imports>
         <!-- Parameters -->
-        <import resource="services/parameters.xml"/>
+        <import resource="services/parameter.xml"/>
 
         <!-- Services -->
-        <import resource="services/services.xml"/>
+        <import resource="services/service.xml"/>
 
         <!-- Helper -->
         <import resource="services/helper.xml"/>
 
         <!-- Subscriber -->
-        <import resource="services/subscribers.xml"/>
+        <import resource="services/subscriber.xml"/>
 
         <!-- Commands -->
-        <import resource="services/commands.xml"/>
+        <import resource="services/command.xml"/>
 
         <!-- ArkClient -->
         <import resource="../Components/ArkClient/Resources/services.xml"/>

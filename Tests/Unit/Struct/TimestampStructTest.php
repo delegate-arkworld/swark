@@ -1,9 +1,9 @@
 <?php
 
-namespace Swark\Tests\Unit\Structs;
+namespace Swark\Tests\Unit\Struct;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Structs\TimestampStruct;
+use Swark\Struct\TimestampStruct;
 
 /**
  * Class TimestampStructTest

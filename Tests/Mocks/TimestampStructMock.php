@@ -2,7 +2,7 @@
 
 namespace Swark\Tests\Mocks;
 
-use Swark\Structs\TimestampStruct;
+use Swark\Struct\TimestampStruct;
 
 /**
  * Class TimestampStructMock

@@ -7,7 +7,7 @@ use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
 use Shopware\Models\Payment\Payment;
 use Shopware\Models\Shop\Currency;
-use Swark\Structs\Attributes;
+use Swark\Struct\AttributeStruct;
 
 /**
  * Class OrderHelper
@@ -116,7 +116,7 @@ class OrderHelper
      */
     public function getOrderAttributes(\Shopware\Models\Attribute\Order $attributes): array
     {
-        $struct = new Attributes(
+        $struct = new AttributeStruct(
             $attributes->getSwarkTransactionId(),
             $attributes->getSwarkArkAmount(),
             $attributes->getSwarkRecipientAddress(),

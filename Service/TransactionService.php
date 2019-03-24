@@ -3,8 +3,8 @@
 namespace Swark\Service;
 
 use ArkEcosystem\Client\ConnectionManager;
-use Swark\Structs\Timestamp;
-use Swark\Structs\Transaction;
+use Swark\Struct\TimestampStruct;
+use Swark\Struct\TransactionStruct;
 
 /**
  * Class TransactionService
@@ -37,20 +37,20 @@ class TransactionService
      * @param string $wallet
      * @param string $vendorField
      *
-     * @return Transaction
+     * @return TransactionStruct
      */
-    public function getTransaction(string $wallet, string $vendorField): Transaction
+    public function getTransaction(string $wallet, string $vendorField): TransactionStruct
     {
         $transaction = $this->getTransactionByVendorField($wallet, $vendorField);
 
         if ($transaction) {
-            return new Transaction(
+            return new TransactionStruct(
                 $transaction['id'],
                 $transaction['amount'],
                 $transaction['recipient'],
                 $transaction['vendorField'],
                 $transaction['confirmations'],
-                new Timestamp(
+                new TimestampStruct(
                     $transaction['timestamp']['epoch'],
                     $transaction['timestamp']['unix'],
                     $transaction['timestamp']['human']

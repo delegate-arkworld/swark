@@ -1,11 +1,11 @@
 <?php
 
-namespace Swark\Structs;
+namespace Swark\Struct;
 
 /**
- * Class Transaction
+ * Class TransactionStruct
  */
-class Transaction
+class TransactionStruct
 {
     /**
      * @var string
@@ -33,7 +33,7 @@ class Transaction
     private $confirmations;
 
     /**
-     * @var Timestamp
+     * @var TimestampStruct
      */
     private $timestamp;
 
@@ -43,7 +43,7 @@ class Transaction
      * @param string    $recipient
      * @param string    $vendorField
      * @param int       $confirmations
-     * @param Timestamp $timestamp
+     * @param TimestampStruct $timestamp
      */
     public function __construct(
         string $id,
@@ -51,7 +51,7 @@ class Transaction
         string $recipient,
         string $vendorField,
         int $confirmations,
-        Timestamp $timestamp
+        TimestampStruct $timestamp
     ) {
         $this->setId($id);
         $this->setAmount($amount);
@@ -72,9 +72,9 @@ class Transaction
     /**
      * @param string $id
      *
-     * @return Transaction
+     * @return TransactionStruct
      */
-    public function setId(string $id): Transaction
+    public function setId(string $id): TransactionStruct
     {
         $this->id = $id;
 
@@ -92,9 +92,9 @@ class Transaction
     /**
      * @param float $amount
      *
-     * @return Transaction
+     * @return TransactionStruct
      */
-    public function setAmount(float $amount): Transaction
+    public function setAmount(float $amount): TransactionStruct
     {
         $this->amount = $amount;
 
@@ -112,9 +112,9 @@ class Transaction
     /**
      * @param string $recipient
      *
-     * @return Transaction
+     * @return TransactionStruct
      */
-    public function setRecipient(string $recipient): Transaction
+    public function setRecipient(string $recipient): TransactionStruct
     {
         $this->recipient = $recipient;
 
@@ -132,9 +132,9 @@ class Transaction
     /**
      * @param string $vendorField
      *
-     * @return Transaction
+     * @return TransactionStruct
      */
-    public function setVendorField(string $vendorField): Transaction
+    public function setVendorField(string $vendorField): TransactionStruct
     {
         $this->vendorField = $vendorField;
 
@@ -152,9 +152,9 @@ class Transaction
     /**
      * @param int $confirmations
      *
-     * @return Transaction
+     * @return TransactionStruct
      */
-    public function setConfirmations(int $confirmations): Transaction
+    public function setConfirmations(int $confirmations): TransactionStruct
     {
         $this->confirmations = $confirmations;
 
@@ -162,19 +162,19 @@ class Transaction
     }
 
     /**
-     * @return Timestamp
+     * @return TimestampStruct
      */
-    public function getTimestamp(): Timestamp
+    public function getTimestamp(): TimestampStruct
     {
         return $this->timestamp;
     }
 
     /**
-     * @param Timestamp $timestamp
+     * @param TimestampStruct $timestamp
      *
-     * @return Transaction
+     * @return TransactionStruct
      */
-    public function setTimestamp(Timestamp $timestamp): Transaction
+    public function setTimestamp(TimestampStruct $timestamp): TransactionStruct
     {
         $this->timestamp = $timestamp;
 

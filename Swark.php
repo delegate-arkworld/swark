@@ -13,8 +13,7 @@ use Swark\Service\LoggerService;
  */
 class Swark extends Plugin
 {
-    // TODO: set local environment on SW 5.5
-    // TODO: Set minimum requirement to SW 5.5 and use symfony/mercure for real time updates in FE
+    // TODO: Use symfony/mercure for real time updates in FE
     // TODO: Use symfony/httpclient for ARK integration because of old guzzle version
 
     /**

@@ -7,7 +7,7 @@ use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
 use Swark\Helper\OrderHelper;
 use Swark\Helper\PluginHelper;
-use Swark\Structs\Attributes;
+use Swark\Struct\AttributeStruct;
 
 /**
  * Class OrderService

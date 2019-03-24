@@ -1,12 +1,12 @@
 <?php
 
-namespace Swark\Tests\Unit\Structs;
+namespace Swark\Tests\Unit\Struct;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Structs\Attributes;
+use Swark\Struct\AttributeStruct;
 
 /**
- * Class AttributesStructTest
+ * Class AttributeStructTest
  */
 class AttributeStructTest extends TestCase
 {
@@ -18,7 +18,7 @@ class AttributeStructTest extends TestCase
     {
         $struct = $this->generateStruct();
 
-        $this->assertInstanceOf(Attributes::class, $struct);
+        $this->assertInstanceOf(AttributeStruct::class, $struct);
     }
 
     public function test_getAmount()
@@ -103,9 +103,9 @@ class AttributeStructTest extends TestCase
     /**
      * @param array $custom
      *
-     * @return Attributes
+     * @return AttributeStruct
      */
-    private function generateStruct(array $custom = []): Attributes
+    private function generateStruct(array $custom = []): AttributeStruct
     {
         $data = [
             'swarkTransactionId' => 'fb39751eed0c0b0e6e05dced86d5deb6dd8e4a59b859b37fbf257c9ad8d54891',
@@ -116,7 +116,7 @@ class AttributeStructTest extends TestCase
 
         $data = array_merge($data, $custom);
 
-        return new Attributes(
+        return new AttributeStruct(
             $data['swarkTransactionId'],
             $data['swarkArkAmount'],
             $data['swarkRecipientAddress'],

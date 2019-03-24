@@ -1,11 +1,11 @@
 <?php
 
-namespace Swark\Structs;
+namespace Swark\Struct;
 
 /**
- * Class Timestamp
+ * Class TimestampStruct
  */
-class Timestamp
+class TimestampStruct
 {
     /**
      * @var int
@@ -48,9 +48,9 @@ class Timestamp
     /**
      * @param int $epoch
      *
-     * @return Timestamp
+     * @return TimestampStruct
      */
-    public function setEpoch(int $epoch): Timestamp
+    public function setEpoch(int $epoch): TimestampStruct
     {
         $this->epoch = $epoch;
 
@@ -68,9 +68,9 @@ class Timestamp
     /**
      * @param int $unix
      *
-     * @return Timestamp
+     * @return TimestampStruct
      */
-    public function setUnix(int $unix): Timestamp
+    public function setUnix(int $unix): TimestampStruct
     {
         $this->unix = $unix;
 
@@ -88,9 +88,9 @@ class Timestamp
     /**
      * @param string $human
      *
-     * @return Timestamp
+     * @return TimestampStruct
      */
-    public function setHuman(string $human): Timestamp
+    public function setHuman(string $human): TimestampStruct
     {
         $this->human = $human;
 

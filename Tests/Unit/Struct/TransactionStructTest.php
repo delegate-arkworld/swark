@@ -1,11 +1,11 @@
 <?php
 
-namespace Swark\Tests\Unit\Structs;
+namespace Swark\Tests\Unit\Struct;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Structs\TimestampStruct;
-use Swark\Structs\TransactionStruct;
-use Swark\Tests\Mocks\TimestampStructStructMock;
+use Swark\Struct\TimestampStruct;
+use Swark\Struct\TransactionStruct;
+use Swark\Tests\Mocks\TimestampStructMock;
 
 /**
  * Class TransactionStructTest
