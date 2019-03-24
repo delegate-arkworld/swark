@@ -2,11 +2,15 @@
 
 namespace Swark\Subscriber;
 
-use Swark\Services\OrderService;
+use Enlight_Event_EventArgs;
+use Exception;
+use Swark\Service\OrderService;
 use Enlight\Event\SubscriberInterface;
 
 /**
  * Class SaveOrderSubscriber
+ *
+ * @package Swark\Subscriber
  */
 class SaveOrderSubscriber implements SubscriberInterface
 {
@@ -34,11 +38,11 @@ class SaveOrderSubscriber implements SubscriberInterface
     }
 
     /**
-     * @param \Enlight_Event_EventArgs $args
+     * @param Enlight_Event_EventArgs $args
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    public function onOrderSaveOrderProcessDetails(\Enlight_Event_EventArgs $args): void
+    public function onOrderSaveOrderProcessDetails(Enlight_Event_EventArgs $args): void
     {
         /** @var \sOrder $order */
         $order = $args->getSubject();

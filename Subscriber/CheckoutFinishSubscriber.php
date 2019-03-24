@@ -3,11 +3,15 @@
 namespace Swark\Subscriber;
 
 use Swark\Helper\OrderHelper;
-use Swark\Services\OrderService;
+use Swark\Service\OrderService;
 use Enlight\Event\SubscriberInterface;
+use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 /**
  * Class CheckoutFinishSubscriber
+ *
+ * @package Swark\Subscriber
  */
 class CheckoutFinishSubscriber implements SubscriberInterface
 {
@@ -62,8 +66,8 @@ class CheckoutFinishSubscriber implements SubscriberInterface
     /**
      * @param \Enlight_Event_EventArgs $args
      *
-     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
-     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+     * @throws ServiceNotFoundException
+     * @throws ServiceCircularReferenceException
      */
     public function onPostDispatchSecureCheckout(\Enlight_Event_EventArgs $args): void
     {

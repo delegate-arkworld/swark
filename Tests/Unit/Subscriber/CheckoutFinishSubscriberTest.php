@@ -9,6 +9,8 @@ use Swark\Tests\Mocks\OrderServiceMock;
 
 /**
  * Class CheckoutFinishSubscriberTest
+ *
+ * @package Swark\Tests\Unit\Subscriber
  */
 class CheckoutFinishSubscriberTest extends TestCase
 {

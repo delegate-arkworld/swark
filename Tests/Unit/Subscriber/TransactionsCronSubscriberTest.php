@@ -8,6 +8,8 @@ use Swark\Tests\Mocks\OrderServiceMock;
 
 /**
  * Class TransactionsCronSubscriberTest
+ *
+ * @package Swark\Tests\Unit\Subscriber
  */
 class TransactionsCronSubscriberTest extends TestCase
 {

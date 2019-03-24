@@ -2,11 +2,13 @@
 
 namespace Swark\Subscriber;
 
-use Swark\Services\ExchangeService;
+use Swark\Service\ExchangeService;
 use Enlight\Event\SubscriberInterface;
 
 /**
  * Class ExchangeCronSubscriber
+ *
+ * @package Swark\Subscriber
  */
 class ExchangeCronSubscriber implements SubscriberInterface
 {

@@ -6,13 +6,17 @@ use Shopware\Components\Model\ModelManager;
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Models\Shop\Currency;
-use Swark\Services\LoggerService;
+use Swark\Service\LoggerService;
 
 /**
  * Class Swark
+ *
+ * @package Swark
  */
 class Swark extends Plugin
 {
+    // TODO: Use symfony/httpclient for ARK integration because of old guzzle version
+
     /**
      * @param InstallContext $context
      *
@@ -20,8 +24,6 @@ class Swark extends Plugin
      */
     public function install(InstallContext $context)
     {
-        // TODO: fix phpunit with travis
-
         parent::install($context);
 
         $this->installCurrency();
@@ -172,7 +174,7 @@ class Swark extends Plugin
         /** @var ModelManager $models */
         $models = $this->container->get('models');
 
-        $exchangeService = new \Swark\Services\ExchangeService(
+        $exchangeService = new \Swark\Service\ExchangeService(
             $this->container->get('http_client'),
             new LoggerService(
                 new \Shopware\Components\Logger('plugin')

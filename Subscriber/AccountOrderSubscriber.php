@@ -2,11 +2,16 @@
 
 namespace Swark\Subscriber;
 
+use Enlight_Event_EventArgs;
 use Swark\Helper\OrderHelper;
 use Enlight\Event\SubscriberInterface;
+use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 /**
  * Class AccountOrderSubscriber
+ *
+ * @package Swark\Subscriber
  */
 class AccountOrderSubscriber implements SubscriberInterface
 {
@@ -43,12 +48,12 @@ class AccountOrderSubscriber implements SubscriberInterface
     }
 
     /**
-     * @param \Enlight_Event_EventArgs $args
+     * @param Enlight_Event_EventArgs $args
      *
-     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
-     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+     * @throws ServiceNotFoundException
+     * @throws ServiceCircularReferenceException
      */
-    public function onPostDispatchSecureAccount(\Enlight_Event_EventArgs $args): void
+    public function onPostDispatchSecureAccount(Enlight_Event_EventArgs $args): void
     {
         /** @var \Shopware_Controllers_Frontend_Account $subject */
         $subject = $args->getSubject();

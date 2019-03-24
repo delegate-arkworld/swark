@@ -2,7 +2,7 @@
 
 namespace Swark\Tests\Mocks;
 
-use Swark\Services\TransactionService;
+use Swark\Service\TransactionService;
 
 /**
  * Class TransactionServiceMock
