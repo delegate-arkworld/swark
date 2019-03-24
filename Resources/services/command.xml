@@ -7,7 +7,7 @@
         <service id="swark.command.check_transactions_command"
                  class="Swark\Command\CheckTransactionsCommand">
             <tag name="console.command"/>
-            <argument type="service" id="swark.services.order_service" />
+            <argument type="service" id="swark.service.order_service" />
         </service>
 
         <!-- Test Configuration Command -->

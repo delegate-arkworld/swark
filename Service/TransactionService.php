@@ -3,6 +3,8 @@
 namespace Swark\Service;
 
 use ArkEcosystem\Client\ConnectionManager;
+use Exception;
+use Monolog\Logger;
 use Swark\Struct\TimestampStruct;
 use Swark\Struct\TransactionStruct;
 
@@ -14,25 +16,25 @@ use Swark\Struct\TransactionStruct;
 class TransactionService
 {
     /**
-     * @var ConnectionManager
+     * @var Logger
      */
-    private $connectionManager;
+    private $errorLogger;
 
     /**
-     * @var LoggerService
+     * @var Logger
      */
-    private $loggerService;
+    private $processLogger;
 
     /**
-     * @param ConnectionService $connectionService
-     * @param LoggerService     $loggerService
+     * @param Logger $errorLogger
+     * @param Logger $processLogger
      */
     public function __construct(
-        ConnectionService $connectionService,
-        LoggerService $loggerService
+        Logger $errorLogger,
+        Logger $processLogger
     ) {
-        $this->connectionManager = $connectionService->getConnectionManager();
-        $this->loggerService = $loggerService;
+        $this->errorLogger = $errorLogger;
+        $this->processLogger = $processLogger;
     }
 
     /**
@@ -69,7 +71,7 @@ class TransactionService
      *
      * @return array
      */
-    protected function getTransactionByVendorField(string $wallet, string $vendorField): array
+    private function getTransactionByVendorField(string $wallet, string $vendorField): array
     {
         try {
             $response = $this->connectionManager
@@ -77,16 +79,16 @@ class TransactionService
                     'recipientId' => $wallet,
                     'vendorFieldHex' => implode(unpack('H*', $vendorField)),
                 ]);
-        } catch (\Exception $e) {
-            $this->loggerService->warning('main node api was not executable', $e->getTrace());
+        } catch (Exception $e) {
+            $this->processLogger->warning('main node api was not executable', $e->getTrace());
             try {
                 $response = $this->connectionManager
                     ->connection('backup')->transactions()->search([
                         'recipientId' => $wallet,
                         'vendorFieldHex' => \implode(\unpack('H*', $vendorField)),
                     ]);
-            } catch (\Exception $e) {
-                $this->loggerService->error('backup node api was not executable', $e->getTrace());
+            } catch (Exception $e) {
+                $this->errorLogger->error('backup node api was not executable', $e->getTrace());
             }
         }
 

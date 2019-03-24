@@ -4,6 +4,7 @@ namespace Swark\Service;
 
 use Exception;
 use Monolog\Logger;
+use RuntimeException;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
@@ -85,14 +86,12 @@ class OrderService
         $this->errorLogger = $errorLogger;
         $this->processLogger = $processLogger;
         $this->exchangeService = $exchangeService;
-
     }
 
     /**
      * Function to check the transactions
      *
-     * @throws \RuntimeException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws RuntimeException
      * @throws Exception
      */
     public function checkTransactions(): bool
@@ -189,7 +188,7 @@ class OrderService
      *
      * @throws Exception
      */
-    public function updateOrderTransactionId(\Shopware\Models\Attribute\Order $attributes, string $transactionId, int $orderNumber): void
+    private function updateOrderTransactionId(\Shopware\Models\Attribute\Order $attributes, string $transactionId, int $orderNumber): void
     {
         try {
             $attributes->setSwarkTransactionId($transactionId);
@@ -212,7 +211,7 @@ class OrderService
      *
      * @throws Exception
      */
-    public function updateOrderAmount(Order $order, \Shopware\Models\Attribute\Order $attributes): void
+    private function updateOrderAmount(Order $order, \Shopware\Models\Attribute\Order $attributes): void
     {
         try {
             $currency = $order->getCurrency();
@@ -249,7 +248,7 @@ class OrderService
      *
      * @throws Exception
      */
-    public function updateOrderRecipientAddress(\Shopware\Models\Attribute\Order $attributes, int $orderNumber): void
+    private function updateOrderRecipientAddress(\Shopware\Models\Attribute\Order $attributes, int $orderNumber): void
     {
         try {
             $recipient = $this->pluginHelper->getRandomWallet();
@@ -274,7 +273,7 @@ class OrderService
      *
      * @throws Exception
      */
-    public function updateOrderVendorField(\Shopware\Models\Attribute\Order $attributes, int $orderNumber): void
+    private function updateOrderVendorField(\Shopware\Models\Attribute\Order $attributes, int $orderNumber): void
     {
         try {
             $vendorField = $this->orderHelper->getVendorFieldLayout($orderNumber);
@@ -301,7 +300,7 @@ class OrderService
      *
      * @throws Exception
      */
-    public function updateOrderPaymentStatus(Order $order, Status $paymentStatus): bool
+    private function updateOrderPaymentStatus(Order $order, Status $paymentStatus): bool
     {
         try {
             $order->setPaymentStatus($paymentStatus);
@@ -349,7 +348,7 @@ class OrderService
      *
      * @return bool
      */
-    public function checkConfirmations(int $confirmations): bool
+    private function checkConfirmations(int $confirmations): bool
     {
         return $confirmations >= $this->pluginConfig['confirmations'];
     }
@@ -360,7 +359,7 @@ class OrderService
      *
      * @return bool
      */
-    public function checkOrderAmount(float $transactionAmount, float $orderAmount): bool
+    private function checkOrderAmount(float $transactionAmount, float $orderAmount): bool
     {
         return ($transactionAmount >= $orderAmount) ? true : false;
     }
@@ -371,7 +370,7 @@ class OrderService
      *
      * @return float
      */
-    public function calculatePrice(float $price, float $factor)
+    private function calculatePrice(float $price, float $factor)
     {
         return $price * $factor;
     }

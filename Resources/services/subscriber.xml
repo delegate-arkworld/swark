@@ -6,14 +6,14 @@
         <!-- Transactions Cron Subscriber -->
         <service id="swark.subscriber.transactions_cron_subscriber"
                  class="Swark\Subscriber\TransactionsCronSubscriber">
-            <argument type="service" id="swark.services.order_service" />
+            <argument type="service" id="swark.service.order_service" />
             <tag name="shopware.event_subscriber"/>
         </service>
 
         <!-- Exchange Cron Subscriber -->
         <service id="swark.subscriber.exchange_cron_subscriber"
                  class="Swark\Subscriber\ExchangeCronSubscriber">
-            <argument type="service" id="swark.services.exchange_service" />
+            <argument type="service" id="swark.service.exchange_service" />
             <tag name="shopware.event_subscriber"/>
         </service>
 
@@ -21,7 +21,7 @@
         <service id="swark.subscriber.checkout_finish_subscriber"
                  class="Swark\Subscriber\CheckoutFinishSubscriber">
             <argument type="string">%swark.views_dir%</argument>
-            <argument type="service" id="swark.services.order_service" />
+            <argument type="service" id="swark.service.order_service" />
             <argument type="service" id="swark.helper.order_helper" />
             <argument type="service" id="swark.config"/>
             <tag name="shopware.event_subscriber"/>
@@ -30,7 +30,7 @@
         <!-- Save Order Subscriber -->
         <service id="swark.subscriber.save_order_subscriber"
                  class="Swark\Subscriber\SaveOrderSubscriber">
-            <argument type="service" id="swark.services.order_service" />
+            <argument type="service" id="swark.service.order_service" />
             <tag name="shopware.event_subscriber"/>
         </service>
 
