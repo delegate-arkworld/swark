@@ -3,10 +3,10 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <imports>
-        <!-- Parameters -->
+        <!-- Parameter -->
         <import resource="services/parameter.xml"/>
 
-        <!-- Services -->
+        <!-- Service -->
         <import resource="services/service.xml"/>
 
         <!-- Helper -->
@@ -15,8 +15,11 @@
         <!-- Subscriber -->
         <import resource="services/subscriber.xml"/>
 
-        <!-- Commands -->
+        <!-- Command -->
         <import resource="services/command.xml"/>
+
+        <!-- Logger -->
+        <import resource="services/logger.xml"/>
 
         <!-- ArkClient -->
         <import resource="../Components/ArkClient/Resources/services.xml"/>
