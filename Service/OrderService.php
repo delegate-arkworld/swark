@@ -7,7 +7,6 @@ use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
 use Swark\Helper\OrderHelper;
 use Swark\Helper\PluginHelper;
-use Swark\Struct\AttributeStruct;
 
 /**
  * Class OrderService
@@ -104,7 +103,6 @@ class OrderService
                 'Processing Order [' . $order->getNumber() . ']'
             );
 
-            /** @var Attributes $attributes */
             $attributes = $this->orderHelper->getOrderAttributes($order->getAttribute());
 
             $transaction = $this->transactionService->getTransaction(

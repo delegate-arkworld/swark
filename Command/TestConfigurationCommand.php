@@ -2,6 +2,7 @@
 
 namespace Swark\Command;
 
+use Exception;
 use Shopware\Commands\ShopwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -41,7 +42,7 @@ class TestConfigurationCommand extends ShopwareCommand
             // connection test and if a transaction can be searched by vendorField
             // check if exchange rate can be crawled and updated
             // check if wallet address can be randomly selected
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $io->error($e->getMessage());
 
             return false;

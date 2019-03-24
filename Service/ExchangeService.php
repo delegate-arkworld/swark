@@ -2,6 +2,7 @@
 
 namespace Swark\Service;
 
+use Exception;
 use Shopware\Components\HttpClient\GuzzleHttpClient;
 use Shopware\Components\HttpClient\RequestException;
 use Shopware\Components\HttpClient\Response;
@@ -49,7 +50,7 @@ class ExchangeService
      * @param string $currency
      *
      * @throws RequestException
-     * @throws \Exception
+     * @throws Exception
      *
      * @return bool
      */
@@ -71,7 +72,7 @@ class ExchangeService
 
             $this->models->persist($object);
             $this->models->flush($object);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->loggerService->error('Could not update Ark currency factor', $e->getTrace());
             throw $e;
         }
@@ -99,7 +100,7 @@ class ExchangeService
         }
 
         if ($result->getStatusCode() === 200) {
-            return \json_decode($result->getBody())->{$currency};
+            return json_decode($result->getBody())->{$currency};
         }
 
         $this->loggerService->error('Exchange rate status code is not 200!', []);

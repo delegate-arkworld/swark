@@ -2,6 +2,7 @@
 
 namespace Swark\Command;
 
+use Exception;
 use Shopware\Commands\ShopwareCommand;
 use Swark\Service\OrderService;
 use Symfony\Component\Console\Input\InputInterface;
@@ -46,7 +47,7 @@ class CheckTransactionsCommand extends ShopwareCommand
 
         try {
             $success = $this->orderService->checkTransactions();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $io->error($e->getMessage());
 
             return false;
