@@ -7,6 +7,8 @@ use Swark\Struct\TimestampStruct;
 
 /**
  * Class TimestampStructTest
+ *
+ * @package Swark\Tests\Unit\Struct
  */
 class TimestampStructTest extends TestCase
 {

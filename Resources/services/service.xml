@@ -19,27 +19,29 @@
         <service id="swark.service.order_service"
                  class="Swark\Service\OrderService">
             <argument type="service" id="models" />
-            <argument type="service" id="swark.helper.order_helper" />
-            <argument type="service" id="swark.helper.plugin_helper" />
-            <argument type="service" id="swark.service.transaction_service" />
+            <argument type="service" id="swark.helper.order_helper"/>
+            <argument type="service" id="swark.helper.plugin_helper"/>
+            <argument type="service" id="swark.service.transaction_service"/>
             <argument type="service" id="swark.config"/>
-            <argument type="service" id="swark.service.logger_service"/>
+            <argument type="service" id="swark.logger.error_logger"/>
+            <argument type="service" id="swark.logger.process_logger"/>
             <argument type="service" id="swark.service.exchange_service"/>
         </service>
 
         <!-- Transaction Service -->
         <service id="swark.service.transaction_service"
                  class="Swark\Service\TransactionService">
-            <argument type="service" id="swark.service.connection_service" />
-            <argument type="service" id="swark.service.logger_service" />
+            <argument type="service" id="swark.service.connection_service"/>
+            <argument type="service" id="swark.service.logger_service"/>
         </service>
 
         <!-- Exchange Service -->
         <service id="swark.service.exchange_service"
                  class="Swark\Service\ExchangeService">
-            <argument type="service" id="http_client" />
-            <argument type="service" id="swark.service.logger_service" />
-            <argument type="service" id="models" />
+            <argument type="service" id="http_client"/>
+            <argument type="service" id="swark.logger.error_logger"/>
+            <argument type="service" id="swark.logger.process_logger"/>
+            <argument type="service" id="models"/>
         </service>
 
         <!-- Logger Service -->

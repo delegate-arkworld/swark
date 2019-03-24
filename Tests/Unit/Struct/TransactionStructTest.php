@@ -9,6 +9,8 @@ use Swark\Tests\Mocks\TimestampStructMock;
 
 /**
  * Class TransactionStructTest
+ *
+ * @package Swark\Tests\Unit\Struct
  */
 class TransactionStructTest extends TestCase
 {

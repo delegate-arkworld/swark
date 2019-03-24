@@ -15,24 +15,16 @@ class LoggerFactory
     const LOGGER_PREFIX = 'swark';
 
     /**
-     * @var array
-     */
-    private $loggerConfig;
-
-    /**
      * @var string
      */
     private $rootLogDir;
 
     /**
-     * @param array  $loggerConfig
      * @param string $rootLogDir
      */
     public function __construct(
-        array $loggerConfig,
         string $rootLogDir
     ) {
-        $this->loggerConfig = $loggerConfig;
         $this->rootLogDir = $rootLogDir;
     }
 
@@ -69,10 +61,6 @@ class LoggerFactory
      */
     private function addFileHandler(Logger $logger): void
     {
-        if (!array_key_exists('file', $this->loggerConfig)) {
-            return;
-        }
-
         $logger->pushHandler(new RotatingFileHandler(
             $this->rootLogDir . '/' . $logger->getName() . '.log',
             10

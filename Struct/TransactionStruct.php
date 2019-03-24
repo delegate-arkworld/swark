@@ -4,6 +4,8 @@ namespace Swark\Struct;
 
 /**
  * Class TransactionStruct
+ *
+ * @package Swark\Struct
  */
 class TransactionStruct
 {

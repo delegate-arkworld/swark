@@ -11,6 +11,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
  * Class CheckTransactionsCommand
+ *
+ * @package Swark\Command
  */
 class CheckTransactionsCommand extends ShopwareCommand
 {

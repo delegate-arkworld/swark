@@ -13,6 +13,8 @@ use Swark\Tests\Mocks\TransactionServiceMock;
 
 /**
  * Class OrderServiceTest
+ *
+ * @package Swark\Tests\Unit\Service
  */
 class OrderServiceTest extends TestCase
 {

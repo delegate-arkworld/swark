@@ -8,9 +8,12 @@ use Shopware\Components\HttpClient\RequestException;
 use Shopware\Components\HttpClient\Response;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Currency;
+use Monolog\Logger;
 
 /**
  * Class ExchangeService
+ *
+ * @package Swark\Service
  */
 class ExchangeService
 {
@@ -22,9 +25,14 @@ class ExchangeService
     private $client;
 
     /**
-     * @var LoggerService
+     * @var Logger
      */
-    private $loggerService;
+    private $errorLogger;
+
+    /**
+     * @var Logger
+     */
+    private $processLogger;
 
     /**
      * @var ModelManager
@@ -33,16 +41,19 @@ class ExchangeService
 
     /**
      * @param GuzzleHttpClient $client
-     * @param LoggerService    $loggerService
-     * @param ModelManager     $modelManager
+     * @param Logger $errorLogger
+     * @param Logger $processLogger
+     * @param ModelManager $modelManager
      */
     public function __construct(
         GuzzleHttpClient $client,
-        LoggerService $loggerService,
+        Logger $errorLogger,
+        Logger $processLogger,
         ModelManager $modelManager
     ) {
         $this->client = $client;
-        $this->loggerService = $loggerService;
+        $this->errorLogger = $errorLogger;
+        $this->processLogger = $processLogger;
         $this->models = $modelManager;
     }
 
@@ -73,11 +84,11 @@ class ExchangeService
             $this->models->persist($object);
             $this->models->flush($object);
         } catch (Exception $e) {
-            $this->loggerService->error('Could not update Ark currency factor', $e->getTrace());
+            $this->errorLogger->error('Could not update Ark currency factor', $e->getTrace());
             throw $e;
         }
 
-        $this->loggerService->info('Updated the Ark currency factor to ' . $rate);
+        $this->processLogger->info('Updated the Ark currency factor to ' . $rate);
 
         return true;
     }
@@ -95,7 +106,7 @@ class ExchangeService
             /** @var Response $result */
             $result = $this->client->get(self::URL . $currency);
         } catch (RequestException $e) {
-            $this->loggerService->error('Could not get the exchange rate from the external api!', $e->getTrace());
+            $this->errorLogger->error('Could not get the exchange rate from the external api!', $e->getTrace());
             throw $e;
         }
 
@@ -103,7 +114,7 @@ class ExchangeService
             return json_decode($result->getBody())->{$currency};
         }
 
-        $this->loggerService->error('Exchange rate status code is not 200!', []);
+        $this->errorLogger->error('Exchange rate status code is not 200!', []);
 
         return false;
     }

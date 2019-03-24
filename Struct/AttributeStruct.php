@@ -4,6 +4,8 @@ namespace Swark\Struct;
 
 /**
  * Class AttributeStruct
+ *
+ * @package Swark\Struct
  */
 class AttributeStruct
 {

@@ -7,6 +7,8 @@ use Swark\Struct\AttributeStruct;
 
 /**
  * Class AttributeStructTest
+ *
+ * @package Swark\Tests\Unit\Struct
  */
 class AttributeStructTest extends TestCase
 {

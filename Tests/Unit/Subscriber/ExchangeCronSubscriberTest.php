@@ -8,6 +8,8 @@ use Swark\Tests\Mocks\ExchangeServiceMock;
 
 /**
  * Class ExchangeCronSubscriberTest
+ *
+ * @package Swark\Tests\Unit\Subscriber
  */
 class ExchangeCronSubscriberTest extends TestCase
 {

@@ -8,6 +8,8 @@ use Swark\Tests\Mocks\ModelManagerMock;
 
 /**
  * Class PluginHelperTest
+ *
+ * @package Swark\Tests\Unit\Helper
  */
 class PluginHelperTest extends TestCase
 {

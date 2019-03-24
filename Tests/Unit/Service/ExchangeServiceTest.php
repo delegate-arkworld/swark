@@ -10,6 +10,8 @@ use Swark\Tests\Mocks\ModelManagerMock;
 
 /**
  * Class ExchangeServiceTest
+ *
+ * @package Swark\Tests\Unit\Service
  */
 class ExchangeServiceTest extends TestCase
 {

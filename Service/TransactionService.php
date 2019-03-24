@@ -8,6 +8,8 @@ use Swark\Struct\TransactionStruct;
 
 /**
  * Class TransactionService
+ *
+ * @package Swark\Service
  */
 class TransactionService
 {

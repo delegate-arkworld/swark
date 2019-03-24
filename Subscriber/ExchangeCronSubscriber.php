@@ -7,6 +7,8 @@ use Enlight\Event\SubscriberInterface;
 
 /**
  * Class ExchangeCronSubscriber
+ *
+ * @package Swark\Subscriber
  */
 class ExchangeCronSubscriber implements SubscriberInterface
 {

@@ -2,11 +2,14 @@
 
 namespace Swark\Subscriber;
 
+use Exception;
 use Swark\Service\OrderService;
 use Enlight\Event\SubscriberInterface;
 
 /**
  * Class TransactionsCronSubscriber
+ *
+ * @package Swark\Subscriber
  */
 class TransactionsCronSubscriber implements SubscriberInterface
 {
@@ -41,7 +44,7 @@ class TransactionsCronSubscriber implements SubscriberInterface
     {
         try {
             $success = $this->orderService->checkTransactions();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
 

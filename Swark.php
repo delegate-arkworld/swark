@@ -10,6 +10,8 @@ use Swark\Service\LoggerService;
 
 /**
  * Class Swark
+ *
+ * @package Swark
  */
 class Swark extends Plugin
 {

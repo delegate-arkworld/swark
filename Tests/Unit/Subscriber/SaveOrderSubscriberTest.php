@@ -8,6 +8,8 @@ use Swark\Tests\Mocks\OrderServiceMock;
 
 /**
  * Class SaveOrderSubscriberTest
+ *
+ * @package Swark\Tests\Unit\Subscriber
  */
 class SaveOrderSubscriberTest extends TestCase
 {

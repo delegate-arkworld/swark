@@ -7,11 +7,11 @@ use Shopware\Models\Plugin\Plugin;
 
 /**
  * Class PluginHelper
+ *
+ * @package Swark\Helper
  */
 class PluginHelper
 {
-    // @TODO: remove helper and replace with converter, provider...
-
     /**
      * @var string
      */
@@ -77,7 +77,7 @@ class PluginHelper
      */
     public function getWalletsByConfig(): array
     {
-        return \explode(';', $this->pluginConfig['wallets']);
+        return explode(';', $this->pluginConfig['wallets']);
     }
 
     /**
@@ -87,6 +87,6 @@ class PluginHelper
     {
         $data = $this->getWalletsByConfig();
 
-        return $data[\array_rand($data)];
+        return $data[array_rand($data)];
     }
 }

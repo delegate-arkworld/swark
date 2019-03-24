@@ -4,18 +4,15 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service id="swark.logger.logger_factory" class="Swark\Logger\LoggerFactory">
-            <argument type="expression">container.hasParameter('shopware.wempe.loggers') ?
-                parameter('shopware.wempe.loggers') : []
-            </argument>
             <argument>%kernel.logs_dir%</argument>
         </service>
 
-        <service id="wempe.logger.error_logger" class="Monolog\Logger">
+        <service id="swark.logger.error_logger" class="Monolog\Logger">
             <factory service="swark.logger.logger_factory" method="createErrorLogger"/>
             <argument type="string">error</argument>
         </service>
 
-        <service id="wempe.components.logger.process_logger" class="Monolog\Logger">
+        <service id="swark.logger.process_logger" class="Monolog\Logger">
             <factory service="swark.logger.logger_factory" method="createProcessLogger"/>
             <argument type="string">process</argument>
         </service>

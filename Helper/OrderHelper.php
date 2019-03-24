@@ -11,11 +11,11 @@ use Swark\Struct\AttributeStruct;
 
 /**
  * Class OrderHelper
+ *
+ * @package Swark\Helper
  */
 class OrderHelper
 {
-    // @TODO: remove helper and replace with converter, provider...
-
     /**
      * @var ModelManager
      */
@@ -184,7 +184,7 @@ class OrderHelper
      */
     public function getVendorFieldLayout(int $orderNumber): string
     {
-        return \str_replace('{$ordernumber}', $orderNumber, $this->pluginConfig['vendorField']);
+        return str_replace('{$ordernumber}', $orderNumber, $this->pluginConfig['vendorField']);
     }
 
     /**

@@ -7,6 +7,8 @@ use Swark\Command\TestConfigurationCommand;
 
 /**
  * Class TestConfigurationCommandTest
+ *
+ * @package Swark\Tests\Unit\Command
  */
 class TestConfigurationCommandTest extends TestCase
 {

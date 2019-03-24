@@ -2,6 +2,8 @@
 
 namespace Swark\Service;
 
+use Exception;
+use Monolog\Logger;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
@@ -10,6 +12,8 @@ use Swark\Helper\PluginHelper;
 
 /**
  * Class OrderService
+ *
+ * @package Swark\Service
  */
 class OrderService
 {
@@ -39,9 +43,14 @@ class OrderService
     private $pluginConfig;
 
     /**
-     * @var LoggerService
+     * @var Logger
      */
-    private $loggerService;
+    private $errorLogger;
+
+    /**
+     * @var Logger
+     */
+    private $processLogger;
 
     /**
      * @var ExchangeService
@@ -54,7 +63,8 @@ class OrderService
      * @param PluginHelper $pluginHelper
      * @param TransactionService $transactionService
      * @param array $pluginConfig
-     * @param LoggerService $loggerService
+     * @param Logger $errorLogger
+     * @param Logger $processLogger
      * @param ExchangeService $exchangeService
      */
     public function __construct(
@@ -63,7 +73,8 @@ class OrderService
         PluginHelper $pluginHelper,
         TransactionService $transactionService,
         array $pluginConfig,
-        LoggerService $loggerService,
+        Logger $errorLogger,
+        Logger $processLogger,
         ExchangeService $exchangeService
     ) {
         $this->models = $models;
@@ -71,7 +82,8 @@ class OrderService
         $this->pluginHelper = $pluginHelper;
         $this->transactionService = $transactionService;
         $this->pluginConfig = $pluginConfig;
-        $this->loggerService = $loggerService;
+        $this->errorLogger = $errorLogger;
+        $this->processLogger = $processLogger;
         $this->exchangeService = $exchangeService;
 
     }
@@ -81,14 +93,14 @@ class OrderService
      *
      * @throws \RuntimeException
      * @throws \Doctrine\ORM\OptimisticLockException
-     * @throws \Exception
+     * @throws Exception
      */
     public function checkTransactions(): bool
     {
         $orders = $this->orderHelper->getOpenOrders();
 
         if (!$orders) {
-            $this->loggerService->info(
+            $this->processLogger->info(
                 'No open orders found.'
             );
 
@@ -99,7 +111,7 @@ class OrderService
          * @var Order $order
          */
         foreach ($orders as $order) {
-            $this->loggerService->info(
+            $this->processLogger->info(
                 'Processing Order [' . $order->getNumber() . ']'
             );
 
@@ -118,7 +130,7 @@ class OrderService
                 $transactionAmount = $transaction->getAmount()/100000000;
 
                 if (!$this->checkOrderAmount($transactionAmount, $attributes['swarkArkAmount'])) {
-                    $this->loggerService->info(
+                    $this->processLogger->info(
                         'Order [' . $order->getNumber() . '] received amount is too low: ' . $transactionAmount . '. Needed: ' . $attributes['swarkArkAmount']
                     );
 
@@ -130,7 +142,7 @@ class OrderService
                 }
 
                 if (!$this->checkConfirmations($transaction->getConfirmations())) {
-                    $this->loggerService->info(
+                    $this->processLogger->info(
                         'Order [' . $order->getNumber() . '] need more confirmations. Currently: ' . $transaction->getConfirmations()
                     );
                     continue;
@@ -141,7 +153,7 @@ class OrderService
                 continue;
             }
 
-            $this->loggerService->warning(
+            $this->processLogger->warning(
                 'No transaction for Order [' . $order->getNumber() . '] found!'
             );
         }
@@ -152,7 +164,7 @@ class OrderService
     /**
      * @param int $orderNumber
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return bool
      */
@@ -175,7 +187,7 @@ class OrderService
      * @param string                           $transactionId
      * @param int                              $orderNumber
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function updateOrderTransactionId(\Shopware\Models\Attribute\Order $attributes, string $transactionId, int $orderNumber): void
     {
@@ -184,12 +196,12 @@ class OrderService
 
             $this->models->persist($attributes);
             $this->models->flush($attributes);
-        } catch (\Exception $e) {
-            $this->loggerService->error('Order transaction id could not be updated!', $e->getTrace());
+        } catch (Exception $e) {
+            $this->errorLogger->error('Order transaction id could not be updated!', $e->getTrace());
             throw $e;
         }
 
-        $this->loggerService->info(
+        $this->processLogger->info(
             'Updated transaction id to [' . $transactionId . '] from order [' . $orderNumber . ']'
         );
     }
@@ -198,7 +210,7 @@ class OrderService
      * @param Order                            $order
      * @param \Shopware\Models\Attribute\Order $attributes
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function updateOrderAmount(Order $order, \Shopware\Models\Attribute\Order $attributes): void
     {
@@ -221,12 +233,12 @@ class OrderService
 
             $this->models->persist($attributes);
             $this->models->flush($attributes);
-        } catch (\Exception $e) {
-            $this->loggerService->error('Order amount could not be updated!', $e->getTrace());
+        } catch (Exception $e) {
+            $this->errorLogger->error('Order amount could not be updated!', $e->getTrace());
             throw $e;
         }
 
-        $this->loggerService->info(
+        $this->processLogger->info(
             'Updated amount to [' . $amount . '] for order [' . $order->getNumber() . ']'
         );
     }
@@ -235,7 +247,7 @@ class OrderService
      * @param \Shopware\Models\Attribute\Order $attributes
      * @param int                              $orderNumber
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function updateOrderRecipientAddress(\Shopware\Models\Attribute\Order $attributes, int $orderNumber): void
     {
@@ -246,12 +258,12 @@ class OrderService
 
             $this->models->persist($attributes);
             $this->models->flush($attributes);
-        } catch (\Exception $e) {
-            $this->loggerService->error('Order recipient address could not be updated!', $e->getTrace());
+        } catch (Exception $e) {
+            $this->errorLogger->error('Order recipient address could not be updated!', $e->getTrace());
             throw $e;
         }
 
-        $this->loggerService->info(
+        $this->processLogger->info(
             'Updated recipient address to [' . $recipient . '] from order [' . $orderNumber . ']'
         );
     }
@@ -260,7 +272,7 @@ class OrderService
      * @param \Shopware\Models\Attribute\Order $attributes
      * @param int                              $orderNumber
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function updateOrderVendorField(\Shopware\Models\Attribute\Order $attributes, int $orderNumber): void
     {
@@ -271,12 +283,12 @@ class OrderService
 
             $this->models->persist($attributes);
             $this->models->flush($attributes);
-        } catch (\Exception $e) {
-            $this->loggerService->error('Order vendorField could not be updated!', $e->getTrace());
+        } catch (Exception $e) {
+            $this->errorLogger->error('Order vendorField could not be updated!', $e->getTrace());
             throw $e;
         }
 
-        $this->loggerService->info(
+        $this->processLogger->info(
             'Updated vendorField to [' . $vendorField . '] from order [' . $orderNumber . ']'
         );
     }
@@ -287,7 +299,7 @@ class OrderService
      *
      * @return bool
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function updateOrderPaymentStatus(Order $order, Status $paymentStatus): bool
     {
@@ -304,18 +316,18 @@ class OrderService
                 if ($mail) {
                     try {
                         $orderModule->sendStatusMail($mail);
-                    } catch (\Exception $e) {
-                        $this->loggerService->error('Order [' . $order->getNumber() . '] could not send out order status mail', $e->getTrace());
+                    } catch (Exception $e) {
+                        $this->errorLogger->error('Order [' . $order->getNumber() . '] could not send out order status mail', $e->getTrace());
                         return false;
                     }
                 }
             }
-        } catch (\Exception $e) {
-            $this->loggerService->error('Order payment status could not be updated!', $e->getTrace());
+        } catch (Exception $e) {
+            $this->errorLogger->error('Order payment status could not be updated!', $e->getTrace());
             throw $e;
         }
 
-        $this->loggerService->info(
+        $this->processLogger->info(
             'Updated order [' . $order->getNumber() . '] and set payment status to [' . $paymentStatus->getName() . ']'
         );
 

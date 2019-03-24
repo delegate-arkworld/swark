@@ -10,6 +10,8 @@ use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 /**
  * Class AccountOrderSubscriber
+ *
+ * @package Swark\Subscriber
  */
 class AccountOrderSubscriber implements SubscriberInterface
 {
