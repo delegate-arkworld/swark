@@ -14,6 +14,8 @@ use Swark\Structs\Attributes;
  */
 class OrderHelper
 {
+    // @TODO: remove helper and replace with converter, provider...
+
     /**
      * @var ModelManager
      */

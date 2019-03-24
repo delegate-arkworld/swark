@@ -2,7 +2,7 @@
 
 namespace Swark\Tests\Mocks;
 
-use Swark\Services\ConnectionService;
+use Swark\Service\ConnectionService;
 
 /**
  * Class ConnectionServiceMock

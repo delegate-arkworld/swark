@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Services;
+namespace Swark\Service;
 
 use ArkEcosystem\Client\ConnectionManager;
 

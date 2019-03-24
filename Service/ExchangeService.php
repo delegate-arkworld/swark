@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Services;
+namespace Swark\Service;
 
 use Shopware\Components\HttpClient\GuzzleHttpClient;
 use Shopware\Components\HttpClient\RequestException;
@@ -13,7 +13,7 @@ use Shopware\Models\Shop\Currency;
  */
 class ExchangeService
 {
-    private const URL = 'https://min-api.cryptocompare.com/data/price?fsym=ARK&tsyms=';
+    const URL = 'https://min-api.cryptocompare.com/data/price?fsym=ARK&tsyms=';
 
     /**
      * @var GuzzleHttpClient

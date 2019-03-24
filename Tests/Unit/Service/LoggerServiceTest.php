@@ -1,9 +1,9 @@
 <?php
 
-namespace Swark\Tests\Unit\Services;
+namespace Swark\Tests\Unit\Service;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Services\LoggerService;
+use Swark\Service\LoggerService;
 use Swark\Tests\Mocks\LoggerMock;
 
 /**

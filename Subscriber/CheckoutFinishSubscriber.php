@@ -3,7 +3,7 @@
 namespace Swark\Subscriber;
 
 use Swark\Helper\OrderHelper;
-use Swark\Services\OrderService;
+use Swark\Service\OrderService;
 use Enlight\Event\SubscriberInterface;
 
 /**

@@ -2,7 +2,7 @@
 
 namespace Swark\Subscriber;
 
-use Swark\Services\OrderService;
+use Swark\Service\OrderService;
 use Enlight\Event\SubscriberInterface;
 
 /**

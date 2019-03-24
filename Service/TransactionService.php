@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Services;
+namespace Swark\Service;
 
 use ArkEcosystem\Client\ConnectionManager;
 use Swark\Structs\Timestamp;
@@ -73,7 +73,7 @@ class TransactionService
             $response = $this->connectionManager
                 ->connection('main')->transactions()->search([
                     'recipientId' => $wallet,
-                    'vendorFieldHex' => \implode(\unpack('H*', $vendorField)),
+                    'vendorFieldHex' => implode(unpack('H*', $vendorField)),
                 ]);
         } catch (\Exception $e) {
             $this->loggerService->warning('main node api was not executable', $e->getTrace());

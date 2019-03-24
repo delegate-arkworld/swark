@@ -1,9 +1,9 @@
 <?php
 
-namespace Swark\Tests\Unit\Services;
+namespace Swark\Tests\Unit\Service;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Services\ExchangeService;
+use Swark\Service\ExchangeService;
 use Swark\Tests\Mocks\GuzzleHttpClientMock;
 use Swark\Tests\Mocks\LoggerServiceMock;
 use Swark\Tests\Mocks\ModelManagerMock;

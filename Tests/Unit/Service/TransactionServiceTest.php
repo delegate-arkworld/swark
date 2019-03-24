@@ -1,9 +1,9 @@
 <?php
 
-namespace Swark\Tests\Unit\Services;
+namespace Swark\Tests\Unit\Service;
 
 use Shopware\Components\Test\Plugin\TestCase;
-use Swark\Services\TransactionService;
+use Swark\Service\TransactionService;
 use Swark\Tests\Mocks\ConnectionServiceMock;
 use Swark\Tests\Mocks\LoggerServiceMock;
 

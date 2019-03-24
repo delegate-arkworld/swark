@@ -1,6 +1,6 @@
 <?php
 
-namespace Swark\Services;
+namespace Swark\Service;
 
 use Shopware\Components\Logger as BaseLogger;
 
@@ -9,6 +9,8 @@ use Shopware\Components\Logger as BaseLogger;
  */
 class LoggerService extends BaseLogger
 {
+    // @TODO: rewrite to logger Dir with Factory!
+
     /**
      * {@inheritdoc}
      */

@@ -2,7 +2,7 @@
 
 namespace Swark\Tests\Mocks;
 
-use Swark\Services\OrderService;
+use Swark\Service\OrderService;
 
 /**
  * Class OrderServiceMock

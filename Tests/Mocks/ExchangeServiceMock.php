@@ -2,7 +2,7 @@
 
 namespace Swark\Tests\Mocks;
 
-use Swark\Services\ExchangeService;
+use Swark\Service\ExchangeService;
 
 /**
  * Class ExchangeServiceMock

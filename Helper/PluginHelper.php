@@ -10,6 +10,8 @@ use Shopware\Models\Plugin\Plugin;
  */
 class PluginHelper
 {
+    // @TODO: remove helper and replace with converter, provider...
+
     /**
      * @var string
      */

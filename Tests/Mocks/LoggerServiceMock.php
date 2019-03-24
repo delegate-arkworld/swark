@@ -2,7 +2,7 @@
 
 namespace Swark\Tests\Mocks;
 
-use Swark\Services\LoggerService;
+use Swark\Service\LoggerService;
 
 /**
  * Class LoggerServiceMock

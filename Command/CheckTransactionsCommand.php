@@ -2,9 +2,8 @@
 
 namespace Swark\Command;
 
-use InvalidArgumentException;
 use Shopware\Commands\ShopwareCommand;
-use Swark\Services\OrderService;
+use Swark\Service\OrderService;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
