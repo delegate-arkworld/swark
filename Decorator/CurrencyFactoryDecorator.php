@@ -28,11 +28,7 @@ class CurrencyFactoryDecorator
             $currency = $container->get('Shop')->getCurrency()->getCurrency();
         }
 
-        // TODO: check if currency is ARK
-
-        echo '<pre>';
-        \Doctrine\Common\Util\Debug::dump('test');
-        exit;
+        // TODO: check if current currency is ARK
 
         if ($currency === 'ARK') {
             $currency = [
@@ -40,8 +36,6 @@ class CurrencyFactoryDecorator
                 'currency' => $currency,
             ];
         }
-
-        //var_dump($currency); exit;
 
         return new Zend_Currency($currency, $locale);
     }
