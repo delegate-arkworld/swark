@@ -3,17 +3,15 @@
 namespace Swark\Service;
 
 use Exception;
+use Monolog\Logger;
 use Shopware\Components\HttpClient\GuzzleHttpClient;
 use Shopware\Components\HttpClient\RequestException;
 use Shopware\Components\HttpClient\Response;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Currency;
-use Monolog\Logger;
 
 /**
  * Class ExchangeService
- *
- * @package Swark\Service
  */
 class ExchangeService
 {
@@ -41,9 +39,9 @@ class ExchangeService
 
     /**
      * @param GuzzleHttpClient $client
-     * @param Logger $errorLogger
-     * @param Logger $processLogger
-     * @param ModelManager $modelManager
+     * @param Logger           $errorLogger
+     * @param Logger           $processLogger
+     * @param ModelManager     $modelManager
      */
     public function __construct(
         GuzzleHttpClient $client,

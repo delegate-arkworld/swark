@@ -9,18 +9,16 @@ use Zend_Locale;
 
 /**
  * Class CurrencyFactoryDecorator
- *
- * @package Swark\Decorator
  */
 class CurrencyFactoryDecorator
 {
     /**
      * @param ContainerAlias $container
-     * @param Zend_Locale $locale
-     *
-     * @return Zend_Currency
+     * @param Zend_Locale    $locale
      *
      * @throws Zend_Currency_Exception
+     *
+     * @return Zend_Currency
      */
     public function factory(ContainerAlias $container, Zend_Locale $locale)
     {
@@ -32,14 +30,14 @@ class CurrencyFactoryDecorator
 
         // TODO: check if currency is ARK
 
-        echo "<pre>";
+        echo '<pre>';
         \Doctrine\Common\Util\Debug::dump('test');
         exit;
 
         if ($currency === 'ARK') {
             $currency = [
                 'precision' => 8,
-                'currency' => $currency
+                'currency' => $currency,
             ];
         }
 

@@ -10,8 +10,6 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
  * Class Connection
- *
- * @package Swark\Component\ArkClient
  */
 class Connection
 {
@@ -63,7 +61,7 @@ class Connection
         $name = ucfirst($name);
         $class = "Swark\\Components\\ArkClient\\Api\\{$name}";
 
-        if (! class_exists($class)) {
+        if (!class_exists($class)) {
             throw new RuntimeException("Class [$class] does not exist.");
         }
 

@@ -9,8 +9,6 @@ use Swark\Tests\Mocks\LoggerServiceMock;
 
 /**
  * Class TransactionServiceTest
- *
- * @package Swark\Tests\Unit\Service
  */
 class TransactionServiceTest extends TestCase
 {

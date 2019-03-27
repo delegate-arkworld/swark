@@ -13,8 +13,6 @@ use Swark\Helper\PluginHelper;
 
 /**
  * Class OrderService
- *
- * @package Swark\Service
  */
 class OrderService
 {
@@ -59,14 +57,14 @@ class OrderService
     private $exchangeService;
 
     /**
-     * @param ModelManager $models
-     * @param OrderHelper $orderHelper
-     * @param PluginHelper $pluginHelper
+     * @param ModelManager       $models
+     * @param OrderHelper        $orderHelper
+     * @param PluginHelper       $pluginHelper
      * @param TransactionService $transactionService
-     * @param array $pluginConfig
-     * @param Logger $errorLogger
-     * @param Logger $processLogger
-     * @param ExchangeService $exchangeService
+     * @param array              $pluginConfig
+     * @param Logger             $errorLogger
+     * @param Logger             $processLogger
+     * @param ExchangeService    $exchangeService
      */
     public function __construct(
         ModelManager $models,
@@ -107,7 +105,7 @@ class OrderService
         }
 
         /**
-         * @var Order $order
+         * @var Order
          */
         foreach ($orders as $order) {
             $this->processLogger->info(
@@ -126,7 +124,7 @@ class OrderService
                     $this->updateOrderTransactionId($order->getAttribute(), $transaction->getId(), $order->getNumber());
                 }
 
-                $transactionAmount = $transaction->getAmount()/100000000;
+                $transactionAmount = $transaction->getAmount() / 100000000;
 
                 if (!$this->checkOrderAmount($transactionAmount, $attributes['swarkArkAmount'])) {
                     $this->processLogger->info(
@@ -179,6 +177,16 @@ class OrderService
         $this->updateOrderTransactionId($attributes, '', $orderNumber);
 
         return true;
+    }
+
+    /**
+     * @param int $paymentId
+     *
+     * @return bool
+     */
+    public function checkPayment(int $paymentId): bool
+    {
+        return $this->orderHelper->getPaymentObject()->getId() === $paymentId;
     }
 
     /**
@@ -293,12 +301,12 @@ class OrderService
     }
 
     /**
-     * @param Order $order
+     * @param Order  $order
      * @param Status $paymentStatus
      *
-     * @return bool
-     *
      * @throws Exception
+     *
+     * @return bool
      */
     private function updateOrderPaymentStatus(Order $order, Status $paymentStatus): bool
     {
@@ -317,6 +325,7 @@ class OrderService
                         $orderModule->sendStatusMail($mail);
                     } catch (Exception $e) {
                         $this->errorLogger->error('Order [' . $order->getNumber() . '] could not send out order status mail', $e->getTrace());
+
                         return false;
                     }
                 }
@@ -331,16 +340,6 @@ class OrderService
         );
 
         return true;
-    }
-
-    /**
-     * @param int $paymentId
-     *
-     * @return bool
-     */
-    public function checkPayment(int $paymentId): bool
-    {
-        return $this->orderHelper->getPaymentObject()->getId() === $paymentId;
     }
 
     /**

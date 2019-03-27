@@ -7,8 +7,6 @@ use Swark\Struct\TimestampStruct;
 
 /**
  * Class TimestampStructTest
- *
- * @package Swark\Tests\Unit\Struct
  */
 class TimestampStructTest extends TestCase
 {
@@ -26,7 +24,7 @@ class TimestampStructTest extends TestCase
     public function test_getEpoch()
     {
         $struct = $this->generateStruct([
-            'epoch' => 1549797501
+            'epoch' => 1549797501,
         ]);
 
         $this->assertEquals(1549797501, $struct->getEpoch());
@@ -43,7 +41,7 @@ class TimestampStructTest extends TestCase
     public function test_getUnix()
     {
         $struct = $this->generateStruct([
-            'unix' => 1549797543
+            'unix' => 1549797543,
         ]);
 
         $this->assertEquals(1549797543, $struct->getUnix());
@@ -60,7 +58,7 @@ class TimestampStructTest extends TestCase
     public function test_getHuman()
     {
         $struct = $this->generateStruct([
-            'human' => 'Sunday, 10. February 2019 11:19:50'
+            'human' => 'Sunday, 10. February 2019 11:19:50',
         ]);
 
         $this->assertEquals('Sunday, 10. February 2019 11:19:50', $struct->getHuman());

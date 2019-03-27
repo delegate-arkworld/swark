@@ -8,8 +8,6 @@ use Swark\Tests\Mocks\OrderServiceMock;
 
 /**
  * Class CheckTransactionsCommandTest
- *
- * @package Swark\Tests\Unit\Command
  */
 class CheckTransactionsCommandTest extends TestCase
 {

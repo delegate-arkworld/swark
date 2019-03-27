@@ -2,16 +2,14 @@
 
 namespace Swark\Subscriber;
 
+use Enlight\Event\SubscriberInterface;
 use Swark\Helper\OrderHelper;
 use Swark\Service\OrderService;
-use Enlight\Event\SubscriberInterface;
 use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 /**
  * Class CheckoutFinishSubscriber
- *
- * @package Swark\Subscriber
  */
 class CheckoutFinishSubscriber implements SubscriberInterface
 {

@@ -9,8 +9,6 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 /**
  * Class Transactions
- *
- * @package Swark\Component\ArkClient\Api
  */
 class Transactions extends AbstractApi
 {

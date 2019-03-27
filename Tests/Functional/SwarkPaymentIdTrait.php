@@ -13,9 +13,9 @@ use Doctrine\DBAL\Query\QueryBuilder;
 trait SwarkPaymentIdTrait
 {
     /**
-     * @return bool|string
-     *
      * @throws \Exception
+     *
+     * @return bool|string
      */
     protected function getSwarkPaymentId()
     {

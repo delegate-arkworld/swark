@@ -7,8 +7,6 @@ use Shopware\Models\Plugin\Plugin;
 
 /**
  * Class PluginHelper
- *
- * @package Swark\Helper
  */
 class PluginHelper
 {

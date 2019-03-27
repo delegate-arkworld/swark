@@ -8,8 +8,6 @@ use Swark\Tests\Mocks\OrderHelperMock;
 
 /**
  * Class AccountOrderSubscriberTest
- *
- * @package Swark\Tests\Unit\Subscriber
  */
 class AccountOrderSubscriberTest extends TestCase
 {

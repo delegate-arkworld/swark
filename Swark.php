@@ -15,8 +15,6 @@ use Shopware\Models\Shop\Currency;
 
 /**
  * Class Swark
- *
- * @package Swark
  */
 class Swark extends Plugin
 {
