@@ -13,8 +13,8 @@
         <element>
             <name>mainNodeApi</name>
             <label>Main node api url</label>
-            <value>https://explorer.ark.io:8443/api/v2</value>
-            <description>The main node url for the HTTP request which will be used mainly. Format: http://my.ark.node:port/api</description>
+            <value>https://explorer.ark.io:8443/api/</value>
+            <description>The main node url for the HTTP request which will be used mainly. Format: http://my.ark.node:port/api/ (Don't forget the trailing slash!)</description>
         </element>
 
         <element>

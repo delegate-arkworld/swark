@@ -2,11 +2,16 @@
 
 namespace Swark;
 
+use Doctrine\ORM\OptimisticLockException;
+use Exception;
+use Shopware\Bundle\AttributeBundle\Service\CrudService;
+use Shopware\Components\HttpClient\RequestException;
+use Shopware\Components\Logger;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\InstallContext;
+use Shopware\Components\Plugin\PaymentInstaller;
 use Shopware\Models\Shop\Currency;
-use Swark\Service\LoggerService;
 
 /**
  * Class Swark
@@ -15,12 +20,10 @@ use Swark\Service\LoggerService;
  */
 class Swark extends Plugin
 {
-    // TODO: Use symfony/httpclient for ARK integration because of old guzzle version
-
     /**
      * @param InstallContext $context
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function install(InstallContext $context)
     {
@@ -32,12 +35,12 @@ class Swark extends Plugin
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     protected function createOrUpdateAttributes()
     {
         /**
-         * @var \Shopware\Bundle\AttributeBundle\Service\CrudService
+         * @var CrudService
          */
         $service = $this->container->get('shopware_attribute.crud_service');
 
@@ -112,7 +115,7 @@ class Swark extends Plugin
      */
     protected function installPayment(): void
     {
-        /** @var \Shopware\Components\Plugin\PaymentInstaller $installer */
+        /** @var PaymentInstaller $installer */
         $installer = $this->container->get('shopware.plugin_payment_installer');
 
         $options = [
@@ -131,8 +134,8 @@ class Swark extends Plugin
     }
 
     /**
-     * @throws \Shopware\Components\HttpClient\RequestException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws RequestException
+     * @throws OptimisticLockException
      */
     protected function installCurrency(): void
     {
@@ -165,7 +168,7 @@ class Swark extends Plugin
     }
 
     /**
-     * @throws \Shopware\Components\HttpClient\RequestException
+     * @throws RequestException
      *
      * @return float
      */
@@ -176,9 +179,8 @@ class Swark extends Plugin
 
         $exchangeService = new \Swark\Service\ExchangeService(
             $this->container->get('http_client'),
-            new LoggerService(
-                new \Shopware\Components\Logger('plugin')
-            ),
+            new Logger('error'),
+            new Logger('process'),
             $models
         );
 

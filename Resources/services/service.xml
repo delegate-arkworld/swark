@@ -31,6 +31,7 @@
         <!-- Transaction Service -->
         <service id="swark.service.transaction_service"
                  class="Swark\Service\TransactionService">
+            <argument type="service" id="swark.service.connection_service"/>
             <argument type="service" id="swark.logger.error_logger"/>
             <argument type="service" id="swark.logger.process_logger"/>
         </service>
