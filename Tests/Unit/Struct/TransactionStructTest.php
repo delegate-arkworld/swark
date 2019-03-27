@@ -5,12 +5,9 @@ namespace Swark\Tests\Unit\Struct;
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Struct\TimestampStruct;
 use Swark\Struct\TransactionStruct;
-use Swark\Tests\Mocks\TimestampStructMock;
 
 /**
  * Class TransactionStructTest
- *
- * @package Swark\Tests\Unit\Struct
  */
 class TransactionStructTest extends TestCase
 {
@@ -28,7 +25,7 @@ class TransactionStructTest extends TestCase
     public function test_getId()
     {
         $struct = $this->generateStruct([
-            'id' => 'c5a4721181265e33e18984dff79842c6e8cbefd9cb7c1d9d40a4103f816229cd'
+            'id' => 'c5a4721181265e33e18984dff79842c6e8cbefd9cb7c1d9d40a4103f816229cd',
         ]);
 
         $this->assertEquals('c5a4721181265e33e18984dff79842c6e8cbefd9cb7c1d9d40a4103f816229cd', $struct->getId());
@@ -45,7 +42,7 @@ class TransactionStructTest extends TestCase
     public function test_getAmount()
     {
         $struct = $this->generateStruct([
-            'amount' => 13.3768
+            'amount' => 13.3768,
         ]);
 
         $this->assertEquals(13.3768, $struct->getAmount());
@@ -62,7 +59,7 @@ class TransactionStructTest extends TestCase
     public function test_getRecipient()
     {
         $struct = $this->generateStruct([
-            'recipient' => 'AHchW9xXpcF85P9MpsMBVv5WMcBrTEdAr9'
+            'recipient' => 'AHchW9xXpcF85P9MpsMBVv5WMcBrTEdAr9',
         ]);
 
         $this->assertEquals('AHchW9xXpcF85P9MpsMBVv5WMcBrTEdAr9', $struct->getRecipient());
@@ -79,7 +76,7 @@ class TransactionStructTest extends TestCase
     public function test_getVendorField()
     {
         $struct = $this->generateStruct([
-            'vendorField' => 'Swark VendorField Get Test'
+            'vendorField' => 'Swark VendorField Get Test',
         ]);
 
         $this->assertEquals('Swark VendorField Get Test', $struct->getVendorField());
@@ -96,7 +93,7 @@ class TransactionStructTest extends TestCase
     public function test_getConfirmations()
     {
         $struct = $this->generateStruct([
-            'confirmations' => 51
+            'confirmations' => 51,
         ]);
 
         $this->assertEquals(51, $struct->getConfirmations());
@@ -113,7 +110,7 @@ class TransactionStructTest extends TestCase
     public function test_getTimestamp()
     {
         $struct = $this->generateStruct([
-            'timestamp' => $this->generateTimestampStruct(['unix' => 1552217275])
+            'timestamp' => $this->generateTimestampStruct(['unix' => 1552217275]),
         ]);
 
         $this->assertInstanceOf(TimestampStruct::class, $struct->getTimestamp());
@@ -153,7 +150,7 @@ class TransactionStructTest extends TestCase
             'recipient' => 'AUDud8tvyVZa67p3QY7XPRUTjRGnWQQ9Xv',
             'vendorField' => 'Test',
             'confirmations' => 51,
-            'timestamp' => $this->generateTimestampStruct()
+            'timestamp' => $this->generateTimestampStruct(),
         ];
 
         $data = array_merge($data, $custom);
@@ -178,7 +175,7 @@ class TransactionStructTest extends TestCase
         $data = [
             'epoch' => 1549798089,
             'unix' => 1549798089,
-            'human' => 'Sunday, 10. February 2019 11:28:09'
+            'human' => 'Sunday, 10. February 2019 11:28:09',
         ];
 
         $data = array_merge($data, $custom);

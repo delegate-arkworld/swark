@@ -7,8 +7,6 @@ use Swark\Struct\AttributeStruct;
 
 /**
  * Class AttributeStructTest
- *
- * @package Swark\Tests\Unit\Struct
  */
 class AttributeStructTest extends TestCase
 {
@@ -26,7 +24,7 @@ class AttributeStructTest extends TestCase
     public function test_getAmount()
     {
         $struct = $this->generateStruct([
-            'swarkArkAmount' => 2.64738193
+            'swarkArkAmount' => 2.64738193,
         ]);
 
         $this->assertEquals(2.64738193, $struct->getAmount());
@@ -43,7 +41,7 @@ class AttributeStructTest extends TestCase
     public function test_getVendorField()
     {
         $struct = $this->generateStruct([
-            'swarkVendorField' => 'VendorField Get'
+            'swarkVendorField' => 'VendorField Get',
         ]);
 
         $this->assertEquals('VendorField Get', $struct->getVendorField());
@@ -60,7 +58,7 @@ class AttributeStructTest extends TestCase
     public function test_getRecipient()
     {
         $struct = $this->generateStruct([
-            'swarkRecipientAddress' => 'AUDud8tvyVZa67p3QY7XPRUTjRGnWQQ9Xv'
+            'swarkRecipientAddress' => 'AUDud8tvyVZa67p3QY7XPRUTjRGnWQQ9Xv',
         ]);
 
         $this->assertEquals('AUDud8tvyVZa67p3QY7XPRUTjRGnWQQ9Xv', $struct->getRecipient());
@@ -77,7 +75,7 @@ class AttributeStructTest extends TestCase
     public function test_getTransactionId()
     {
         $struct = $this->generateStruct([
-            'swarkTransactionId' => 'e607ffc441482e494cc8fbffce0e0a9584c36c55f947efdf6d334b53ac3e7c23'
+            'swarkTransactionId' => 'e607ffc441482e494cc8fbffce0e0a9584c36c55f947efdf6d334b53ac3e7c23',
         ]);
 
         $this->assertEquals('e607ffc441482e494cc8fbffce0e0a9584c36c55f947efdf6d334b53ac3e7c23', $struct->getTransactionId());

@@ -10,8 +10,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
  * Class TestConfigurationCommand
- *
- * @package Swark\Command
  */
 class TestConfigurationCommand extends ShopwareCommand
 {

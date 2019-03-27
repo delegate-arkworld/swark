@@ -9,8 +9,6 @@ use Swark\Tests\Mocks\PluginHelperMock;
 
 /**
  * Class OrderHelperTest
- *
- * @package Swark\Tests\Unit\Helper
  */
 class OrderHelperTest extends TestCase
 {

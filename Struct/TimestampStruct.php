@@ -4,8 +4,6 @@ namespace Swark\Struct;
 
 /**
  * Class TimestampStruct
- *
- * @package Swark\Struct
  */
 class TimestampStruct
 {

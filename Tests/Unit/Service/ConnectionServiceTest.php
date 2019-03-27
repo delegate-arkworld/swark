@@ -7,8 +7,6 @@ use Swark\Service\ConnectionService;
 
 /**
  * Class ConnectionServiceTest
- *
- * @package Swark\Tests\Unit\Service
  */
 class ConnectionServiceTest extends TestCase
 {

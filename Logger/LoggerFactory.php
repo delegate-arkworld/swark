@@ -7,8 +7,6 @@ use Monolog\Logger;
 
 /**
  * Class LoggerFactory
- *
- * @package Swark\Logger
  */
 class LoggerFactory
 {

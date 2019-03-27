@@ -4,8 +4,6 @@ namespace Swark\Struct;
 
 /**
  * Class TransactionStruct
- *
- * @package Swark\Struct
  */
 class TransactionStruct
 {
@@ -40,11 +38,11 @@ class TransactionStruct
     private $timestamp;
 
     /**
-     * @param string    $id
-     * @param int       $amount
-     * @param string    $recipient
-     * @param string    $vendorField
-     * @param int       $confirmations
+     * @param string          $id
+     * @param int             $amount
+     * @param string          $recipient
+     * @param string          $vendorField
+     * @param int             $confirmations
      * @param TimestampStruct $timestamp
      */
     public function __construct(

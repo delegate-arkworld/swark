@@ -2,16 +2,14 @@
 
 namespace Swark\Service;
 
-use Swark\Component\ArkClient\ConnectionManager;
 use Exception;
 use Monolog\Logger;
+use Swark\Component\ArkClient\ConnectionManager;
 use Swark\Struct\TimestampStruct;
 use Swark\Struct\TransactionStruct;
 
 /**
  * Class TransactionService
- *
- * @package Swark\Service
  */
 class TransactionService
 {
@@ -32,8 +30,8 @@ class TransactionService
 
     /**
      * @param ConnectionService $connectionService
-     * @param Logger $errorLogger
-     * @param Logger $processLogger
+     * @param Logger            $errorLogger
+     * @param Logger            $processLogger
      */
     public function __construct(
         ConnectionService $connectionService,

@@ -8,8 +8,6 @@ use Swark\Tests\Mocks\LoggerMock;
 
 /**
  * Class LoggerServiceTest
- *
- * @package Swark\Tests\Unit\Service
  */
 class LoggerServiceTest extends TestCase
 {

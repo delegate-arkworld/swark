@@ -5,7 +5,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 require __DIR__ . '/../../../../autoload.php';
 
 use Shopware\Models\Shop\Shop;
@@ -39,9 +38,9 @@ class SwarkTestKernel extends \Shopware\Kernel
     }
 
     /**
-     * @return bool
-     *
      * @throws Exception
+     *
+     * @return bool
      */
     private static function isPluginInstalledAndActivated()
     {

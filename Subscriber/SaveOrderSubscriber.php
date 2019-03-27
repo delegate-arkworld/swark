@@ -2,15 +2,13 @@
 
 namespace Swark\Subscriber;
 
+use Enlight\Event\SubscriberInterface;
 use Enlight_Event_EventArgs;
 use Exception;
 use Swark\Service\OrderService;
-use Enlight\Event\SubscriberInterface;
 
 /**
  * Class SaveOrderSubscriber
- *
- * @package Swark\Subscriber
  */
 class SaveOrderSubscriber implements SubscriberInterface
 {

@@ -2,16 +2,14 @@
 
 namespace Swark\Subscriber;
 
+use Enlight\Event\SubscriberInterface;
 use Enlight_Event_EventArgs;
 use Swark\Helper\OrderHelper;
-use Enlight\Event\SubscriberInterface;
 use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 /**
  * Class AccountOrderSubscriber
- *
- * @package Swark\Subscriber
  */
 class AccountOrderSubscriber implements SubscriberInterface
 {

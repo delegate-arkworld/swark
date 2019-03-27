@@ -11,8 +11,6 @@ use Swark\Struct\AttributeStruct;
 
 /**
  * Class OrderHelper
- *
- * @package Swark\Helper
  */
 class OrderHelper
 {
@@ -79,7 +77,7 @@ class OrderHelper
     {
         return $this->models->getRepository(Order::class)->findBy([
             'payment' => $this->getPaymentObject()->getId(),
-            'cleared' => Status::PAYMENT_STATE_OPEN
+            'cleared' => Status::PAYMENT_STATE_OPEN,
         ]);
     }
 
@@ -207,7 +205,7 @@ class OrderHelper
     {
         /** @var Currency $currency */
         $currency = $this->models->getRepository(Currency::class)->findOneBy([
-            'currency' => 'ARK'
+            'currency' => 'ARK',
         ]);
 
         return $currency->getFactor();

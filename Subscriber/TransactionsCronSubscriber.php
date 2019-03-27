@@ -2,14 +2,12 @@
 
 namespace Swark\Subscriber;
 
+use Enlight\Event\SubscriberInterface;
 use Exception;
 use Swark\Service\OrderService;
-use Enlight\Event\SubscriberInterface;
 
 /**
  * Class TransactionsCronSubscriber
- *
- * @package Swark\Subscriber
  */
 class TransactionsCronSubscriber implements SubscriberInterface
 {
