@@ -2,7 +2,7 @@
 
 namespace Swark\Service;
 
-use ArkEcosystem\Client\ConnectionManager;
+use Swark\Component\ArkClient\ConnectionManager;
 use Exception;
 use Monolog\Logger;
 use Swark\Struct\TimestampStruct;
@@ -16,6 +16,11 @@ use Swark\Struct\TransactionStruct;
 class TransactionService
 {
     /**
+     * @var ConnectionManager
+     */
+    private $connectionManager;
+
+    /**
      * @var Logger
      */
     private $errorLogger;
@@ -26,13 +31,16 @@ class TransactionService
     private $processLogger;
 
     /**
+     * @param ConnectionService $connectionService
      * @param Logger $errorLogger
      * @param Logger $processLogger
      */
     public function __construct(
+        ConnectionService $connectionService,
         Logger $errorLogger,
         Logger $processLogger
     ) {
+        $this->connectionManager = $connectionService->getConnectionManager();
         $this->errorLogger = $errorLogger;
         $this->processLogger = $processLogger;
     }
@@ -47,22 +55,22 @@ class TransactionService
     {
         $transaction = $this->getTransactionByVendorField($wallet, $vendorField);
 
-        if ($transaction) {
-            return new TransactionStruct(
-                $transaction['id'],
-                $transaction['amount'],
-                $transaction['recipient'],
-                $transaction['vendorField'],
-                $transaction['confirmations'],
-                new TimestampStruct(
-                    $transaction['timestamp']['epoch'],
-                    $transaction['timestamp']['unix'],
-                    $transaction['timestamp']['human']
-                )
-            );
+        if (empty($transaction)) {
+            return null;
         }
 
-        return null;
+        return new TransactionStruct(
+            $transaction['id'],
+            $transaction['amount'],
+            $transaction['recipient'],
+            $transaction['vendorField'],
+            $transaction['confirmations'],
+            new TimestampStruct(
+                $transaction['timestamp']['epoch'],
+                $transaction['timestamp']['unix'],
+                $transaction['timestamp']['human']
+            )
+        );
     }
 
     /**
@@ -73,6 +81,8 @@ class TransactionService
      */
     private function getTransactionByVendorField(string $wallet, string $vendorField): array
     {
+        $response = null;
+
         try {
             $response = $this->connectionManager
                 ->connection('main')->transactions()->search([
@@ -80,7 +90,7 @@ class TransactionService
                     'vendorFieldHex' => implode(unpack('H*', $vendorField)),
                 ]);
         } catch (Exception $e) {
-            $this->processLogger->warning('main node api was not executable', $e->getTrace());
+            $this->errorLogger->error('main node api was not executable', $e->getTrace());
             try {
                 $response = $this->connectionManager
                     ->connection('backup')->transactions()->search([
