@@ -139,9 +139,6 @@ class Swark extends Plugin
      */
     protected function installCurrency(): void
     {
-        // TODO: Also needs some frontend changes for display of arktoshis
-        // plan: Register modifier currency modifier on frontend and check there if currency is Ark (Set precision on 8)
-
         /** @var ModelManager $models */
         $models = $this->container->get('models');
 
