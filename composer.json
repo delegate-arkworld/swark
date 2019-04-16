@@ -13,7 +13,8 @@
     "require-dev": {
         "phpunit/phpunit": "^8.0.6",
         "rector/rector": "dev-master",
-        "friendsofphp/php-cs-fixer": "^2.14.2"
+        "friendsofphp/php-cs-fixer": "^2.14.2",
+        "phpstan/phpstan": "^0.11.0@dev"
     },
     "minimum-stability": "dev",
     "scripts": {

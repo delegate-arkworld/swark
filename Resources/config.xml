@@ -51,5 +51,12 @@
             <value>true</value>
             <description>If this option is checked the order status mail will be sent out when the order reached the configured payment status.</description>
         </element>
+
+        <element type="number">
+            <name>precision</name>
+            <label>Currency precision</label>
+            <value>8</value>
+            <description>The decimal places that are displayed when the Ark Currency is selected.</description>
+        </element>
     </elements>
 </config>
