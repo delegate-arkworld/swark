@@ -3,9 +3,11 @@
 namespace Swark\Decorator;
 
 use Shopware\Components\DependencyInjection\Container as ContainerAlias;
+use Shopware\Components\Model\ModelRepository;
 use Zend_Currency;
 use Zend_Currency_Exception;
 use Zend_Locale;
+use Shopware\Models\Shop\Currency;
 
 /**
  * Class CurrencyFactoryDecorator
@@ -22,21 +24,64 @@ class CurrencyFactoryDecorator
      */
     public function factory(ContainerAlias $container, Zend_Locale $locale)
     {
-        $currency = 'EUR';
+        $request = $container->get('Front');
+        $currencyId = $request->Request()->getCookie('currency');
 
-        if ($container->has('Shop')) {
-            $currency = $container->get('Shop')->getCurrency()->getCurrency();
-        }
+        $repository = $this->getCurrencyRepository($container);
 
-        // TODO: check if current currency is ARK
+        /** @var Currency $currency */
+        $currency = $repository->findOneBy([
+            'id' => $currencyId,
+        ]);
 
-        if ($currency === 'ARK') {
+        if ($currency->getCurrency() === 'ARK') {
+            $pluginConfig = $this->getPluginConfig($container);
+
             $currency = [
-                'precision' => 8,
-                'currency' => $currency,
+                'precision' => $pluginConfig['precision'],
+                'currency' => 'ARK',
             ];
+        } else {
+            $currency = $this->getDefaultCurrency($container);
         }
 
         return new Zend_Currency($currency, $locale);
+    }
+
+    /**
+     * @param ContainerAlias $container
+     *
+     * @return string
+     */
+    private function getDefaultCurrency(ContainerAlias $container): string
+    {
+        $repository = $this->getCurrencyRepository($container);
+
+        /** @var Currency $defaultCurrency */
+        $defaultCurrency = $repository->findOneBy([
+            'default' => true,
+        ]);
+
+        return $defaultCurrency->getCurrency();
+    }
+
+    /**
+     * @param ContainerAlias $container
+     *
+     * @return ModelRepository
+     */
+    private function getCurrencyRepository(ContainerAlias $container): ModelRepository
+    {
+        return $container->get('models')->getRepository(Currency::class);
+    }
+
+    /**
+     * @param ContainerAlias $container
+     *
+     * @return array
+     */
+    private function getPluginConfig(ContainerAlias $container): array
+    {
+        return $container->get('swark.config');
     }
 }
