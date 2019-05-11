@@ -24,15 +24,23 @@ class AccountOrderSubscriber implements SubscriberInterface
     private $orderHelper;
 
     /**
+     * @var array
+     */
+    private $pluginConfig;
+
+    /**
      * @param string      $viewDir
      * @param OrderHelper $orderHelper
+     * @param array       $pluginConfig
      */
     public function __construct(
         string $viewDir,
-        OrderHelper $orderHelper
+        OrderHelper $orderHelper,
+        array $pluginConfig
     ) {
         $this->viewDir = $viewDir;
         $this->orderHelper = $orderHelper;
+        $this->pluginConfig = $pluginConfig;
     }
 
     /**
@@ -64,14 +72,35 @@ class AccountOrderSubscriber implements SubscriberInterface
 
         $view->addTemplateDir($this->viewDir);
 
-        $orders = $view->getAssign('sOpenOrders');
-
-        foreach ($orders as $key => $order) {
-            $order = $this->orderHelper->getOrder($order['ordernumber']);
-            $orders[$key]['swarkTransactionId'] = $this->orderHelper->getTransactionIdByOrder($order);
-        }
+        $orders = $this->modifyOpenOrders($view->getAssign('sOpenOrders'));
 
         $view->assign('sOpenOrders', $orders);
         $view->extendsTemplate('frontend/plugins/swark/order_item_details.tpl');
+    }
+
+    /**
+     * @param array $orders
+     *
+     * @return array
+     */
+    private function modifyOpenOrders(array $orders): array
+    {
+        foreach ($orders as $key => $order) {
+            $order = $this->orderHelper->getOrder($order['ordernumber']);
+            $transactionId = $this->orderHelper->getTransactionIdByOrder($order);
+            $orders[$key]['swarkExplorerUrl'] = $this->buildTransactionUrl($transactionId);
+        }
+
+        return $orders;
+    }
+
+    /**
+     * @param string $transactionId
+     *
+     * @return string
+     */
+    private function buildTransactionUrl(string $transactionId): string
+    {
+        return $this->pluginConfig['explorerLink'] . '/transaction/' . $transactionId;
     }
 }

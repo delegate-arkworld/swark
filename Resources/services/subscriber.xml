@@ -39,6 +39,7 @@
                  class="Swark\Subscriber\AccountOrderSubscriber">
             <argument type="string">%swark.views_dir%</argument>
             <argument type="service" id="swark.helper.order_helper" />
+            <argument type="service" id="swark.config"/>
             <tag name="shopware.event_subscriber"/>
         </service>
     </services>

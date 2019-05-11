@@ -23,6 +23,13 @@
             <description>The backup node url for the HTTP request which will be used when the main node is not available. Format: http://my.ark.node:port/api</description>
         </element>
 
+        <element>
+            <name>explorerLink</name>
+            <label>Explorer link</label>
+            <value>https://explorer.ark.io</value>
+            <description>Link to the explorer that should be used for links in the shop.</description>
+        </element>
+
         <element type="number">
             <name>confirmations</name>
             <label>Confirmations</label>

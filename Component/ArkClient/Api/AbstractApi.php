@@ -9,7 +9,7 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 /**
- * Class AbstractAPI
+ * Class AbstractApi
  */
 abstract class AbstractApi
 {

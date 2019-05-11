@@ -6,7 +6,9 @@
             <p class="is--strong">{s name="transaction_label"}Ark Transaction:{/s}</p>
         </div>
         <div class="panel--td column--swark-data">
-            <p>{$offerPosition.swarkTransactionId}</p>
+            <p>
+                <a href="{$offerPosition.swarkExplorerUrl}">{s name="transaction_url_label"}View on Explorer{/s}</a>
+            </p>
         </div>
     </div>
 
