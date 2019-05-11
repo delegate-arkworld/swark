@@ -5,7 +5,7 @@ namespace Swark\Tests\Unit\Service;
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Service\OrderService;
 use Swark\Tests\Mocks\ExchangeServiceMock;
-use Swark\Tests\Mocks\LoggerServiceMock;
+use Swark\Tests\Mocks\LoggerMock;
 use Swark\Tests\Mocks\ModelManagerMock;
 use Swark\Tests\Mocks\OrderHelperMock;
 use Swark\Tests\Mocks\PluginHelperMock;
@@ -28,7 +28,8 @@ class OrderServiceTest extends TestCase
             new PluginHelperMock(),
             new TransactionServiceMock(),
             [],
-            new LoggerServiceMock(),
+            new LoggerMock(),
+            new LoggerMock(),
             new ExchangeServiceMock()
         );
 

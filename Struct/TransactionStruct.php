@@ -39,7 +39,7 @@ class TransactionStruct
 
     /**
      * @param string          $id
-     * @param int             $amount
+     * @param float           $amount
      * @param string          $recipient
      * @param string          $vendorField
      * @param int             $confirmations

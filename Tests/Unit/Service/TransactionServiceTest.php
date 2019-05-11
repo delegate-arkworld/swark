@@ -5,7 +5,7 @@ namespace Swark\Tests\Unit\Service;
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Service\TransactionService;
 use Swark\Tests\Mocks\ConnectionServiceMock;
-use Swark\Tests\Mocks\LoggerServiceMock;
+use Swark\Tests\Mocks\LoggerMock;
 
 /**
  * Class TransactionServiceTest
@@ -20,7 +20,8 @@ class TransactionServiceTest extends TestCase
     {
         $service = new TransactionService(
             new ConnectionServiceMock(),
-            new LoggerServiceMock()
+            new LoggerMock(),
+            new LoggerMock()
         );
 
         $this->assertInstanceOf(TransactionService::class, $service);

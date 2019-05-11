@@ -56,9 +56,9 @@ class AttributeStruct
     /**
      * @param string $transactionId
      *
-     * @return Attributes
+     * @return AttributeStruct
      */
-    public function setTransactionId(string $transactionId): Attributes
+    public function setTransactionId(string $transactionId): AttributeStruct
     {
         $this->transactionId = $transactionId;
 
@@ -76,9 +76,9 @@ class AttributeStruct
     /**
      * @param float $amount
      *
-     * @return Attributes
+     * @return AttributeStruct
      */
-    public function setAmount(float $amount): Attributes
+    public function setAmount(float $amount): AttributeStruct
     {
         $this->amount = $amount;
 
@@ -96,9 +96,9 @@ class AttributeStruct
     /**
      * @param string $recipient
      *
-     * @return Attributes
+     * @return AttributeStruct
      */
-    public function setRecipient(string $recipient): Attributes
+    public function setRecipient(string $recipient): AttributeStruct
     {
         $this->recipient = $recipient;
 
@@ -116,9 +116,9 @@ class AttributeStruct
     /**
      * @param string $vendorField
      *
-     * @return Attributes
+     * @return AttributeStruct
      */
-    public function setVendorField(string $vendorField): Attributes
+    public function setVendorField(string $vendorField): AttributeStruct
     {
         $this->vendorField = $vendorField;
 
