@@ -104,7 +104,7 @@ class OrderService
             return false;
         }
 
-        /**
+        /*
          * @var Order
          */
         foreach ($orders as $order) {

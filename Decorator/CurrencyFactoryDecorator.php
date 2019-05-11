@@ -4,10 +4,10 @@ namespace Swark\Decorator;
 
 use Shopware\Components\DependencyInjection\Container as ContainerAlias;
 use Shopware\Components\Model\ModelRepository;
+use Shopware\Models\Shop\Currency;
 use Zend_Currency;
 use Zend_Currency_Exception;
 use Zend_Locale;
-use Shopware\Models\Shop\Currency;
 
 /**
  * Class CurrencyFactoryDecorator
@@ -34,7 +34,7 @@ class CurrencyFactoryDecorator
             'id' => $currencyId,
         ]);
 
-        if ($currency->getCurrency() === 'ARK') {
+        if ($currency && $currency->getCurrency() === 'ARK') {
             $pluginConfig = $this->getPluginConfig($container);
 
             $currency = [
