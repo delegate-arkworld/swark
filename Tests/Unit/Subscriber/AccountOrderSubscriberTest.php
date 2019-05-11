@@ -19,7 +19,8 @@ class AccountOrderSubscriberTest extends TestCase
     {
         $subscriber = new AccountOrderSubscriber(
             '',
-            new OrderHelperMock()
+            new OrderHelperMock(),
+            []
         );
 
         $this->assertInstanceOf(AccountOrderSubscriber::class, $subscriber);

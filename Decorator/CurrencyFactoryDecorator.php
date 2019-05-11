@@ -25,7 +25,11 @@ class CurrencyFactoryDecorator
     public function factory(ContainerAlias $container, Zend_Locale $locale)
     {
         $request = $container->get('Front');
-        $currencyId = $request->Request()->getCookie('currency');
+        $currencyId = null;
+
+        if ($request->Request()) {
+            $currencyId = $request->Request()->getCookie('currency');
+        }
 
         $repository = $this->getCurrencyRepository($container);
 

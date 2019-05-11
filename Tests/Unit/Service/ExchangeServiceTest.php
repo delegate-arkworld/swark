@@ -5,7 +5,7 @@ namespace Swark\Tests\Unit\Service;
 use Shopware\Components\Test\Plugin\TestCase;
 use Swark\Service\ExchangeService;
 use Swark\Tests\Mocks\GuzzleHttpClientMock;
-use Swark\Tests\Mocks\LoggerServiceMock;
+use Swark\Tests\Mocks\LoggerMock;
 use Swark\Tests\Mocks\ModelManagerMock;
 
 /**
@@ -21,7 +21,8 @@ class ExchangeServiceTest extends TestCase
     {
         $service = new ExchangeService(
             new GuzzleHttpClientMock(),
-            new LoggerServiceMock(),
+            new LoggerMock(),
+            new LoggerMock(),
             new ModelManagerMock()
         );
 
