@@ -49,7 +49,7 @@ class TransactionService
      *
      * @return TransactionStruct
      */
-    public function getTransaction(string $wallet, string $vendorField): TransactionStruct
+    public function getTransaction(string $wallet, string $vendorField): ?TransactionStruct
     {
         $transaction = $this->getTransactionByVendorField($wallet, $vendorField);
 
@@ -93,7 +93,7 @@ class TransactionService
                 $response = $this->connectionManager
                     ->connection('backup')->transactions()->search([
                         'recipientId' => $wallet,
-                        'vendorFieldHex' => \implode(\unpack('H*', $vendorField)),
+                        'vendorFieldHex' => implode(unpack('H*', $vendorField)),
                     ]);
             } catch (Exception $e) {
                 $this->errorLogger->error('backup node api was not executable', $e->getTrace());
