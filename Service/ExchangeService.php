@@ -73,7 +73,7 @@ class ExchangeService
 
         try {
             /** @var Currency $object */
-            $object = $this->models->getRepository(Currency::class)->findBy([
+            $object = $this->models->getRepository(Currency::class)->findOneBy([
                 'currency' => 'ARK',
             ]);
 

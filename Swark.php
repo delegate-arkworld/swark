@@ -56,20 +56,8 @@ class Swark extends Plugin
 
         $service->update(
             's_order_attributes',
-            'swark_transaction_id',
-            'string',
-            [
-                'label' => '[Swark] TransactionId',
-                'supportText' => '',
-                'helpText' => '',
-                'displayInBackend' => true,
-            ]
-        );
-
-        $service->update(
-            's_order_attributes',
             'swark_ark_amount',
-            'float',
+            'string',
             [
                 'label' => '[Swark] ARK amount',
                 'supportText' => '',
