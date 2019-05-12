@@ -12,6 +12,7 @@ use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Components\Plugin\PaymentInstaller;
 use Shopware\Models\Shop\Currency;
+use Swark\Service\ExchangeService;
 
 /**
  * Class Swark
@@ -160,7 +161,7 @@ class Swark extends Plugin
         /** @var ModelManager $models */
         $models = $this->container->get('models');
 
-        $exchangeService = new \Swark\Service\ExchangeService(
+        $exchangeService = new ExchangeService(
             $this->container->get('http_client'),
             new Logger('error'),
             new Logger('process'),
