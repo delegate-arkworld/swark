@@ -11,8 +11,6 @@
 
 ## Description
 
-**This plugin is still under development!**
-
 Swark is a payment gateway that provides the ability to pay with Ark in Shopware.
 
 ## Documentation
