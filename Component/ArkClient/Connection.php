@@ -59,7 +59,7 @@ class Connection
     public function api(string $name): AbstractApi
     {
         $name = ucfirst($name);
-        $class = "Swark\\Components\\ArkClient\\Api\\{$name}";
+        $class = "Swark\\Component\\ArkClient\\Api\\{$name}";
 
         if (!class_exists($class)) {
             throw new RuntimeException("Class [$class] does not exist.");

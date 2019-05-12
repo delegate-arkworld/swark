@@ -100,6 +100,6 @@ class TransactionService
             }
         }
 
-        return $response['data'][0] ?: [];
+        return ($response['data']) ? $response['data'][0] : [];
     }
 }

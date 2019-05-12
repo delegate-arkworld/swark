@@ -104,9 +104,7 @@ class OrderService
             return false;
         }
 
-        /*
-         * @var Order
-         */
+        /** @var Order $order */
         foreach ($orders as $order) {
             $this->processLogger->info(
                 'Processing Order [' . $order->getNumber() . ']'
@@ -120,7 +118,7 @@ class OrderService
             );
 
             if ($transaction) {
-                if (!$transaction->getId()) {
+                if ($attributes['swarkTransactionId'] === '') {
                     $this->updateOrderTransactionId($order->getAttribute(), $transaction->getId(), $order->getNumber());
                 }
 
