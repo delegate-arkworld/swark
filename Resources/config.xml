@@ -62,7 +62,7 @@
         <element type="number">
             <name>precision</name>
             <label>Currency precision</label>
-            <value>8</value>
+            <value>2</value>
             <description>The decimal places that are displayed when the Ark Currency is selected.</description>
         </element>
     </elements>
