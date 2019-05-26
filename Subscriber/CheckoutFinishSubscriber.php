@@ -3,6 +3,7 @@
 namespace Swark\Subscriber;
 
 use Enlight\Event\SubscriberInterface;
+use Shopware\Models\Attribute\Order as OrderAttributes;
 use Swark\Helper\OrderHelper;
 use Swark\Service\OrderService;
 use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
@@ -91,6 +92,19 @@ class CheckoutFinishSubscriber implements SubscriberInterface
 
         $view->assign('swarkConfirmations', $this->pluginConfig['confirmations']);
         $view->assign('swarkAttributes', $data);
+        $view->assign('swarkWalletLink', $this->buildWalletLink($attributes));
         $view->extendsTemplate('frontend/plugins/swark/finish.tpl');
+    }
+
+    /**
+     * @param OrderAttributes $attributes
+     *
+     * @return string
+     */
+    private function buildWalletLink(OrderAttributes $attributes): string
+    {
+        return 'ark:' . $attributes->getSwarkRecipientAddress() .
+               '?amount=' . $attributes->getSwarkArkAmount() .
+               '&vendorField=' . $attributes->getSwarkVendorField();
     }
 }
