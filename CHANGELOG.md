@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2 (2019-05-26)
+
+* Implement button on order success to directly open the wallet
+
 ## 1.0.1 (2019-05-12)
 
 * Fix http-client class name
