@@ -17,7 +17,7 @@
                 <h3>{s name="headline"}Pay with Ark!{/s}</h3>
             {/block}
             {block name="frontend_checkout_finish_swark_description"}
-                <p class="swark-container-payment-description">
+                <div class="swark-container-payment-description">
                     {block name="frontend_checkout_finish_swark_description_qrcode_code"}
                         <ark-qrcode
                                 address="{$swarkAttributes.swarkRecipientAddress}"
@@ -47,6 +47,13 @@
                 <div class="swark-container-payment-information">
                     <p>{s name="confirmations_info"}Your transaction need at least <strong>{$swarkConfirmations} Confirmations</strong> to be accepted!{/s}</p>
                 </div>
+            {/block}
+            {block name="frontend_checkout_finish_swark_button"}
+                <a href="{$swarkWalletLink}"
+                   class="btn is--primary"
+                   title="{s name="button_title"}Pay Now{/s}">
+                    {s name="button_text"}Pay Now{/s}
+                </a>
             {/block}
         </div>
     {/block}
