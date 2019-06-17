@@ -27,7 +27,7 @@ $ phpunit
 * [Nico Allers](https://github.com/reconnico)
 * [Contributors](../../contributors)
 
-![ACF Banner](../assets/banner_acf.png?raw=true)
+[![ACF Banner](../assets/banner_acf.png?raw=true)](https://arkcommunity.fund/)
 
    
 ## License
