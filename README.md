@@ -2,7 +2,7 @@
 
 ![Swark Banner](../assets/banner.png?raw=true)
 
-> Ark Payment Gateway for Shopware
+> Ark Payment Gateway for Shopware 5
 
 <a href="https://codecov.io/github/reconnico/swark"><img src="https://badgen.net/codecov/c/github/reconnico/swark"></a>
 <a href="https://github.com/reconnico/swark"><img src="https://badgen.net/github/release/reconnico/swark"></a>
@@ -10,7 +10,7 @@
 
 ## Description
 
-Swark is a payment gateway that provides the ability to pay with Ark in Shopware.
+Swark is a payment gateway that provides the ability to pay with Ark in Shopware 5.
 
 ## Documentation
 
