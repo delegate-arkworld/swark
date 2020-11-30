@@ -4,7 +4,7 @@
 
 > Ark Payment Gateway for Shopware 5
 
-<a href="https://codecov.io/github/reconnico/swark"><img src="https://badgen.net/codecov/c/github/reconnico/swark"></a>
+<!-- <a href="https://codecov.io/github/reconnico/swark"><img src="https://badgen.net/codecov/c/github/reconnico/swark"></a> -->
 <a href="https://github.com/reconnico/swark"><img src="https://badgen.net/github/release/reconnico/swark"></a>
 <a href="https://github.com/reconnico/swark"><img src="https://badgen.net/github/license/reconnico/swark"></a>
 
